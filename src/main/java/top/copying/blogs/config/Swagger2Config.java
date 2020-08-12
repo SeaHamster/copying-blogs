@@ -1,5 +1,6 @@
 package top.copying.blogs.config;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -18,7 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class Swagger2Config {
     /**
-     * apis扫描com路径下的api文档3
+     * apis扫描com路径下的api文档.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
      * paths路径判断
      * @return Docket
      */
@@ -27,7 +28,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("top.copying.blogs.*"))
+                .apis(RequestHandlerSelectors.basePackage("top.copying.blogs"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -41,9 +42,9 @@ public class Swagger2Config {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Swagger 开发规范")
-                .description("Swagger 开发规范详文档细地址--->>>>>>>：http://www.google.com.hk")
-                .termsOfServiceUrl("http://www.google.com.hk")
+                .title("Copying Blogs Service")
+                .description("个人博客功能接口")
+                .termsOfServiceUrl("http://139.155.80.168:10505/index.html")
                 .version("1.0")
                 .build();
     }

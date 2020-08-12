@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
  * @date 2020-08-07
  */
 @SpringBootApplication
-@ComponentScan("top.copying.blogs.config")
 public class CopyingBlogsApplication {
     public static void main(String[] args) {
         SpringApplication.run(CopyingBlogsApplication.class,args);

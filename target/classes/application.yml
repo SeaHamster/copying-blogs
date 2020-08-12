@@ -9,8 +9,6 @@ spring:
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*Mapper.xml
 
-mybatis:
-
 server:
   port: 10505
 
