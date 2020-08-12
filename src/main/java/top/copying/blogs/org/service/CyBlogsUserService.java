@@ -1,6 +1,7 @@
 package top.copying.blogs.org.service;
 
 import org.springframework.stereotype.Service;
+import top.copying.blogs.model.entity.CyBlogsUser;
 
 /**
  * @author copying
@@ -16,4 +17,11 @@ public interface CyBlogsUserService  {
      * @return 是否登录成功
      */
     Boolean isLogin(String userName,String passWord);
+
+    /**
+     * 传入用户信息，创建用户
+     * @param cyBlogsUser 用户信息
+     * @return 返回用户信息，失败返回null
+     */
+    CyBlogsUser newUser(CyBlogsUser cyBlogsUser);
 }

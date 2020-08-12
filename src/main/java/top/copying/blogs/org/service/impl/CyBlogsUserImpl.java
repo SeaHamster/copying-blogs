@@ -28,4 +28,10 @@ public class CyBlogsUserImpl implements CyBlogsUserService {
         List<CyBlogsUser> cyBlogsUsers= cyBlogsUserMapper.selectList(cyBlogsUserQueryWrapper);
         return !cyBlogsUsers.isEmpty();
     }
+
+    @Override
+    public CyBlogsUser newUser(CyBlogsUser cyBlogsUser) {
+        return null;
+    }
+
 }
