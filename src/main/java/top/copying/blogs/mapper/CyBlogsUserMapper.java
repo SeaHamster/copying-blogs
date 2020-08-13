@@ -12,4 +12,6 @@ import top.copying.blogs.model.entity.CyBlogsUser;
 @Mapper
 public interface CyBlogsUserMapper extends BaseMapper<CyBlogsUser> {
 
+    CyBlogsUser insertUser(CyBlogsUser cyBlogsUser);
+
 }

@@ -31,7 +31,7 @@ public class CyBlogsUserImpl implements CyBlogsUserService {
 
     @Override
     public CyBlogsUser newUser(CyBlogsUser cyBlogsUser) {
-        return null;
+        return cyBlogsUserMapper.insertUser(cyBlogsUser);
     }
 
 }
