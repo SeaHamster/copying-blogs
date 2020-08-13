@@ -2,8 +2,10 @@ package top.copying.blogs.model.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-import java.sql.Timestamp;
+import java.time.Instant;
 
 /**
  * @author copying
@@ -11,6 +13,7 @@ import java.sql.Timestamp;
  * 用户实体类
  */
 @Data
+@ToString
 public class CyBlogsUser {
 
     @ApiModelProperty("用户标识")
@@ -22,9 +25,9 @@ public class CyBlogsUser {
     @ApiModelProperty("密码")
     private String passWord;
     @ApiModelProperty("创建时间")
-    private Timestamp createTime;
+    private Instant createTime;
     @ApiModelProperty("更新时间")
-    private Timestamp updateTime;
+    private Instant updateTime;
     @ApiModelProperty("用户权限")
     private Integer authority;
     @ApiModelProperty("身份证id")
