@@ -2,7 +2,6 @@ package top.copying.blogs.model.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import java.time.Instant;
