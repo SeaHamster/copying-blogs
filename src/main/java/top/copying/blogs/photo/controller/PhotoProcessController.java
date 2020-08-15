@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020-08-14
  */
 @RestController
-@Api()
+@Api(value = "photo tools",tags = {"图片处理工具接口"})
 public class PhotoProcessController {
 
 }
