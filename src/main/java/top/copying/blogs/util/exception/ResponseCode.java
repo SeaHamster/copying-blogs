@@ -52,6 +52,8 @@ public class ResponseCode implements Serializable {
     public static final String SYS_BODY_FORMAT_ERROR = "SYS_BODY_FORMAT_ERROR";
     /** 上传文件大小超过限制 */
     public static final String SYS_FILE_SIZE_OUT_OF_GAUGE = "SYS_FILE_SIZE_OUT_OF_GAUGE";
+    /** 上传文件失败 */
+    public static final String UP_LOAD_FILE = "UP_LOAD_FILE";
     /** 不支持的Content */
     public static final String SYS_UNSUPPORTED_CONTENT_TYPE = "SYS_UNSUPPORTED_CONTENT_TYPE";
     /** 丢失请求参数 */
@@ -105,13 +107,14 @@ public class ResponseCode implements Serializable {
         MAP.put(ROLE_NOT_FOUND,new ResponseCode(HttpStatus.OK,2000301,"获取角色失败","Failed to get role"));
         /* *****************************  400 请求错误  **************************** */
         MAP.put(SYS_BODY_FORMAT_ERROR,new ResponseCode(HttpStatus.BAD_REQUEST,4000000,"请求body格式错误","Request body format error"));
-        MAP.put(SYS_FILE_SIZE_OUT_OF_GAUGE,new ResponseCode(HttpStatus.BAD_REQUEST,4000001,"上传文件大小超过限制","Upload file size exceeds limit"));
-        MAP.put(SYS_UNSUPPORTED_CONTENT_TYPE,new ResponseCode(HttpStatus.BAD_REQUEST,4000002,"不支持的Content-Type","Unsupported Content-Type"));
-        MAP.put(COMMON_MISS_PARAMETER,new ResponseCode(HttpStatus.BAD_REQUEST,4000003,"丢失请求参数","Missing request parameters"));
-        MAP.put(COMMON_INVALID_PARAM,new ResponseCode(HttpStatus.BAD_REQUEST,4000004,"无效的参数","Invalid parameter"));
-        MAP.put(COMMON_VALIDATE_ERROR,new ResponseCode(HttpStatus.BAD_REQUEST,4000100,"未通过参数校验","Failed parameter verification"));
+        MAP.put(SYS_FILE_SIZE_OUT_OF_GAUGE,new ResponseCode(HttpStatus.BAD_REQUEST,4000010,"上传文件大小超过限制","Upload file size exceeds limit"));
+        MAP.put(UP_LOAD_FILE,new ResponseCode(HttpStatus.BAD_REQUEST,4000011,"上传文件失败","Upload file size exceeds limit"));
+        MAP.put(SYS_UNSUPPORTED_CONTENT_TYPE,new ResponseCode(HttpStatus.BAD_REQUEST,4000020,"不支持的Content-Type","Unsupported Content-Type"));
+        MAP.put(COMMON_MISS_PARAMETER,new ResponseCode(HttpStatus.BAD_REQUEST,4000021,"丢失请求参数","Missing request parameters"));
+        MAP.put(COMMON_INVALID_PARAM,new ResponseCode(HttpStatus.BAD_REQUEST,4000022,"无效的参数","Invalid parameter"));
+        MAP.put(COMMON_VALIDATE_ERROR,new ResponseCode(HttpStatus.BAD_REQUEST,4000023,"未通过参数校验","Failed parameter verification"));
         MAP.put(COMMON_NOT_IN_ALLOWED_SCOPE,new ResponseCode(HttpStatus.BAD_REQUEST,4000101,"不在允许值范围内","Not in allowed scope"));
-       MAP.put(PERMISSION_INVALID_USERNAME_PASSWORD,new ResponseCode(HttpStatus.BAD_REQUEST,4000200,"用户名或密码错误","Wrong user name or password"));
+        MAP.put(PERMISSION_INVALID_USERNAME_PASSWORD,new ResponseCode(HttpStatus.BAD_REQUEST,4000200,"用户名或密码错误","Wrong user name or password"));
         /* *****************************  401 未授权  **************************** */
         MAP.put(PERMISSION_UNAUTHORIZED,new ResponseCode(HttpStatus.UNAUTHORIZED,4010200,"未授权","Unauthorized"));
         MAP.put(PERMISSION_IP_RESTRICTION,new ResponseCode(HttpStatus.UNAUTHORIZED,4010201,"IP受限","IP restricted"));

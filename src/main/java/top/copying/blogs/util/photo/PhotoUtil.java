@@ -1,6 +1,7 @@
 package top.copying.blogs.util.photo;
 
-import java.io.File;
+import org.springframework.web.multipart.MultipartFile;
+
 
 /**
  * 图片处理工具具体实现
@@ -9,7 +10,7 @@ import java.io.File;
  */
 public class PhotoUtil {
 
-    private Object upLoadPhoto(File photo){
+    private Object upLoadPhoto(MultipartFile photo){
 
         return null;
     }
