@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @date 2020-08-15 10:59:14
  */
 @Data
-public class CyBlogsFileDto implements Serializable {
+public class CyBlogsFile implements Serializable {
     private static final long serialVersionUID = -559132322914896161L;
     private static final long UNIT_SIZE = 1024;
 

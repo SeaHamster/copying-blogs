@@ -1,7 +1,7 @@
 package top.copying.blogs.sysfunction.service;
 
 import org.springframework.web.multipart.MultipartFile;
-import top.copying.blogs.model.entity.CyBlogsFileDto;
+import top.copying.blogs.model.entity.CyBlogsFile;
 
 /**
  * @author copying
@@ -13,5 +13,5 @@ public interface FileService {
      * @param file 要上传的文件
      * @return 文件信息
      */
-    CyBlogsFileDto upLoadFile(MultipartFile file);
+    CyBlogsFile upLoadFile(MultipartFile file);
 }

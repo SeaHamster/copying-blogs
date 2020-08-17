@@ -8,6 +8,6 @@ import lombok.Data;
  * @date 2020-08-14
  */
 @Data
-public class CyBlogsPhoto extends CyBlogsFileDto {
+public class CyBlogsPhoto extends CyBlogsFile {
 
 }

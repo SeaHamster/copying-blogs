@@ -4,7 +4,7 @@ package top.copying.blogs.sysfunction.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import top.copying.blogs.config.ReadGlobalConfig;
-import top.copying.blogs.model.entity.CyBlogsFileDto;
+import top.copying.blogs.model.entity.CyBlogsFile;
 import top.copying.blogs.sysfunction.service.FileService;
 import top.copying.blogs.util.FileUtil;
 import top.copying.blogs.util.exception.ResponseCode;
@@ -26,7 +26,7 @@ public class FileServiceImpl implements FileService {
     private static final String FILE_PATH="common-file";
 
     @Override
-    public CyBlogsFileDto upLoadFile(MultipartFile file) {
+    public CyBlogsFile upLoadFile(MultipartFile file) {
         if(file.isEmpty()){
             throw new ClassCastException(ResponseCode.COMMON_MISS_PARAMETER);
         }

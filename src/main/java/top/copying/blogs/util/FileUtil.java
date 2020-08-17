@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import top.copying.blogs.exception.CustomizeException;
 import top.copying.blogs.mapper.CyBlogsFileMapper;
-import top.copying.blogs.model.entity.CyBlogsFileDto;
+import top.copying.blogs.model.entity.CyBlogsFile;
 import top.copying.blogs.sysfunction.controller.FileController;
 import top.copying.blogs.util.exception.ResponseCode;
 
@@ -25,15 +25,13 @@ public class FileUtil {
 
     private static final Logger log= LoggerFactory.getLogger(FileController.class);
     @Resource
-    private CyBlogsFileDto cyBlogsFileDto;
-    @Resource
     private CyBlogsFileMapper cyBlogsFileMapper;
 
     /**
      * 文件上传
      * @return 文件地址
      */
-    public CyBlogsFileDto fileUpLoad(MultipartFile file, String filePath){
+    public CyBlogsFile fileUpLoad(MultipartFile file, String filePath){
         //文件名
         String fileName = file.getOriginalFilename();
         //文件后缀名
@@ -55,18 +53,18 @@ public class FileUtil {
             }
             file.transferTo(dest);
             //文件上传成功，将信息存入数据库
-            cyBlogsFileDto =new CyBlogsFileDto();
-            cyBlogsFileDto.setFileName(fileName);
-            cyBlogsFileDto.setName(name);
-            cyBlogsFileDto.setFilePath(filePath+name);
-            cyBlogsFileDto.setFileHashCode(dest.hashCode());
-            cyBlogsFileDto.setFileSize(dest.length());
-            cyBlogsFileDto.setFileType(suffixName);
+            CyBlogsFile cyBlogsFile =new CyBlogsFile();
+            cyBlogsFile.setFileName(fileName);
+            cyBlogsFile.setName(name);
+            cyBlogsFile.setFilePath(filePath+name);
+            cyBlogsFile.setFileHashCode(dest.hashCode());
+            cyBlogsFile.setFileSize(dest.length());
+            cyBlogsFile.setFileType(suffixName);
 
 
-            int insertFile=cyBlogsFileMapper.insertFile(cyBlogsFileDto);
+            int insertFile=cyBlogsFileMapper.insertFile(cyBlogsFile);
             if(insertFile>0){
-                return cyBlogsFileDto;
+                return cyBlogsFile;
             }
         }catch (IllegalStateException | IOException | AssertionError  e){
             throw new CustomizeException(ResponseCode.UP_LOAD_FILE);
