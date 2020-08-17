@@ -24,7 +24,7 @@ public class FileDto implements Serializable {
     String upFileName;
 
     @ApiModelProperty("文件大小")
-    Integer fileSize;
+    Long fileSize;
 
     @ApiModelProperty("文件类型")
     String fileType;

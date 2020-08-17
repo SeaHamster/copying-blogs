@@ -1,6 +1,7 @@
 package top.copying.blogs.util.exception;
 
 import com.alibaba.fastjson.JSONObject;
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.util.Map;
  * @author copying
  * @date  2020-08-15 10:04:51
  */
+@Data
 public class ResponseCode implements Serializable {
     private static final long serialVersionUID = -2529378242147664639L;
     private static final Map<String, ResponseCode> MAP = new HashMap<>();

@@ -12,4 +12,5 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "photo tools",tags = {"图片处理工具接口"})
 public class PhotoProcessController {
 
+
 }
