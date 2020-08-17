@@ -1,7 +1,7 @@
 package top.copying.blogs.model.entity;
 
 import lombok.Data;
-import top.copying.blogs.model.dto.FileDto;
+import top.copying.blogs.model.dto.CyBlogsFileDto;
 
 /**
  * 图片存储
@@ -9,6 +9,6 @@ import top.copying.blogs.model.dto.FileDto;
  * @date 2020-08-14
  */
 @Data
-public class CyBlogsPhoto extends FileDto {
+public class CyBlogsPhoto extends CyBlogsFileDto {
 
 }

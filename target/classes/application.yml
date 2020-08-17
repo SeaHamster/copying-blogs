@@ -13,3 +13,11 @@ server:
   port: 10505
 
 #springfox.documentation.swagger.v2.path: /api-docs
+
+global-config:
+  file-path:
+    public-file: ./resources/file/
+#      /root/blogs/file
+    photo: /root/blogs/photo-file
+    upLoad-photo: /original-image
+    out-photo: /finished-product-photo
