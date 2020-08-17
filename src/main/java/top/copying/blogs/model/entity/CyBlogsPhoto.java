@@ -1,7 +1,6 @@
 package top.copying.blogs.model.entity;
 
 import lombok.Data;
-import top.copying.blogs.model.dto.CyBlogsFileDto;
 
 /**
  * 图片存储

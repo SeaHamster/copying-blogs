@@ -1,4 +1,4 @@
-package top.copying.blogs.model.dto;
+package top.copying.blogs.model.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -20,7 +20,7 @@ public class CyBlogsFileDto implements Serializable {
     String fileName;
 
     @ApiModelProperty("文件名")
-    String Name;
+    String name;
 
     @ApiModelProperty("文件地址")
     String filePath;
@@ -36,16 +36,16 @@ public class CyBlogsFileDto implements Serializable {
 
     public void setFileSize(Long fileSize){
         this.fileSize=fileSize;
-        Long fsm=fileSize/ UNIT_SIZE;
-        if(fsm< UNIT_SIZE){
-            this.fileSizeM=(fsm.toString()+"K");
-        }else{
+        long fsm=fileSize/ UNIT_SIZE;
+        if(fsm< UNIT_SIZE) {
+            this.fileSizeM = (fsm + "K");
+        } else{
             fsm=fsm/ UNIT_SIZE;
             if(fsm< UNIT_SIZE){
-                this.fileSizeM=(fsm.toString()+"M");
+                this.fileSizeM=(fsm +"M");
             }else {
                 fsm=fsm/ UNIT_SIZE;
-                this.fileSizeM=(fsm.toString()+"G");
+                this.fileSizeM=(fsm +"G");
             }
         }
     }

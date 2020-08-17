@@ -1,14 +1,12 @@
 package top.copying.blogs.util;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import top.copying.blogs.exception.CustomizeException;
 import top.copying.blogs.mapper.CyBlogsFileMapper;
-import top.copying.blogs.mapper.CyBlogsUserMapper;
-import top.copying.blogs.model.dto.CyBlogsFileDto;
+import top.copying.blogs.model.entity.CyBlogsFileDto;
 import top.copying.blogs.sysfunction.controller.FileController;
 import top.copying.blogs.util.exception.ResponseCode;
 

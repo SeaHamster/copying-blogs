@@ -2,7 +2,6 @@ package top.copying.blogs.model.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.ToString;
 
 import java.time.Instant;
 
@@ -12,7 +11,6 @@ import java.time.Instant;
  * 用户实体类
  */
 @Data
-@ToString
 public class CyBlogsUser {
 
     @ApiModelProperty("用户标识")

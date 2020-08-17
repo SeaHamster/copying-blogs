@@ -1,7 +1,7 @@
 package top.copying.blogs.sysfunction.service;
 
 import org.springframework.web.multipart.MultipartFile;
-import top.copying.blogs.model.dto.CyBlogsFileDto;
+import top.copying.blogs.model.entity.CyBlogsFileDto;
 
 /**
  * @author copying

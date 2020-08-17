@@ -2,7 +2,7 @@ package top.copying.blogs.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
-import top.copying.blogs.model.dto.CyBlogsFileDto;
+import top.copying.blogs.model.entity.CyBlogsFileDto;
 
 /**
  * @author copying

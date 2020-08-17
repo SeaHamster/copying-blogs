@@ -16,7 +16,7 @@ server:
 
 global-config:
   file-path:
-    public-file: ./resources/file/
+    common-file: ./resources/file/
 #      /root/blogs/file
     photo: /root/blogs/photo-file
     upLoad-photo: /original-image
