@@ -17,7 +17,7 @@ public interface CyBlogsFileMapper extends BaseMapper<CyBlogsFile> {
      * @param cyBlogsFile 文件信息
      * @return 大于0插入成功
      */
-    int insertFile(@Param("cyBlogsFileDto") CyBlogsFile cyBlogsFile);
+    int insertFile(CyBlogsFile cyBlogsFile);
 
 
 }

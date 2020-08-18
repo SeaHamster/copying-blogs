@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.copying.blogs.mapper.CyBlogsFileMapper">
     <insert id="insertFile">
-        insert into cy_blogs_file (file_name, name, file_path, file_hash_code , upload_ip ,type ,size ) value
-        (#{item.fileName},#{item.name},#{item.filePath},#{item.fileHashCode},#{item.uploadIp},#{item.type},#{item.size})
+        insert into cy_blogs_file (file_name, `name`, file_path, file_hash_code , upload_ip ,`type` ,`size` ) value
+        (#{fileName},#{name},#{filePath},#{fileHashCode},#{uploadIp},#{fileType},#{fileSize});
     </insert>
 
 </mapper>

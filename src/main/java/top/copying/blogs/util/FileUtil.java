@@ -2,6 +2,7 @@ package top.copying.blogs.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import top.copying.blogs.exception.CustomizeException;
@@ -36,15 +37,12 @@ public class FileUtil {
         String fileName = file.getOriginalFilename();
         //文件后缀名
         assert fileName != null;
-        String suffixName = fileName.substring(fileName.indexOf("."));
+        String suffixName = fileName.substring(fileName.lastIndexOf(".")+1);
         log.info("上传文件：" + fileName + " 文件后缀：" + suffixName);
-
         try {
-
             //新文件名
-            String name = UUID.randomUUID() + suffixName;
+            String name = UUID.randomUUID() +"."+ suffixName;
             File dest = new File(new File(filePath).getAbsolutePath()+"/" + name);
-
             if (!dest.getParentFile().exists()) {
                 boolean isMk=dest.getParentFile().mkdir();
                 if(!isMk){
@@ -56,20 +54,22 @@ public class FileUtil {
             CyBlogsFile cyBlogsFile =new CyBlogsFile();
             cyBlogsFile.setFileName(fileName);
             cyBlogsFile.setName(name);
-            cyBlogsFile.setFilePath(filePath+name);
+            cyBlogsFile.setFilePath(filePath);
             cyBlogsFile.setFileHashCode(dest.hashCode());
             cyBlogsFile.setFileSize(dest.length());
             cyBlogsFile.setFileType(suffixName);
-
 
             int insertFile=cyBlogsFileMapper.insertFile(cyBlogsFile);
             if(insertFile>0){
                 return cyBlogsFile;
             }
-        }catch (IllegalStateException | IOException | AssertionError  e){
+        }catch (IllegalStateException | IOException | AssertionError e){
+             //| DataIntegrityViolationException
             throw new CustomizeException(ResponseCode.UP_LOAD_FILE);
         }
 
         return null;
     }
+
+
 }
