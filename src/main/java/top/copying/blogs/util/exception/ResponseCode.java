@@ -25,7 +25,7 @@ public class ResponseCode implements Serializable {
     public static final String SYS_SUCCESSFUL_REQUEST = "SYS_SUCCESSFUL_REQUEST";
     /* -------------  01 通用状态  ------------- */
     /** 不存在该记录 */
-    public static final String COMMON_NOT_EXIST = "COMMON_NOT_EXIST";
+        public static final String COMMON_NOT_EXIST = "COMMON_NOT_EXIST";
     /** 已存在该记录 */
     public static final String COMMON_ALREADY_EXIST = "COMMON_ALREADY_EXIST";
     /** 不许重复执行 */

@@ -10,6 +10,7 @@ import top.copying.blogs.util.FileUtil;
 import top.copying.blogs.util.exception.ResponseCode;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author copying
@@ -32,4 +33,14 @@ public class FileServiceImpl implements FileService {
         }
         return fileUtil.fileUpLoad(file,readGlobalConfig.getFilePath().get(FILE_PATH));
     }
+
+    @Override
+    public CyBlogsFile downLoadFile(Integer id) {
+        if(id==null){
+            throw  new ClassCastException(ResponseCode.COMMON_NOT_EXIST);
+        }
+        return fileUtil.fileDownLoad(id);
+    }
+
+
 }

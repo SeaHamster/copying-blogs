@@ -53,23 +53,34 @@ public class FileUtil {
             //文件上传成功，将信息存入数据库
             CyBlogsFile cyBlogsFile =new CyBlogsFile();
             cyBlogsFile.setFileName(fileName);
-            cyBlogsFile.setName(name);
+            cyBlogsFile.setSaveName(name);
             cyBlogsFile.setFilePath(filePath);
-            cyBlogsFile.setFileHashCode(dest.hashCode());
             cyBlogsFile.setFileSize(dest.length());
             cyBlogsFile.setFileType(suffixName);
 
-            int insertFile=cyBlogsFileMapper.insertFile(cyBlogsFile);
-            if(insertFile>0){
+            if(cyBlogsFileMapper.insertFile(cyBlogsFile)){
                 return cyBlogsFile;
             }
-        }catch (IllegalStateException | IOException | AssertionError e){
-             //| DataIntegrityViolationException
+        }catch (IllegalStateException | IOException | DataIntegrityViolationException | AssertionError e){
             throw new CustomizeException(ResponseCode.UP_LOAD_FILE);
         }
 
         return null;
     }
 
-
+    /**
+     * 下载文件
+     * @param id 文件id
+     * @return 文件信息
+     */
+    public CyBlogsFile fileDownLoad(Integer id) {
+        CyBlogsFile cyBlogsFile=cyBlogsFileMapper.selectFile(id);
+        if(cyBlogsFile==null){
+            throw new CustomizeException(ResponseCode.COMMON_NOT_EXIST);
+        }
+        String filePath=new File(cyBlogsFile.getFilePath()).getAbsolutePath();
+        filePath+="/"+cyBlogsFile.getSaveName();
+        cyBlogsFile.setFileUrl(filePath);
+        return cyBlogsFile;
+    }
 }

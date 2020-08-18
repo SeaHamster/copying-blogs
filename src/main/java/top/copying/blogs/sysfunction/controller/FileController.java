@@ -27,8 +27,15 @@ public class FileController {
 
     @ApiOperation(notes = "上传文件",value = "上传文件")
     @PostMapping("/upLoad")
-    public ApiResult<?> upLoadFile(@NotNull MultipartFile file ){
+    public ApiResult<?> upLoadFile(@NotNull MultipartFile file){
         return new ApiResult<>(fileService.upLoadFile(file));
+    }
+
+    @ApiOperation(notes = "下载文件",value = "下载信息")
+    @ApiImplicitParam(name = "fileId",value = "fileId",type = "Integer")
+    @GetMapping("/downLoadFile")
+    public ApiResult<?> downLoadFile(Integer fileId){
+        return new ApiResult<>(fileService.downLoadFile(fileId));
     }
 
 

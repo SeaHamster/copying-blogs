@@ -2,8 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.copying.blogs.mapper.CyBlogsFileMapper">
     <insert id="insertFile">
-        insert into cy_blogs_file (file_name, `name`, file_path, file_hash_code , upload_ip ,`type` ,`size` ) value
-        (#{fileName},#{name},#{filePath},#{fileHashCode},#{uploadIp},#{fileType},#{fileSize});
+        insert into cy_blogs_file (file_name, save_name, file_path , upload_ip ,file_type ,file_size ) value
+        (#{fileName},#{saveName},#{filePath},#{uploadIp},#{fileType},#{fileSize});
     </insert>
+    <select id="selectFile" resultType="top.copying.blogs.model.entity.CyBlogsFile">
+        select * from cy_blogs_file as cbf where cbf.id=#{id};
+    </select>
 
 </mapper>

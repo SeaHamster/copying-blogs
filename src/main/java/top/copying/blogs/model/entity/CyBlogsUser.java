@@ -1,5 +1,7 @@
 package top.copying.blogs.model.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -14,6 +16,7 @@ import java.time.Instant;
 public class CyBlogsUser {
 
     @ApiModelProperty("用户标识")
+    @TableId(value = "id",type = IdType.AUTO)
     private Integer userId;
     @ApiModelProperty("用户名")
     private String userName;

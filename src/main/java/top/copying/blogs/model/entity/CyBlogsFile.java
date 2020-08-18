@@ -1,5 +1,7 @@
 package top.copying.blogs.model.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -15,18 +17,18 @@ public class CyBlogsFile implements Serializable {
     private static final long serialVersionUID = -559132322914896161L;
     private static final long UNIT_SIZE = 1024;
 
+    @ApiModelProperty("主键")
+    @TableId(value = "id",type = IdType.AUTO)
+    Integer id;
 
     @ApiModelProperty("上传文件名")
     String fileName;
 
     @ApiModelProperty("文件名")
-    String name;
+    String saveName;
 
     @ApiModelProperty("文件地址")
     String filePath;
-
-    @ApiModelProperty("文件的唯一标志")
-    Integer fileHashCode;
 
     @ApiModelProperty("文件上传主机ip")
     Integer uploadIp;
@@ -56,5 +58,6 @@ public class CyBlogsFile implements Serializable {
     @ApiModelProperty("文件类型")
     String fileType;
 
-
+    @ApiModelProperty("下载文件地址")
+    String fileUrl;
 }
