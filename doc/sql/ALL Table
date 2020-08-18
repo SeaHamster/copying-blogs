@@ -1,0 +1,14 @@
+CREATE TABLE `cy_blogs_file` (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `file_name` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '原文件名',
+  `name` varchar(125) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '文件名',
+  `file_path` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '上传后存储地址',
+  `upload_ip` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上传文件主机地址',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `file_type` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '图片类型',
+  `file_size` int NOT NULL COMMENT '图片大小',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='文件储存表';
+
+---------------------
+

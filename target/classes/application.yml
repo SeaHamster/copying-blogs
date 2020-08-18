@@ -12,12 +12,17 @@ mybatis-plus:
 server:
   port: 10505
 
-#springfox.documentation.swagger.v2.path: /api-docs
-
 global-config:
   file-path:
     common-file: ./resources/file/
 #      /root/blogs/file
-    photo: /root/blogs/photo-file
-    upLoad-photo: /original-image
-    out-photo: /finished-product-photo
+    photo: /root/blogs/
+    upLoad-photo: ./resources/photo/original-image/
+    out-photo: ./resources/photo/finished-product-photo/
+
+file-type:
+  photo-type:
+    - jpg
+    - gif
+    - png
+    - jpeg

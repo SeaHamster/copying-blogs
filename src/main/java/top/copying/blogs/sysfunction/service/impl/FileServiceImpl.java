@@ -23,7 +23,7 @@ public class FileServiceImpl implements FileService {
     private FileUtil fileUtil;
     @Resource
     private ReadGlobalConfig readGlobalConfig;
-
+    /** 公共文件储存地址 */
     private static final String FILE_PATH="common-file";
 
     @Override

@@ -19,22 +19,22 @@ public class CyBlogsFile implements Serializable {
 
     @ApiModelProperty("主键")
     @TableId(value = "id",type = IdType.AUTO)
-    Integer id;
+    private Integer id;
 
     @ApiModelProperty("上传文件名")
-    String fileName;
+    private String fileName;
 
     @ApiModelProperty("文件名")
-    String saveName;
+    private String saveName;
 
     @ApiModelProperty("文件地址")
-    String filePath;
+    private String filePath;
 
     @ApiModelProperty("文件上传主机ip")
-    Integer uploadIp;
+    private Integer uploadIp;
 
     @ApiModelProperty("文件字节")
-    Long fileSize;
+    private Long fileSize;
 
     public void setFileSize(Long fileSize){
         this.fileSize=fileSize;
@@ -53,11 +53,11 @@ public class CyBlogsFile implements Serializable {
     }
 
     @ApiModelProperty("文件大小")
-    String fileSizeM;
+    private String fileSizeM;
 
     @ApiModelProperty("文件类型")
-    String fileType;
+    private String fileType;
 
     @ApiModelProperty("下载文件地址")
-    String fileUrl;
+    private String fileUrl;
 }
