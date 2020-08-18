@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import top.copying.blogs.photo.service.PhotoProcessService;
 import top.copying.blogs.util.ApiResult;
+import top.copying.blogs.util.IpUtil;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 处理图片功能接口
@@ -38,8 +40,8 @@ public class PhotoProcessController {
 
     @ApiOperation(notes = "上传图片",value = "上传文件")
     @PostMapping("/upLoadPhoto")
-    public ApiResult<?> upLoadPhoto(MultipartFile file){
-        return new ApiResult<>(photoProcessService.upLoadPhoto(file));
+    public ApiResult<?> upLoadPhoto(MultipartFile file,HttpServletRequest request){
+        return new ApiResult<>(photoProcessService.upLoadPhoto(file, IpUtil.getIpAddr(request)));
     }
 
 

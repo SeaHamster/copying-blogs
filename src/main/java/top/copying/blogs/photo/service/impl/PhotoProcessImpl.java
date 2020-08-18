@@ -26,11 +26,11 @@ public class PhotoProcessImpl implements PhotoProcessService {
     private static final String FILE_PATH="upLoad-photo";
 
     @Override
-    public CyBlogsFile upLoadPhoto(MultipartFile file) {
+    public String upLoadPhoto(MultipartFile file,String ip) {
         if(file.isEmpty()){
             throw new CustomizeException(ResponseCode.UP_LOAD_FILE);
         }
-        return photoUtil.upLoadPhoto(file,readGlobalConfig.getFilePath().get(FILE_PATH));
+        return photoUtil.upLoadPhoto(file,ip,readGlobalConfig.getFilePath().get(FILE_PATH));
     }
 
     @Override

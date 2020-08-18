@@ -27,11 +27,11 @@ public class FileServiceImpl implements FileService {
     private static final String FILE_PATH="common-file";
 
     @Override
-    public CyBlogsFile upLoadFile(MultipartFile file) {
+    public String upLoadFile(MultipartFile file,String ip) {
         if(file.isEmpty()){
             throw new ClassCastException(ResponseCode.COMMON_MISS_PARAMETER);
         }
-        return fileUtil.fileUpLoad(file,readGlobalConfig.getFilePath().get(FILE_PATH));
+        return fileUtil.fileUpLoad(file,ip,readGlobalConfig.getFilePath().get(FILE_PATH));
     }
 
     @Override

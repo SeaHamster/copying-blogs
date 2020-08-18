@@ -13,9 +13,10 @@ public interface FileService {
     /**
      * 上传文件
      * @param file 要上传的文件
+     * @param ip 上传文件的地址
      * @return 文件信息
      */
-    CyBlogsFile upLoadFile(MultipartFile file);
+    String upLoadFile(MultipartFile file,String ip);
 
     /**
      * 下载文件

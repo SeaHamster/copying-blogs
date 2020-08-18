@@ -32,7 +32,7 @@ public class FileUtil {
      * 文件上传
      * @return 文件地址
      */
-    public CyBlogsFile fileUpLoad(MultipartFile file, String filePath){
+    public String fileUpLoad(MultipartFile file,String ip, String filePath){
         //文件名
         String fileName = file.getOriginalFilename();
         //文件后缀名
@@ -57,9 +57,10 @@ public class FileUtil {
             cyBlogsFile.setFilePath(filePath);
             cyBlogsFile.setFileSize(dest.length());
             cyBlogsFile.setFileType(suffixName);
+            cyBlogsFile.setUploadIp(ip);
 
             if(cyBlogsFileMapper.insertFile(cyBlogsFile)){
-                return cyBlogsFile;
+                return cyBlogsFile.getSaveName();
             }
         }catch (IllegalStateException | IOException | DataIntegrityViolationException | AssertionError e){
             throw new CustomizeException(ResponseCode.UP_LOAD_FILE);

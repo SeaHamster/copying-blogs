@@ -31,7 +31,7 @@ public class CyBlogsFile implements Serializable {
     private String filePath;
 
     @ApiModelProperty("文件上传主机ip")
-    private Integer uploadIp;
+    private String uploadIp;
 
     @ApiModelProperty("文件字节")
     private Long fileSize;

@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import top.copying.blogs.sysfunction.service.FileService;
 import top.copying.blogs.util.ApiResult;
+import top.copying.blogs.util.IpUtil;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -27,8 +29,8 @@ public class FileController {
 
     @ApiOperation(notes = "上传文件",value = "上传文件")
     @PostMapping("/upLoad")
-    public ApiResult<?> upLoadFile(@NotNull MultipartFile file){
-        return new ApiResult<>(fileService.upLoadFile(file));
+    public ApiResult<?> upLoadFile(@NotNull MultipartFile file, HttpServletRequest request){
+        return new ApiResult<>(fileService.upLoadFile(file, IpUtil.getIpAddr(request)));
     }
 
     @ApiOperation(notes = "下载文件",value = "下载信息")

@@ -35,7 +35,7 @@ public class PhotoUtil {
     //** 图片类型*/
     //private static final String PHOTO_TYPE="photo-type";
 
-    public CyBlogsFile upLoadPhoto(MultipartFile photo, String filePath){
+    public String upLoadPhoto(MultipartFile photo,String ip, String filePath){
         //文件名
         String fileName = photo.getOriginalFilename();
         //文件后缀名
@@ -46,7 +46,7 @@ public class PhotoUtil {
             throw new CustomizeException(ResponseCode.COMMON_NOT_ALLOW,"请上传正确的图片文件","Please upload the correct picture file");
         }
 
-        return fileUtil.fileUpLoad(photo,filePath);
+        return fileUtil.fileUpLoad(photo,ip,filePath);
     }
 
     /**

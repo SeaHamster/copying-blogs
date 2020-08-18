@@ -13,9 +13,10 @@ public interface PhotoProcessService {
     /**
      * 上传图片文件
      * @param file 目标图片
+     * @param ip 上传文件的ip
      * @return 图片信息
      */
-    CyBlogsFile upLoadPhoto(MultipartFile file);
+    String upLoadPhoto(MultipartFile file,String ip);
 
     /**
      * 按需求获取图片
