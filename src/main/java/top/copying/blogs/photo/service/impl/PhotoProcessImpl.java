@@ -4,13 +4,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import top.copying.blogs.config.ReadGlobalConfig;
 import top.copying.blogs.exception.CustomizeException;
-import top.copying.blogs.model.entity.CyBlogsFile;
-import top.copying.blogs.model.entity.CyBlogsPhotoFile;
 import top.copying.blogs.photo.service.PhotoProcessService;
 import top.copying.blogs.util.exception.ResponseCode;
 import top.copying.blogs.util.photo.PhotoUtil;
 
 import javax.annotation.Resource;
+import java.io.File;
 
 /**
  * @author copying
@@ -20,6 +19,8 @@ import javax.annotation.Resource;
 public class PhotoProcessImpl implements PhotoProcessService {
     @Resource
     private PhotoUtil photoUtil;
+    @Resource
+    private static final int DEFAULT_TO_SIZE=200*1024;
     @Resource
     private ReadGlobalConfig readGlobalConfig;
     /** 图片上传地址*/
@@ -34,7 +35,34 @@ public class PhotoProcessImpl implements PhotoProcessService {
     }
 
     @Override
-    public CyBlogsPhotoFile getFinishedPhoto(String fileId, int fileClass) {
-        return null;
+    public String getFinishedPhoto(String fileSaveName, int fileClass,int toSize) {
+        //获取原文件
+        File artworkMaster =photoUtil.getPhotoFile(fileSaveName);
+        //将源文件转换为，需要的图片类型
+        String filePath=null;
+        switch (fileClass){
+            case 1:
+                //将图片转换为1寸图片
+                filePath=photoUtil.convertFileOne(artworkMaster);
+                break;
+            case 2:
+                //将图片转换为2寸图片
+                filePath=photoUtil.convertFileTwo(artworkMaster);
+                break;
+            case 3:
+                //小二寸
+                filePath=photoUtil.convertFileSmallTwo(artworkMaster);
+                break;
+            case 4:
+                //转换为指定大小?K
+                if(toSize==0){
+                    toSize=DEFAULT_TO_SIZE;
+                }
+                filePath=photoUtil.convertFileFreeSize(artworkMaster,toSize);
+                break;
+            default:
+                break;
+        }
+        return filePath;
     }
 }

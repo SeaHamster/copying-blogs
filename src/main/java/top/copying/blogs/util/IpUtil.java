@@ -12,6 +12,7 @@ import java.net.UnknownHostException;
  * @Author  JC
  * @CreateTime  2018-11-23
  * @Point Keep a good mood
+ * 获取访问接口的IP地址
  **/
 @Component
 public class IpUtil {

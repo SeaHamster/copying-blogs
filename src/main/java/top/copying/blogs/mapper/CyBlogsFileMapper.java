@@ -26,4 +26,5 @@ public interface CyBlogsFileMapper extends BaseMapper<CyBlogsFile> {
      */
     CyBlogsFile selectFile(Integer id);
 
+    CyBlogsFile selectFileSaveName(String fileSaveName);
 }

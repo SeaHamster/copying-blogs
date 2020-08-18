@@ -14,7 +14,7 @@ public interface PhotoProcessService {
      * 上传图片文件
      * @param file 目标图片
      * @param ip 上传文件的ip
-     * @return 图片信息
+     * @return 图片新的uuid名称
      */
     String upLoadPhoto(MultipartFile file,String ip);
 
@@ -22,7 +22,8 @@ public interface PhotoProcessService {
      * 按需求获取图片
      * @param fileId 原图片id
      * @param fileClass 需要的图片格式
-     * @return 完成后的图片信息
+     * @param toSize 转换后图片的大小
+     * @return 完成后的图片地址
      */
-    CyBlogsPhotoFile getFinishedPhoto(String fileId, int fileClass);
+    String getFinishedPhoto(String fileId, int fileClass,int toSize);
 }

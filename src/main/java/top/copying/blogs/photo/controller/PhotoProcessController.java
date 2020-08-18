@@ -31,11 +31,12 @@ public class PhotoProcessController {
     @ApiOperation(value = "获取处理后的图片",notes = "获取处理后的图片")
     @GetMapping("/getPhoto")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "fileId",value = "fileId",type = "String"),
-            @ApiImplicitParam(name = "图片规格",value = "fileClass",type = "int")
+            @ApiImplicitParam(name = "fileSaveName",value = "fileSaveName",type = "String"),
+            @ApiImplicitParam(name = "图片规格",value = "fileClass",type = "int"),
+            @ApiImplicitParam(name = "目标图片大小",value = "toSize",type = "int")
     })
-    public ApiResult<?> getFinishedPhoto(String fileId,int fileClass){
-        return new ApiResult<>(photoProcessService.getFinishedPhoto(fileId,fileClass));
+    public ApiResult<?> getFinishedPhoto(String fileSaveName,int fileClass,int toSize){
+        return new ApiResult<>(photoProcessService.getFinishedPhoto(fileSaveName,fileClass,toSize));
     }
 
     @ApiOperation(notes = "上传图片",value = "上传文件")
