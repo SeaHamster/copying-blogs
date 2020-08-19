@@ -5,7 +5,15 @@ spring:
     username: blogs
     password: fu13092b9
     type: com.alibaba.druid.pool.DruidDataSource
-
+  redis:
+    host: 139.155.80.168
+    port: 6379
+    password: fu13092b9
+    lettuce.pool:
+      max-active: 1000
+      max-idle: 100
+      min-idle: 1
+    database: 2
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*Mapper.xml
 
