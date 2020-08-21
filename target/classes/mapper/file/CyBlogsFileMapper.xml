@@ -8,5 +8,8 @@
     <select id="selectFile" resultType="top.copying.blogs.model.entity.CyBlogsFile">
         select * from cy_blogs_file as cbf where cbf.id=#{id};
     </select>
+    <select id="selectFileSaveName" resultType="top.copying.blogs.model.entity.CyBlogsFile">
+        select * from cy_blogs_file as cbf where cbf.save_name=#{fileSaveName};
+    </select>
 
 </mapper>

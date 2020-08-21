@@ -10,12 +10,18 @@ spring:
     port: 6379
     password: fu13092b9
     lettuce.pool:
-      max-active: 1000
+      max-active: 45
       max-idle: 100
       min-idle: 1
     database: 2
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*Mapper.xml
+  configuration:
+    cache-enabled: false
+    jdbc-type-for-null: 'null'
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    map-underscore-to-camel-case: true
+
 
 server:
   port: 10505

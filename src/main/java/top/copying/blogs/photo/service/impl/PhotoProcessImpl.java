@@ -19,12 +19,13 @@ import java.io.File;
 public class PhotoProcessImpl implements PhotoProcessService {
     @Resource
     private PhotoUtil photoUtil;
-    @Resource
-    private static final int DEFAULT_TO_SIZE=200*1024;
+
     @Resource
     private ReadGlobalConfig readGlobalConfig;
     /** 图片上传地址*/
     private static final String FILE_PATH="upLoad-photo";
+    /** 默认生成的图片大小150K */
+    private  static final  Integer DEFAULT_TO_SIZE=150*1024;
 
     @Override
     public String upLoadPhoto(MultipartFile file,String ip) {
