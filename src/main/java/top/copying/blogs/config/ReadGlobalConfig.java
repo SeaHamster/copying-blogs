@@ -21,4 +21,7 @@ public class ReadGlobalConfig {
 
     private Map<String,String> filePath=new HashMap<>();
 
+    /**  测试翻译插件 有效绑定到该对象的属性的前缀 */
+    private Integer personalAge;
+
 }

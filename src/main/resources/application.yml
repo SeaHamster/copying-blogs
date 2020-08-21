@@ -14,6 +14,10 @@ spring:
       max-idle: 100
       min-idle: 1
     database: 2
+  security:
+    user:
+      name: admin  # spring security 安全认证的默认账号与密码
+      password: fu13092b9
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*Mapper.xml
   configuration:
@@ -29,7 +33,6 @@ server:
 global-config:
   file-path:
     common-file: ./resources/file/
-#      /root/blogs/file
     photo: /root/blogs/
     upLoad-photo: ./resources/photo/original-image/
     out-photo: ./resources/photo/finished-product-photo/
