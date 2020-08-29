@@ -103,7 +103,7 @@ public class Swagger2Config {
     private SecurityContext securityContext() {
         return SecurityContext.builder()
                 .securityReferences(Collections.singletonList(new SecurityReference("oauth2", scopes())))
-                .forPaths(PathSelectors.any())
+                .forPaths(Predicates.not(Predicates.in(ignoreUrlProperties.getUrls())))
                 .build();
     }
 
