@@ -1,4 +1,4 @@
-package top.copying.blogs.config;
+package top.copying.blogs.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -17,11 +17,8 @@ import java.util.Map;
 @Component
 @RefreshScope
 @ConfigurationProperties(prefix = "global-config")
-public class ReadGlobalConfig {
+public class ReadGlobalConfigProperties {
 
     private Map<String,String> filePath=new HashMap<>();
-
-    /**  测试翻译插件 有效绑定到该对象的属性的前缀 */
-    private Integer personalAge;
 
 }

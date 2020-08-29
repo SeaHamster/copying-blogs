@@ -2,7 +2,7 @@ package top.copying.blogs.photo.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import top.copying.blogs.config.ReadGlobalConfig;
+import top.copying.blogs.properties.ReadGlobalConfigProperties;
 import top.copying.blogs.exception.CustomizeException;
 import top.copying.blogs.photo.service.PhotoProcessService;
 import top.copying.blogs.util.exception.ResponseCode;
@@ -21,7 +21,7 @@ public class PhotoProcessImpl implements PhotoProcessService {
     private PhotoUtil photoUtil;
 
     @Resource
-    private ReadGlobalConfig readGlobalConfig;
+    private ReadGlobalConfigProperties readGlobalConfigProperties;
     /** 图片上传地址*/
     private static final String FILE_PATH="upLoad-photo";
     /** 默认生成的图片大小150K */
@@ -32,7 +32,7 @@ public class PhotoProcessImpl implements PhotoProcessService {
         if(file.isEmpty()){
             throw new CustomizeException(ResponseCode.UP_LOAD_FILE);
         }
-        return photoUtil.upLoadPhoto(file,ip,readGlobalConfig.getFilePath().get(FILE_PATH));
+        return photoUtil.upLoadPhoto(file,ip, readGlobalConfigProperties.getFilePath().get(FILE_PATH));
     }
 
     @Override
