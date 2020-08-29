@@ -1,6 +1,7 @@
 package top.copying.blogs.config;
 
 import com.google.common.base.Predicates;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -32,6 +33,7 @@ public class Swagger2Config {
     private IgnoreUrlProperties ignoreUrlProperties;
     /**
      * apis扫描com路径下的api文档.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+     *  .apis(RequestHandlerSelectors.basePackage("top.copying.blogs"))
      * paths路径判断
      * @return Docket
      */
@@ -40,7 +42,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("top.copying.blogs"))
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(Collections.singletonList(securityScheme()))
