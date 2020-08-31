@@ -90,14 +90,15 @@ public class Swagger2Config {
     private List<GrantType> grantTypes(){
         List<GrantType> grantTypes = new ArrayList<>();
         GrantType grantType = new ResourceOwnerPasswordCredentialsGrant("/blogs/oauth/token");
-        grantTypes.add(grantType );
+        grantTypes.add(grantType);
         return grantTypes;
     }
 
     /**
      * 设置 swagger2 认证的安全上下文
      * //.forPaths(PathSelectors.any()) 所有接口加锁
-     * .forPaths(Predicates.not(Predicates.in(ignoreUrlProperties.getUrls()))) 加锁排除指定的接口地址
+     * //.forPaths(Predicates.not(Predicates.in(ignoreUrlProperties.getUrls()))) 加锁排除指定的接口地址
+     * ignoreUrlProperties为获取yml中配置的接口地址
      * @return SecurityContext
      */
     private SecurityContext securityContext() {
@@ -109,7 +110,7 @@ public class Swagger2Config {
 
 
     /**
-     * 设置认证的scope
+     * 设置认证的作用域scope
      * @return AuthorizationScope[]
      */
     private AuthorizationScope[] scopes() {
