@@ -1,11 +1,16 @@
 package top.copying.blogs.config.security;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import javax.annotation.Resource;
 
@@ -16,10 +21,11 @@ import javax.annotation.Resource;
  * 继承 WebSecurityConfigurerAdapter 即可更改Security默认配置
  */
 @Configuration
+@EnableWebSecurity
+@Order(1)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 
-    @Resource
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
 
     /**
      * 重写方法以配置{@link WebSecurity}。例如，如果您希望*忽略某些请求。
@@ -28,6 +34,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
     @Override
     public void configure(WebSecurity web) throws Exception{
         web.ignoring().antMatchers("/swagger-ui.html");
+    }
+
+    @Override
+    protected UserDetailsService userDetailsService(){
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(User.withUsername("user_1").password("123456").authorities("USER").build());
+        manager.createUser(User.withUsername("user_2").password("123456").authorities("USER").build());
+        return manager;
     }
 
     /**
@@ -39,24 +53,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // @formatter:off
         http
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and().cors()
-                .and().httpBasic();
-    }
-
-    /**
-     * 在内存中设置默认的用户名，密码
-     * @param auth 身份验证管理器生成器
-     * @exception Exception is inMemoryAuthentication exception
-     */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin").password(bCryptPasswordEncoder.encode("admin")).roles("ADMIN")
+                .requestMatchers().anyRequest()
                 .and()
-                .withUser("user").password(bCryptPasswordEncoder.encode("user")).roles("USER");
+                .authorizeRequests()
+                .antMatchers("/oauth/*").permitAll();
+        // @formatter:on
     }
 
 }
