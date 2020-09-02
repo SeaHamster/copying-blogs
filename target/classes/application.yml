@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: blogs
   datasource:
     url: jdbc:mysql://139.155.80.168:3306/blogs?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -14,11 +16,10 @@ spring:
       max-idle: 100
       min-idle: 1
     database: 2
-  security:
-    user:
-      name: admin  # spring security 安全认证的默认账号与密码
-      password: fu13092b9
-mybatis-plus:
+#  security:
+#    user:
+#      name: admin  # spring security 安全认证的默认账号与密码
+#      password: fu13092b9
   mapper-locations: classpath*:/mapper/**/*Mapper.xml
   configuration:
     cache-enabled: false
@@ -26,6 +27,11 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
     map-underscore-to-camel-case: true
 
+#排除认证地址
+security-config:
+  username: admin
+  password: 'admin'
+  ignoringPath: /swagger-resources/**,/v2/api-docs,/csrf
 
 server:
   port: 10505
@@ -37,9 +43,15 @@ global-config:
     upLoad-photo: ./resources/photo/original-image/
     out-photo: ./resources/photo/finished-product-photo/
 
+# 文件类型
 file-type:
   photo-type:
     - jpg
     - gif
     - png
     - jpeg
+
+#swagger ui 排除认证接口
+ignore:
+  serverUrls:
+    # - /photo/getPhoto
