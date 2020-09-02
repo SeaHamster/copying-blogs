@@ -6,7 +6,7 @@
 
     <groupId>top.copying</groupId>
     <artifactId>blogs</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>blogs</name>
     <!-- Maven POM文件继承 spring-boot-starter-parent -->
     <parent>
@@ -25,14 +25,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-<!--        swagger ui 相关依赖-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
