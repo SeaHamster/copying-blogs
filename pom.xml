@@ -6,7 +6,8 @@
 
     <groupId>top.copying</groupId>
     <artifactId>blogs</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
+    <name>blogs</name>
     <!-- Maven POM文件继承 spring-boot-starter-parent -->
     <parent>
         <groupId>org.springframework.boot</groupId>
