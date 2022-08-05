@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>top.copying</groupId>
+    <groupId>com.copying</groupId>
     <artifactId>blogs</artifactId>
     <version>1.0</version>
     <name>blogs</name>
@@ -26,16 +26,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- swagger3 -->
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger.version}</version>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
@@ -92,6 +89,21 @@
             <artifactId>spring-security-oauth2</artifactId>
             <version>2.3.4.RELEASE</version>
         </dependency>
+
+        <!-- JWT token -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+
+        <!-- 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.12</version>
+        </dependency>
+
         <!-- 将token存储在redis中 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
