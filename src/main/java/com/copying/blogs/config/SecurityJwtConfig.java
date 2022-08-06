@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -33,6 +34,7 @@ public class SecurityJwtConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.cors().and().csrf().disable().authorizeRequests()
                 //不拦截
                 .antMatchers(HttpMethod.OPTIONS, "/**")
@@ -46,18 +48,25 @@ public class SecurityJwtConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/tags", "/tags/**").permitAll()
                 .antMatchers("/types", "/types/**").permitAll()
                 .anyRequest().authenticated()
-                //授权
                 .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
+                .permitAll();
+                //授权
+                //.and()
                 // 禁用session
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // 使用自己定义的拦截机制，拦截jwt
-        http.addFilterAfter(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+        http.addFilterAfter(new JwtAuthenticationFilter(authenticationManager()),
+                UsernamePasswordAuthenticationFilter.class)
                 //授权错误信息处理
                 .exceptionHandling()
                 //用户访问资源没有携带正确的token
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 //用户访问没有授权资源
                 .accessDeniedHandler(jwtAccessDeniedHandler);
+
     }
 
 }

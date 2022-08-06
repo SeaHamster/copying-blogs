@@ -3,7 +3,7 @@ package com.copying.blogs.util;
 import com.copying.blogs.exception.CustomizeException;
 import com.copying.blogs.mapper.CyBlogsFileMapper;
 import com.copying.blogs.model.entity.CyBlogsFile;
-import com.copying.blogs.model.entity.result.ResultCode;
+import com.copying.blogs.model.result.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
@@ -75,7 +75,7 @@ public class FileUtil {
     public CyBlogsFile fileDownLoad(Integer id) {
         CyBlogsFile cyBlogsFile=cyBlogsFileMapper.selectFile(id);
         if(cyBlogsFile==null){
-            throw new CustomizeException(ResultCode.RESULE_DATA_NONE);
+            throw new CustomizeException(ResultCode.RESULT_DATA_NONE);
         }
         String filePath=new File(cyBlogsFile.getFilePath()).getAbsolutePath();
         filePath+="/"+cyBlogsFile.getSaveName();

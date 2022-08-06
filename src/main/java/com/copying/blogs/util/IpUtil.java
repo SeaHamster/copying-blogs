@@ -1,65 +1,45 @@
 package com.copying.blogs.util;
 
 
-
-import org.springframework.stereotype.Component;
-
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-/**
- * @Author  JC
- * @CreateTime  2018-11-23
- * @Point Keep a good mood
- * 获取访问接口的IP地址
- **/
-@Component
 public class IpUtil {
-    private static final String UNKNOWN ="unknown";
-    private static final String LOCAL_HOST="127.0.0.1";
-    private static final String LOCAL_HOST_SERVICE="0:0:0:0:0:0:0:1";
-    private static final String INDEX_FLAG=",";
-    private static final int IP_LENGTH =15;
-
-    public static String getIpAddr(HttpServletRequest request) {
-        String ipAddress;
-        try {
-            ipAddress = request.getHeader("x-forwarded-for");
-            if (ipAddress == null || ipAddress.length() == 0 || UNKNOWN.equalsIgnoreCase(ipAddress)) {
-                ipAddress = request.getHeader("Proxy-Client-IP");
-            }
-            if (ipAddress == null || ipAddress.length() == 0 || UNKNOWN.equalsIgnoreCase(ipAddress)) {
-                ipAddress = request.getHeader("WL-Proxy-Client-IP");
-            }
-            if (ipAddress == null || ipAddress.length() == 0 || UNKNOWN.equalsIgnoreCase(ipAddress)) {
-                ipAddress = request.getRemoteAddr();
-                ipAddress=ipAddress.equals(LOCAL_HOST_SERVICE) ? LOCAL_HOST : ipAddress;
-                if (ipAddress.equals(LOCAL_HOST)) {
-                    // 根据网卡取本机配置的IP
-                    InetAddress inet = null;
-                    try {
-                        inet = InetAddress.getLocalHost();
-                    } catch (UnknownHostException e) {
-                        e.printStackTrace();
-                    }
-                    assert inet != null;
-                    ipAddress = inet.getHostAddress();
-                }
-            }
-            // 对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
-            // "***.***.***.***".length()
-            if (ipAddress != null && ipAddress.length() > IP_LENGTH) {
-                // = 15
-                if (ipAddress.indexOf(INDEX_FLAG) > 0) {
-                    ipAddress = ipAddress.substring(0, ipAddress.indexOf(","));
-                }
-            }
-        } catch (Exception e) {
-            ipAddress="";
+    /**
+     * 获取用户真实IP地址，不使用request.getRemoteAddr();的原因是有可能用户使用了代理软件方式避免真实IP地址。
+     * 可是，如果通过了多级反向代理的话，X-Forwarded-For的值并不止一个，而是一串IP值，究竟哪个才是真正的用户端的真实IP呢？
+     * 答案是取X-Forwarded-For中第一个非unknown的有效IP字符串
+     */
+    public static String getIpAddress(HttpServletRequest request) {
+        String ip = request.getHeader("x-forwarded-for");
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("Proxy-Client-IP");
         }
-        return ipAddress;
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("HTTP_CLIENT_IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+            if("127.0.0.1".equals(ip)||"0:0:0:0:0:0:0:1".equals(ip)){
+                //根据网卡取本机配置的IP
+                InetAddress inet;
+                try {
+                    inet = InetAddress.getLocalHost();
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                    return ip;
+                }
+                ip = inet.getHostAddress();
+            }
+        }
+        return ip;
     }
+
 }
-
-

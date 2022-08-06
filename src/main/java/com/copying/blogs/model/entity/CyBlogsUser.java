@@ -1,14 +1,18 @@
 package com.copying.blogs.model.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户信息表
@@ -16,8 +20,10 @@ import java.util.Date;
  * @date 2022/8/5
  */
 @Data
-public class CyBlogsUser {
+@TableName("cy_blogs_user")
+public class CyBlogsUser implements Serializable {
 
+    private static final long serialVersionUID = -8434889608264248218L;
     /**   id */
     @TableId(value = "user_id",type = IdType.AUTO)
     @ApiModelProperty("id")
@@ -89,4 +95,18 @@ public class CyBlogsUser {
     @ApiModelProperty("OAuth2类型")
     private String oauthToken;
 
+
+    /**
+     * 权限列表
+     */
+    @TableField(exist = false)
+    @ApiModelProperty("权限列表")
+    private List<String> permissionList;
+
+    /**
+     * 角色表
+     */
+    @TableField(exist = false)
+    @ApiModelProperty("角色表")
+    private CyBlogsRole role;
 }

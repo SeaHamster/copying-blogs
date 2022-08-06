@@ -3,6 +3,7 @@ package com.copying.blogs.model.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ import java.util.Date;
  */
 @JsonInclude(value = JsonInclude.Include.NON_NULL) //为NULL的字段不返回为（JSON）
 @Data
+@TableName("cy_blogs_role")
 public class CyBlogsRole implements Serializable {
 
     private static final long serialVersionUID = 1L;

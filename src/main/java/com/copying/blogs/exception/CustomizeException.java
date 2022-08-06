@@ -1,6 +1,6 @@
 package com.copying.blogs.exception;
 
-import com.copying.blogs.model.entity.result.ResultCode;
+import com.copying.blogs.model.result.ResultCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.http.HttpStatus;

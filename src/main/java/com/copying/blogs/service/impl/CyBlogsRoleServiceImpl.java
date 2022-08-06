@@ -29,8 +29,7 @@ public class CyBlogsRoleServiceImpl extends ServiceImpl<CyBlogsRoleMapper, CyBlo
     public PageInfo<CyBlogsRole> getListByPage(Integer pageNum, Integer pageSize, Wrapper<CyBlogsRole> queryWrapper) {
         PageHelper.startPage(pageNum, pageSize);
         List<CyBlogsRole> list = this.list(queryWrapper);
-        PageInfo<CyBlogsRole> result = new PageInfo<>(list);
-        return result;
+        return new PageInfo<>(list);
     }
 
     @Override
@@ -60,9 +59,7 @@ public class CyBlogsRoleServiceImpl extends ServiceImpl<CyBlogsRoleMapper, CyBlo
     @Transactional
     public Boolean deleteByIdsWithMenuBatch(List<Long> roleIds) {
         this.removeByIds(roleIds);
-        roleIds.stream().forEach(id -> {
-            cyBlogsRoleMapper.deleteRoleMenuBatch(id);
-        });
+        roleIds.forEach(id -> cyBlogsRoleMapper.deleteRoleMenuBatch(id));
         return true;
     }
 }

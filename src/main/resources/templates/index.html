@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <title>Title</title>
+    <!--首先完成移动端的预览设置问题,设备的宽度初始缩放倍数为1.0倍，这里还可以设置用户禁止缩放等等-->
+    <meta name="viewport" content="device-width,initial-scale=1.0">
+
+
+    <!--动画效果的插件-->
+    <link rel="stylesheet" href="../static/css/animate.css">
 </head>
 <body>
+    <!--粒子特效-->
+    <canvas id="theCanvas"></canvas>
 
+    <!--主体-->
+    <div class="pusher">
+        <!--导航栏-->
+        <nav th:replace="_fragments :: menu(1)"
+             class="ui   attached segment m-padded-tb-mini m-shadow-small animated fadeInDown">
+
+            <!--container的好处很多，其中之一使得设备正常显示-->
+            <div class="ui container">
+                <!--使用一个菜单来放我们所有的导航链接-->
+                <div class="ui  secondary stackable menu">
+                    <a class="item">
+                        <img class="ui circular image mestyle image" th:src="${user.avatar}"
+                             src="http://b-ssl.duitang.com/uploads/item/201706/25/20170625143749_mtSZE.jpeg">
+                        &nbsp;&nbsp;&nbsp;<span th:text="${user.name}">Mr_name</span>
+                    </a>&nbsp;
+                    <a class=" item m-item m-mobile-hide"><i class="fas fa-carrot"></i>首页</a>
+                    <a class="item m-item m-mobile-hide"><i class="fas fa-ice-cream"></i>分类</a>
+                    <a class="item m-item m-mobile-hide"><i class="fas fa-candy-cane"></i>标签</a>
+                    <a class="item m-item m-mobile-hide"><i class="fas fa-pizza-slice"></i>归档</a>
+                    <a class="item m-item m-mobile-hide"><i class="fas fa-cookie"></i>本站</a>
+                    <a class="item m-item m-mobile-hide"><i class="fas fa-fish"></i>友链</a>
+                    <div class="right m-item item m-mobile-hide">
+                        <div class="ui icon inverted  input">
+                            <input type="text" placeholder="Search...">
+                            <i class="search link icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--这里来弄一个导航隐藏按钮-->
+            <a href="#" class="ui black icon button m-right-top m-mobile-show menu toggle">
+                <i class="sidebar icon"></i>
+            </a>
+
+        </nav>
+
+    </div>
 </body>
 </html>

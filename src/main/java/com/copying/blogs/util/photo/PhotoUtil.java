@@ -4,7 +4,7 @@ import com.copying.blogs.config.ReadPhotoTypeConfig;
 import com.copying.blogs.exception.CustomizeException;
 import com.copying.blogs.mapper.CyBlogsFileMapper;
 import com.copying.blogs.model.entity.CyBlogsFile;
-import com.copying.blogs.model.entity.result.ResultCode;
+import com.copying.blogs.model.result.ResultCode;
 import com.copying.blogs.util.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -22,6 +22,7 @@ import java.util.List;
  */
 @Component
 @Slf4j
+@SuppressWarnings("unused")
 public class PhotoUtil {
     /**  日志 */
     @Resource
@@ -108,9 +109,9 @@ public class PhotoUtil {
 
     /**
      * 转换文件自由大小
-     * @param artworkMaster
-     * @param toSize
-     * @return
+     * @param artworkMaster artworkMaster
+     * @param toSize toSize
+     * @return String
      */
     public String convertFileFreeSize(File artworkMaster, int toSize) {
         return null;

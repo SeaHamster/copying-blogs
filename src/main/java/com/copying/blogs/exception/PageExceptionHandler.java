@@ -1,8 +1,7 @@
 package com.copying.blogs.exception;
 
-import com.copying.blogs.model.entity.result.JsonResult;
-import com.copying.blogs.model.entity.result.ResultCode;
-import com.copying.blogs.model.entity.result.ResultUtil;
+import com.copying.blogs.model.result.Result;
+import com.copying.blogs.model.result.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -25,7 +24,7 @@ public class PageExceptionHandler {
     @ExceptionHandler(CaptchaExpireException.class)
     public Object handleException(CaptchaExpireException e) {
         e.printStackTrace();
-        return ResultUtil.faile(ResultCode.CODE_AUTH_ERROR);
+        return Result.fail(ResultCode.CODE_AUTH_ERROR);
     }
 
 
@@ -36,7 +35,7 @@ public class PageExceptionHandler {
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public Object handleException(HttpRequestMethodNotSupportedException e) {
         e.printStackTrace();
-        return ResultUtil.faile(ResultCode.INTERFACE_METHOD_ERROR);
+        return Result.fail(ResultCode.INTERFACE_METHOD_ERROR);
     }
 
     /**
@@ -46,7 +45,7 @@ public class PageExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     public Object handleException(AccessDeniedException e) {
         e.printStackTrace();
-        return ResultUtil.faile(ResultCode.PERMISSION_NO_ACCESS);
+        return Result.fail(ResultCode.PERMISSION_NO_ACCESS);
     }
 
 
@@ -57,6 +56,6 @@ public class PageExceptionHandler {
     @ExceptionHandler(Exception.class)
     public Object handleException(Exception e) {
         e.printStackTrace();
-        return new JsonResult<>(50000, "服务器开小差了", null);
+        return Result.fail(ResultCode.ERROR, "服务器开小差了");
     }
 }

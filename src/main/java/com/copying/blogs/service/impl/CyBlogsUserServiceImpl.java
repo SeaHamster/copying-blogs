@@ -37,13 +37,11 @@ public class CyBlogsUserServiceImpl extends ServiceImpl<CyBlogsUserMapper, CyBlo
     }
 
     @Override
-    public CyBlogsUserDto verifyLogin(String username, String password) {
+    public CyBlogsUser verifyLogin(String username, String password) {
         final CyBlogsUser user = this.getOne(new LambdaQueryWrapper<CyBlogsUser>().eq(CyBlogsUser::getUsername, username)
                 .eq(CyBlogsUser::getPassword, password));
-        CyBlogsUserDto userDto = new CyBlogsUserDto();
-        BeanUtils.copyProperties(user,userDto);
-        userDto.setPermissionList(this.getPermissionList(user.getUserId()));
-        return userDto;
+        user.setPermissionList(this.getPermissionList(user.getUserId()));
+        return user;
     }
 
     @Override
@@ -69,13 +67,11 @@ public class CyBlogsUserServiceImpl extends ServiceImpl<CyBlogsUserMapper, CyBlo
     }
 
     @Override
-    public CyBlogsUserDto getMyUserById(Long usId) {
-        CyBlogsUserDto res = new CyBlogsUserDto();
-        final CyBlogsUser CyBlogsUser = cyBlogsUserMapper.selectById(usId);
-        BeanUtils.copyProperties(CyBlogsUser, res);
-        res.setRole(cyBlogsRoleService.getById(CyBlogsUser.getRoleId()));
-        res.setPermissionList(this.getPermissionList(usId));
-        return res;
+    public CyBlogsUser getMyUserById(Long usId) {
+        final CyBlogsUser user = cyBlogsUserMapper.selectById(usId);
+        user.setRole(cyBlogsRoleService.getById(user.getRoleId()));
+        user.setPermissionList(this.getPermissionList(usId));
+        return user;
     }
 
     @Override

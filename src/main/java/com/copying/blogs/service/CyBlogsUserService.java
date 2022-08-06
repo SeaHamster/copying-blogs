@@ -25,7 +25,7 @@ public interface CyBlogsUserService extends IService<CyBlogsUser> {
 
     PageInfo<CyBlogsUser> getListByPage(Integer pageNum, Integer pageSize, Wrapper<CyBlogsUser> queryWrapper);
 
-    CyBlogsUserDto getMyUserById(Long usId);
+    CyBlogsUser getMyUserById(Long usId);
 
     CyBlogsUser generateUserByGithubUsId(Long githubUsId, CyBlogsUser saveUser);
 }

@@ -69,3 +69,10 @@ mybatis-plus:
       table-underline: true
       insert-strategy: not_empty
       update-strategy: not_empty
+
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
