@@ -35,7 +35,7 @@ public class IndexController {
         model.addAttribute("page", cyCacheService.getIndexPage(title, pageNum));
         model.addAttribute("types", cyCacheService.getIndexTypes());
         model.addAttribute("tags", cyCacheService.getIndexTags());
-        model.addAttribute("blogsCount", cyCacheService.getPushedBlogNum());
+        model.addAttribute("blogs Count", cyCacheService.getPushedBlogNum());
         model.addAttribute("typesCount", cyCacheService.getTypeNum());
         model.addAttribute("tagsCount", cyCacheService.getTagNum());
         model.addAttribute("commentsCount", cyCacheService.getCommentNum());

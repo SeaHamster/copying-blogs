@@ -7,6 +7,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.copying.blogs.model.dto.CyBlogsUserDto;
+import com.copying.blogs.model.entity.CyBlogsUser;
 import com.sun.deploy.util.StringUtils;
 
 import java.util.Date;
@@ -18,7 +19,7 @@ public class TokenUtil {
     /** 密钥盐 */
     private static final String TOKEN_SECRET = "h^+=Xz2q";
     /** 密钥盐 */
-    public static final String TOKEN_HEADER = "Vxbyt[43-Token";
+    public static final String TOKEN_HEADER = "copying-Token";
 
     /**
      * 签名生成
@@ -26,14 +27,14 @@ public class TokenUtil {
      * @param user CyBlogsUserDto
      * @return String签名生成
      */
-    public static String sign(CyBlogsUserDto user) {
+    public static String sign(CyBlogsUser user) {
         String token = null;
         try {
             Date expiresAt = new Date(System.currentTimeMillis() + EXPIRE_TIME);
             token = JWT.create()
-                    .withIssuer("peng")
+                    .withIssuer("copying")
                     .withClaim("userName", user.getUsername())//存放自己的信息
-                    .withClaim("usId", user.getUserId())
+                    .withClaim("userId", user.getUserId())
                     .withClaim("permissionList", StringUtils.join(user.getPermissionList(), ","))
                     .withExpiresAt(expiresAt)
                     // 使用了HMAC256加密算法。
@@ -50,7 +51,7 @@ public class TokenUtil {
      */
     public static boolean verify(String token) {
         try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("peng").build();
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("copying").build();
             DecodedJWT jwt = verifier.verify(token);
 //            System.out.println("认证通过：");
 //            System.out.println("issuer: " + jwt.getIssuer());
@@ -66,9 +67,9 @@ public class TokenUtil {
      * 获取内容
      */
     public static Long getUserId(String token) {
-        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("peng").build();
+        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("copying").build();
         DecodedJWT jwt = verifier.verify(token);
-        return jwt.getClaim("usId").asLong();
+        return jwt.getClaim("userId").asLong();
     }
 
     /**

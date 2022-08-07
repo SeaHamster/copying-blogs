@@ -69,6 +69,10 @@ public class CyCacheServiceImpl implements CyCacheService {
         return cyBlogsCommentService.count();
     }
 
+    /**
+     * 获取默认管理用户
+     * @return 用户信息
+     */
     @Override
     @MyCache
     public CyBlogsUser getAdminInfo() {
@@ -77,8 +81,8 @@ public class CyCacheServiceImpl implements CyCacheService {
 
     @Override
     @MyCache
-    public List<String> getPermissionList(Long usId) {
-        return iUserService.getPermissionList(usId);
+    public List<String> getPermissionList(Long userId) {
+        return iUserService.getPermissionList(userId);
     }
 
     @Override

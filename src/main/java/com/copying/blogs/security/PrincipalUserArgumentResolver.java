@@ -33,7 +33,7 @@ public class PrincipalUserArgumentResolver implements HandlerMethodArgumentResol
         if (authentication == null) {
             return null;
         }
-        final Long usId = (Long) authentication.getPrincipal();
-        return cyUserService.getMyUserById(usId);
+        final Long userId = (Long) authentication.getPrincipal();
+        return cyUserService.getMyUserById(userId);
     }
 }

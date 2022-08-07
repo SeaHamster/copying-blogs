@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -48,15 +47,15 @@ public class SecurityJwtConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/tags", "/tags/**").permitAll()
                 .antMatchers("/types", "/types/**").permitAll()
                 .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/")
-                .permitAll();
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/")
+//                .permitAll();
                 //授权
-                //.and()
+                .and()
                 // 禁用session
-                //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // 使用自己定义的拦截机制，拦截jwt
         http.addFilterAfter(new JwtAuthenticationFilter(authenticationManager()),
                 UsernamePasswordAuthenticationFilter.class)

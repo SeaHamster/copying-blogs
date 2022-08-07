@@ -19,13 +19,13 @@ public interface CyBlogsUserService extends IService<CyBlogsUser> {
 
     CyBlogsUser verifyLogin(String username, String password);
 
-    List<String> getPermissionList(Long usId);
+    List<String> getPermissionList(Long userId);
 
-    boolean isAdmin(Long usId);
+    boolean isAdmin(Long userId);
 
     PageInfo<CyBlogsUser> getListByPage(Integer pageNum, Integer pageSize, Wrapper<CyBlogsUser> queryWrapper);
 
-    CyBlogsUser getMyUserById(Long usId);
+    CyBlogsUser getMyUserById(Long userId);
 
     CyBlogsUser generateUserByGithubUsId(Long githubUsId, CyBlogsUser saveUser);
 }

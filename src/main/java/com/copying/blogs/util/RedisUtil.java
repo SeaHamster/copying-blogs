@@ -20,8 +20,6 @@ public final class RedisUtil {
     @Resource
     private RedisTemplate<Object, Object> redisTemplate;
 
-    public
-
     // =============================common============================
     /**
      * 指定缓存失效时间

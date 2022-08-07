@@ -45,18 +45,18 @@ public class CyBlogsUserServiceImpl extends ServiceImpl<CyBlogsUserMapper, CyBlo
     }
 
     @Override
-    public List<String> getPermissionList(Long usId) {
-        if (this.isAdmin(usId)) {
+    public List<String> getPermissionList(Long userId) {
+        if (this.isAdmin(userId)) {
             return cyBlogsUserMapper.getPermissionsAll();
         } else {
-            return cyBlogsUserMapper.getPermissionsById(usId);
+            return cyBlogsUserMapper.getPermissionsById(userId);
         }
 
     }
 
     @Override
-    public boolean isAdmin(Long usId) {
-        return cyBlogsUserMapper.getRoleKeyById(usId).equals("admin");
+    public boolean isAdmin(Long userId) {
+        return cyBlogsUserMapper.getRoleKeyById(userId).equals("admin");
     }
 
     @Override
@@ -67,10 +67,10 @@ public class CyBlogsUserServiceImpl extends ServiceImpl<CyBlogsUserMapper, CyBlo
     }
 
     @Override
-    public CyBlogsUser getMyUserById(Long usId) {
-        final CyBlogsUser user = cyBlogsUserMapper.selectById(usId);
+    public CyBlogsUser getMyUserById(Long userId) {
+        final CyBlogsUser user = cyBlogsUserMapper.selectById(userId);
         user.setRole(cyBlogsRoleService.getById(user.getRoleId()));
-        user.setPermissionList(this.getPermissionList(usId));
+        user.setPermissionList(this.getPermissionList(userId));
         return user;
     }
 

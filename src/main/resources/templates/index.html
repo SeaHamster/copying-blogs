@@ -5,8 +5,11 @@
     <title>Title</title>
     <!--首先完成移动端的预览设置问题,设备的宽度初始缩放倍数为1.0倍，这里还可以设置用户禁止缩放等等-->
     <meta name="viewport" content="device-width,initial-scale=1.0">
-
-
+    <title th:text="${user.name}">copying</th:text></title>
+    <!--接下来进行semanticUI的css CDN的引用-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
+    <!--引入我们自己写的css-->
+    <link rel="stylesheet" href="../static/css/me.css">
     <!--动画效果的插件-->
     <link rel="stylesheet" href="../static/css/animate.css">
 </head>
@@ -51,6 +54,234 @@
 
         </nav>
 
+        <!--中部主体-->
+        <div class=" m-padded-tb-large">
+            <div class="ui stackable this   container m-container-nine"></div>
+            <div class="ui stackable  grid m-padded-tb-small">
+
+                <!--中间的每周目标和文章-->
+                <div class="ui ten wide column m-padded-lr-small">
+                    <!--这里是一根分割线-->
+                    <div class="ui horizontal divider m-margin "
+                         style="font-family:楷体;font-size: 20px; font-weight: 600;!important;">最新博客
+                    </div>
+
+                    <!--文章列表-->
+                    <div class="ui raised segment m-margin-small" th:each="blog : ${page.list}"
+                         th:unless="${blog.published}==false">
+                        <div class="ui stackable mobile reversed grid">
+                            <!--11份来显示内容-->
+                            <div class="ui eleven wide column">
+
+                                <h3 class="ui  header m-padded-tb-up">
+                                    <a th:text="${blog.title}"
+                                       th:href="@{/blog/{id}(id=${blog.blId})}" href="#"
+                                       target="_blank"
+                                       style="font-family:宋体;color: black !important;">title</a>
+                                </h3>
+                                <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.blId})}" class="ui header">
+                                    <p th:text="${blog.outline}" class="  "
+                                       style="font-size: 15px; font-weight: 500 !important;letter-spacing: 1px !important;line-height: 2.5;">
+                                        outline
+                                    </p><font style="font-size: 14px;!important;"><u><i>点击详情>></i></u></font></a>
+                                <div class="ui divider "></div>
+                                <div class="ui middle aligned grid">
+                                    <div class="six wide column">
+                                        <div class="ui mini horizontal link list">
+                                            <div class="item">
+                                                <img th:src="${user.avatar}" src="https://unsplash.it/100/100?image=1005"
+                                                     class="ui avatar image">
+                                                <div class="content">
+                                                    <h5 th:text="${user.name}"
+                                                        class="ui header m-opacity-mini">nickname</h5></div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i><span
+                                                    th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-01-01</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="left aligned seven wide column">
+
+                                        <a th:href="@{/tags/{id}(id=${tag.taId})}" th:each="tag : ${blog.tags}" href="#"
+                                           class=" m-margin-smalls">
+                                            <i class="fas fa-tag"></i>
+                                            <span th:text="${tag.name}">tag.name</span>
+                                        </a>
+                                    </div>
+
+                                    <div class="right aligned three wide column">
+                                        <a href="#" th:href="@{/types/{id}(id=${blog.type.tyId})}"
+                                           th:text="${blog.type.name}" target="_blank"
+                                           class="ui  red basic label m-text-thin ">type.name</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--5份来显示图片-->
+                            <div class="five wide column">
+
+                                <!--<a href="#" th:href="@{/blog/{id}(id=${blog.blId})}" target="_blank" >-->
+                                <!--<img th:src="@{${blog.firstPicture}}" src="https://unsplash.it/800/450?image=1005" alt="" class="ui  rounded image">-->
+                                <!--</a>-->
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--footer尾部上一页，下一页-->
+                    <div class="ui segment" th:if="${page.pages}>1">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <a href="#" th:href="@{/(page=${page.prePage})}" th:unless="${page.isFirstPage}"
+                                   class="ui teal basic button">上一页</a>
+                            </div>
+                            <div class="ui right aligned column">
+                                <a href="#" th:href="@{/(page=${page.nextPage})}" th:unless="${page.isLastPage}"
+                                   class="ui teal basic button">下一页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
     </div>
+
+
+    <th:block th:replace="_fragments :: script">
+        <!--也许用到的jQuery的引用-->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+        <!--这里进行semanticUI的js 的CDN的引用 -->
+        <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    </th:block>
+
+    <!--粒子特效-->
+    <script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>
+
+    <script>
+        var audio = document.getElementsByTagName('audio')[0];
+        $('#searchbtn').click(function () {
+            var searchtext=$('#searchtext').val();
+            var ctxPath  = [[@{/}]]+"?title="+searchtext;
+                $(location).attr('href', ctxPath);
+        });
+        $('.music-1').click(function () {
+            audio.src = "/music/Innocence.mp3";
+            audio.play();
+        });
+        $('.music-2').click(function () {
+            audio.src = "/music/Red.mp3";
+            audio.play();
+        });
+        $('.music-3').click(function () {
+            audio.src = "/music/I Don't Wanna Live Forever.mp3";
+            audio.play();
+        });
+        $('.music-4').click(function () {
+            audio.src = "/music/一生中最爱.mp3";
+            audio.play();
+        });
+
+
+        $('.menu.toggle').click(function () {
+
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        function shapeChange() {
+            $('.shape').shape('flip down');
+        }
+
+        $('#sidebar-btn').click(function () {
+            $('.ui.left.sidebar')
+                .sidebar('toggle')
+            ;
+
+        });
+
+        $('#music-btn').click(function () {
+            $('.ui.right.sidebar')
+                .sidebar('toggle')
+            ;
+        });
+
+
+        function guolv(a) {
+            if (a < 10)
+                return '0' + a;
+            return a;
+        }
+
+        function time() {
+            var nowTime = new Date();
+            var startTime = new Date(2019, 3, 2, 17, 52, 0);
+            var xc = (nowTime.getTime() - startTime.getTime()) / 1000;
+            var day = parseInt(xc / 86400);
+            xc -= day * 86400;
+            var hour = parseInt(xc / 3600);
+            xc -= hour * 3600;
+            var min = parseInt(xc / 60);
+            var sec = parseInt(xc - min * 60);
+            hour = guolv(hour);
+            min = guolv(min);
+            sec = guolv(sec);
+            var str = day + '天' + hour + '小时' + min + '分' + sec;
+            $("#recordTime").html(str);
+        }
+
+        setInterval(time, 1000);
+        setInterval(shapeChange, 4000);
+
+
+        $('.ui.form').form({
+            fields: {
+                nickname: {
+                    identifier: 'nickname',
+                    rules: [{
+                        type: 'empty'
+
+                    }]
+                },
+                content: {
+                    identifier: 'content',
+                    rules: [{
+                        type: 'empty'
+                    }]
+                }
+            }
+        });
+
+        $('.qq').popup();
+
+        $(function () {
+            //判断是否宽屏
+            var winWide = window.screen.width;
+
+            var wideScreen = false;
+            if (winWide <= 768) {//1024及以下分辨率
+                $('.this').toggleClass('m-container-nine');
+
+            }
+        })
+
+        var commentsPages = 0;
+
+        function commentsPageUp() {
+            var Lastpage = commentsPages - 1;
+            commentsPages--;
+            $("#comment-container").load("/comments/commentsPage/?page=" + Lastpage);
+        }
+
+        function commentsPageDown() {
+            var Nextpage = commentsPages + 1;
+            commentsPages++;
+            $("#comment-container").load("/comments/commentsPage/?page=" + Nextpage);
+        }
+
+
+    </script>
 </body>
 </html>

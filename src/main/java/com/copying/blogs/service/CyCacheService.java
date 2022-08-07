@@ -18,7 +18,7 @@ public interface CyCacheService {
     Integer getTagNum();
     Integer getCommentNum();
     CyBlogsUser getAdminInfo();
-    List<String> getPermissionList(Long usId);
+    List<String> getPermissionList(Long userId);
     PageInfo<CyBlog> getPageByType(Integer pageNum,Long typeId);
     PageInfo<CyBlog> getPageByTag(Integer pageNum,Long tagId);
     Map<String,List<TimeLineBlog>> findTimeLine();
