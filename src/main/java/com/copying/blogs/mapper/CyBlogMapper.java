@@ -23,7 +23,7 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
                     fetchType = FetchType.DEFAULT)),
     })
     @Select("<script>" +
-            "select blog_id,title,outline,background_image,recommend,commentabled,published,views,type_id,create_time,update_time from cy_blog where published=true" +
+            "select blog_id,title,outline,background_image,recommend,commentable,published,views,type_id,create_time,update_time from cy_blog where published=true" +
             "<if test='title!=null and title!=\"\"'>" +
             "AND title like concat('%',#{title},'%')" +
             "</if>" +
@@ -36,7 +36,7 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
      *  //查询首页Blog信息(关联标签，类型)
      *  根据tag查找Blog(发布的)
      */
-    @Select("select blog_id,title,outline,background_image,recommend,commentabled,published,views,type_id,create_time,update_time from cy_blog where type_id = #{typeId} and published=true order by create_time desc")
+    @Select("select blog_id,title,outline,background_image,recommend,commentable,published,views,type_id,create_time,update_time from cy_blog where type_id = #{typeId} and published=true order by create_time desc")
     @ResultMap(value = "blogInfo")
     List<CyBlog> getPageByType(Long typeId);
 
@@ -44,7 +44,7 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
      *  //查询首页Blog信息(关联标签，类型)
      *  根据tag查找Blog(发布的)
      */
-    @Select("SELECT b.blog_id,b.title,b.outline,b.background_image,b.recommend,b.commentabled,b.published,b.views,b.type_id,b.create_time,b.update_time FROM cy_blog AS b LEFT JOIN t_blog_tag AS bt ON b.blog_id=bt.blog_id WHERE bt.tag_id=#{tagId} and b.published=true order by b.create_time desc")
+    @Select("SELECT b.blog_id,b.title,b.outline,b.background_image,b.recommend,b.commentable,b.published,b.views,b.type_id,b.create_time,b.update_time FROM cy_blog AS b LEFT JOIN t_blog_tag AS bt ON b.blog_id=bt.blog_id WHERE bt.tag_id=#{tagId} and b.published=true order by b.create_time desc")
     @ResultMap(value = "blogInfo")
     List<CyBlog> getPageByTag(Long tagId);
 

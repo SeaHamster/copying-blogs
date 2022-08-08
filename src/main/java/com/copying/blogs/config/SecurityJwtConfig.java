@@ -47,15 +47,11 @@ public class SecurityJwtConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/tags", "/tags/**").permitAll()
                 .antMatchers("/types", "/types/**").permitAll()
                 .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .defaultSuccessUrl("/")
-//                .permitAll();
                 //授权
                 .and()
                 // 禁用session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
         // 使用自己定义的拦截机制，拦截jwt
         http.addFilterAfter(new JwtAuthenticationFilter(authenticationManager()),
                 UsernamePasswordAuthenticationFilter.class)

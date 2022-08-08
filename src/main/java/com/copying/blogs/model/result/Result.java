@@ -5,6 +5,11 @@ package com.copying.blogs.model.result;
  */
 @SuppressWarnings("unused")
 public class Result {
+
+    //成功，不返回具体数据
+    public static <T> JsonResult<T> successNoData(){
+        return successNoData(ResultCode.SUCCESS);
+    }
     //成功，不返回具体数据
     public static <T> JsonResult<T> successNoData(ResultCode code){
         JsonResult<T> result = new JsonResult<>();
