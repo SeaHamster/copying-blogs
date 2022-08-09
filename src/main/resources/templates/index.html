@@ -60,6 +60,53 @@
         <div class=" m-padded-tb-large">
             <div class="ui stackable this   container m-container-nine"></div>
             <div class="ui stackable  grid m-padded-tb-small">
+                <!--左边的明信片和小便签-->
+                <div class="ui  three wide   column m-column">
+                    <!--个人明信片-->
+                    <div id="div01" class="ui   link  card m-card-center">
+                        <div class="image">
+                            <img src="https://img.zcool.cn/community/015278554295fe0000019ae959d2f0.jpg"
+                                 th:src="@{/images/sea_hamster.jpg}" alt="头像">
+                        </div>
+                        <div class="content">
+                            <a class="header" href="#aboutme" th:text="${user.name}">copying</a>
+                            <div class="meta">
+                                <a style="" th:text="${user.about}">Java程序员、竹笛爱好者</a>
+                            </div>
+                            <div class=" description m-padded" style="font-family: 楷体,serif;font-weight: 800 ;!important;">
+                                积土成山，风雨兴焉；<br>
+                                积水成渊，蛟龙生焉。
+                            </div>
+                        </div>
+
+                        <div class=" extra content">
+                            <a href="https://github.com/SeaHamster" target="_blank" class="ui circular icon button"><i
+                                    class="github icon"></i></a>
+                            <a href="#" class="ui qq circular icon button" th:data-content="${user.email}"
+                               data-position="bottom center"><i class="envelope icon"></i></a>
+
+                            <a href="#" class="ui qq circular icon button" th:data-content="${user.wechat}"
+                               data-position="bottom center"><i class="weixin icon"></i></a>
+
+                            <a href="#" class="ui qq circular icon button" th:data-content="${user.qq}"
+                               data-position="bottom center"><i class="qq icon"></i></a>
+                        </div>
+                    </div>
+                    <!--&lt;!&ndash;这里是一根分割线&ndash;&gt;-->
+                    <!--<div class="m-text-a ui horizontal divider m-margin  ">小世界</div>-->
+
+                    <!--板娘-->
+                    <div class="waifu">
+                        <div class="waifu-tips"></div>
+                        <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+                    </div>
+                    <br><br>
+                    <h4 class="ui horizontal divider">微信号</h4>
+                    <div class="ui centered card" style="width: 180px">
+                        <img src="../static/images/weixin.jpg" alt="" class="ui rounded image"
+                             th:src="@{/images/weixin.jpg}">
+                    </div>
+                </div>
 
                 <!--中间的每周目标和文章-->
                 <div class="ui ten wide column m-padded-lr-small">
@@ -283,7 +330,7 @@
     <link rel="stylesheet" type="text/css" href="../static/lib/assets/waifu.css" th:href="@{/lib/assets/waifu.css}"/>
     <script src="../static/lib/assets/waifu-tips.js" th:src="@{/lib/assets/waifu-tips.js}"></script>
     <script src="../static/lib/assets/live2d.js" th:src="@{/lib/assets/live2d.js}"></script>
-    <script type="text/javascript">initModel("../peng/lib/assets/")</script>
+    <script type="text/javascript">initModel("../blogs/lib/assets/")</script>
 
     <!--粒子特效-->
     <script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>
@@ -408,8 +455,6 @@
             commentsPages++;
             $("#comment-container").load("/comments/commentsPage/?page=" + Nextpage);
         }
-
-
     </script>
 </body>
 </html>
