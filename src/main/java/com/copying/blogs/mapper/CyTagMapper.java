@@ -18,7 +18,7 @@ import java.util.List;
 public interface CyTagMapper extends BaseMapper<CyTag> {
     @Results(value = {
             @Result(id = true, property = "tagId", column = "tag_id"),
-            @Result(property = "blogsNum", column = "tag_id", many = @Many(select = "com.copying.blogs.mapper.TagMapper.getBlogNumByTag",
+            @Result(property = "blogsNum", column = "tag_id", many = @Many(select = "com.copying.blogs.mapper.CyTagMapper.getBlogNumByTag",
                     fetchType = FetchType.DEFAULT)),
     })
     @Select("select * from cy_tag")
@@ -27,15 +27,15 @@ public interface CyTagMapper extends BaseMapper<CyTag> {
     //详细查询所有
     @Results(value = {
             @Result(id = true, property = "tagId", column = "tag_id"),
-            @Result(property = "blogs", column = "tag_id", many = @Many(select = "com.copying.blogs.mapper.TagMapper.findBlogByTagPublished",
+            @Result(property = "blogs", column = "tag_id", many = @Many(select = "com.copying.blogs.mapper.CyTagMapper.findBlogByTagPublished",
                     fetchType = FetchType.DEFAULT)),
     })
     @Select("select * from cy_tag")
     List<CyTag> findTagPage();
     //----------------------------------------------------------------------------------------------------------------------
-    @Select("select b.* from cy_blog as b left join t_blog_tag as bt on bt.blog_id=b.blog_id where b.published=true and bt.tag_id=#{tagId}")
+    @Select("select b.* from cy_blog as b left join cy_blog_tag as bt on bt.blog_id=b.blog_id where b.published=true and bt.tag_id=#{tagId}")
     CyBlog findBlogByTagPublished(Long tagId);
     //----------------------------------------------------------------------------------------------------------------------
-    @Select("select count(*) from t_blog_tag where tag_id=#{tagId}")
+    @Select("select count(*) from cy_blog_tag where tag_id=#{tagId}")
     Integer getBlogNumByTag(Long tagId);
 }

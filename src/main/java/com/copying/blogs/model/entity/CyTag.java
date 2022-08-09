@@ -10,6 +10,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * CyBlogsTag :
@@ -36,8 +37,8 @@ public class CyTag implements Serializable {
     @ApiModelProperty("更新时间")
     private Date updateTime;
     //------------------------------------------------------------------------------------------------------------------
-//    @TableField(exist=false)
-//    private List<CyBlog> blogs;
+    @TableField(exist=false)
+    private List<CyBlog> blogs;
 
     @TableField(exist=false)
     private Integer blogsNum;

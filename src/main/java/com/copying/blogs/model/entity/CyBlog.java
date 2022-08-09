@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -34,12 +35,28 @@ public class CyBlog {
 
     private String backgroundImage;
 
+    /**
+     * 是否推荐
+     */
+    @ApiModelProperty("是否推荐")
     private Boolean recommend;
 
+    /**
+     * 是否可评论
+     */
+    @ApiModelProperty("是否可评论")
     private Boolean commentable;
 
+    /**
+     * 是否发布
+     */
+    @ApiModelProperty("是否发布")
     private Boolean published;
 
+    /**
+     * 访问量
+     */
+    @ApiModelProperty("访问量")
     private Integer views;
 
     private Long typeId;

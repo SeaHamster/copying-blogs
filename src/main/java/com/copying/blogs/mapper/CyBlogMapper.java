@@ -44,7 +44,7 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
      *  //查询首页Blog信息(关联标签，类型)
      *  根据tag查找Blog(发布的)
      */
-    @Select("SELECT b.blog_id,b.title,b.outline,b.background_image,b.recommend,b.commentable,b.published,b.views,b.type_id,b.create_time,b.update_time FROM cy_blog AS b LEFT JOIN t_blog_tag AS bt ON b.blog_id=bt.blog_id WHERE bt.tag_id=#{tagId} and b.published=true order by b.create_time desc")
+    @Select("SELECT b.blog_id,b.title,b.outline,b.background_image,b.recommend,b.commentable,b.published,b.views,b.type_id,b.create_time,b.update_time FROM cy_blog AS b LEFT JOIN cy_blog_tag AS bt ON b.blog_id=bt.blog_id WHERE bt.tag_id=#{tagId} and b.published=true order by b.create_time desc")
     @ResultMap(value = "blogInfo")
     List<CyBlog> getPageByTag(Long tagId);
 
@@ -87,14 +87,14 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
     /***
      *  //删除blog_tag关联信息
      */
-    @Delete("delete from t_blog_tag where blog_id = #{blogId}")
+    @Delete("delete from cy_blog_tag where blog_id = #{blogId}")
     int deleteBlogTagBatch(@Param("blogId") Long blogId);
 
     /***
      *  //添加blog_tag关联信息
      */
     @Insert("<script>" +
-            "INSERT INTO t_blog_tag(blog_id,tag_id) VALUES " +
+            "INSERT INTO cy_blog_tag(blog_id,tag_id) VALUES " +
             "<foreach collection='list' item='tagId' separator=','>" +
             " (#{blogId},#{tagId})" +
             "</foreach>" +
@@ -111,7 +111,7 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
     /***
      *  //根据博客查询对应的tags（内联查询）
      */
-    @Select("SELECT * FROM cy_tag WHERE cy_tag.`tag_id` IN (SELECT bt.`tag_id` FROM t_blog_tag AS bt WHERE bt.`blog_id`=#{blogId})")
+    @Select("SELECT * FROM cy_tag WHERE cy_tag.`tag_id` IN (SELECT bt.`tag_id` FROM cy_blog_tag AS bt WHERE bt.`blog_id`=#{blogId})")
     List<CyBlogsType> findTagsByBlog(Long blogId);
 
 
@@ -124,7 +124,7 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
     /***
      *  //查询Blog关联TagId
      */
-    @Select("select tag_id from t_blog_tag where blog_id=#{blogId}")
+    @Select("select tag_id from cy_blog_tag where blog_id=#{blogId}")
     Long[] findTagIdsById(Long blogId);
     //----------------------------------------------------------------------------------------------------------------------
 

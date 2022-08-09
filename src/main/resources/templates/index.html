@@ -145,6 +145,87 @@
                     </div>
                 </div>
 
+                <!--右边的分类标签-->
+                <div class="ui three wide column">
+                    <!--这里是一根分割线-->
+                    <div class="m-text-a ui horizontal divider ">my Voice</div>
+                    <!--分类-->
+                    <div class="ui raised segments m-margin">
+                        <div class="ui segment">
+                            <div class="ui two column grid">
+                                <div class="column">
+                                    <i class="fas fa-cat"></i>分类
+                                </div>
+                                <div class="right aligned column">
+                                    <a href="#" th:href="@{/types/-1}" target="_blank">more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui orange segment">
+                            <div class="ui fluid vertical menu">
+                                <a th:each="type : ${types}" th:href="@{/types/{id}(id=${type.typeId})}" class="item"
+                                   href="#" target="_blank">
+                                    <span th:text="${type.name}">type.name</span>
+                                    <div th:text="${type.blogsNum}"
+                                         class="ui orange basic left pointing label">13
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--标签-->
+                    <div class="ui raised segments m-margin">
+                        <div class="ui  segment">
+                            <div class="ui two column grid">
+                                <div class="column">
+                                    <i class="fas fa-dove"></i>标签
+                                </div>
+                                <div class="right aligned column">
+                                    <a href="#" th:href="@{/tags/-1}" target="_blank">more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui teal segment">
+                            <a th:each="tag : ${tags}" th:href="@{/tags/{id}(id=${tag.tagId})}" href="#" target="_blank"
+                               class="ui teal basic left pointing label m-margin-tiny">
+                                <span th:text="${tag.name}">tag.name</span>
+                                <div th:text="${tag.blogsNum}" class="detail">23</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--网站信息-->
+                    <div class="ui raised segments m-margin">
+                        <div class="ui segment">
+                            <div class="ui two column grid">
+                                <div class="column">
+                                    <i class="info icon"></i>本站信息
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui red segment">
+                            <div class="menu">
+                                <div class="item m-padded-tb"><i class="sticky note outline icon"></i>文章总数:<span
+                                        th:text="${blogsCount}">56</span>篇
+                                </div>
+                                <div class="item m-padded-tb"><i class="tasks icon"></i>分类总数:<span th:text="${typesCount}">56</span>个
+                                </div>
+                                <div class="item m-padded-tb"><i class="tags icon"></i>标签:<span
+                                        th:text="${tagsCount}">56</span>个
+                                </div>
+                                <div class="item m-padded-tb"><i class="comments outline icon"></i>评论总数:<span
+                                        th:text="${commentsCount}">56</span>条
+                                </div>
+                                <!--<div class="item m-padded-tb"><i class="paper plane icon"></i>建站时长:<span id="recordTime"></span></div>-->
+                                <!--<div class="item m-padded-tb"><i class="chart bar outline icon"></i>本站总访问量:<span th:text="${views}"></span></div>-->
+                                <!--<div class="item m-padded-tb"><i class="address card icon"></i>本站总访问人数:<span th:text="${visitorsCount}"></span></div>-->
+                                <!--<div class="item m-padded-tb"><i class="address card outline icon"></i>您是第<span th:text="${numOfYou}"></span>位访客</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -197,6 +278,12 @@
         <!--这里进行semanticUI的js 的CDN的引用 -->
         <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
     </th:block>
+
+    <!--板娘-->
+    <link rel="stylesheet" type="text/css" href="../static/lib/assets/waifu.css" th:href="@{/lib/assets/waifu.css}"/>
+    <script src="../static/lib/assets/waifu-tips.js" th:src="@{/lib/assets/waifu-tips.js}"></script>
+    <script src="../static/lib/assets/live2d.js" th:src="@{/lib/assets/live2d.js}"></script>
+    <script type="text/javascript">initModel("../peng/lib/assets/")</script>
 
     <!--粒子特效-->
     <script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>

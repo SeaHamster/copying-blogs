@@ -48,6 +48,15 @@ public class PageExceptionHandler {
         return Result.fail(ResultCode.PERMISSION_NO_ACCESS);
     }
 
+    /***
+     * 自定义异常
+     */
+    @ResponseBody
+    @ExceptionHandler(CustomizeException.class)
+    public Object handleException(CustomizeException e) {
+        e.printStackTrace();
+        return Result.fail(ResultCode.ERROR, e.getMsg());
+    }
 
     /***
      * 其他异常
@@ -58,4 +67,5 @@ public class PageExceptionHandler {
         e.printStackTrace();
         return Result.fail(ResultCode.ERROR, "服务器开小差了");
     }
+
 }
