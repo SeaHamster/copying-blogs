@@ -41,7 +41,7 @@ JENKINS_RELIABLE_PATH=/var/jenkins_home/workspace/copying-blogs
   docker images |grep $BLOGS_IMAGE && docker rmi -f $BLOGS_IMAGE || echo  "not exist"
 
  echo "=====构建新的镜像====="
-  docker build --build-arg JAR_FILE=$BLOGS_IMAGE-1.0.jar  -t $BLOGS_IMAGE $OBJECT_PATH/
+  docker build --build-arg JAR_FILE=$BLOGS_IMAGE-1.0.jar  -t $BLOGS_IMAGE ./docker/
 
  echo "=====运行镜像容器====="
   docker run -d --name $BLOGS_CONTAINER -v /mnt/copying-blogs/$BLOGS_IMAGE:/usr/fzz -p $BLOGS_PORT:$BLOGS_PORT $BLOGS_IMAGE
