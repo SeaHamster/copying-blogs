@@ -1,5 +1,7 @@
 server:
   port: 1555
+  servlet:
+    context-path: /blogs
 # Spring配置
 spring:
   # 环境 dev|test|prod
