@@ -8,8 +8,6 @@ VERSION=1.0
 BLOGS_CONTAINER="blogs"
 BLOGS_IMAGE="blogs"
 BLOGS_PORT=1555
-# reliable 项目地址
-OBJECT_PATH=/var/jenkins_home/workspace/copying-blogs/docker
 # jenkins 自动打包完之后的项目地址
 JENKINS_RELIABLE_PATH=/var/jenkins_home/workspace/copying-blogs
 
@@ -32,8 +30,8 @@ JENKINS_RELIABLE_PATH=/var/jenkins_home/workspace/copying-blogs
  cd $JENKINS_RELIABLE_PATH
  pwd
  echo "jar文件拷贝"
-  mkdir -p $OBJECT_PATH
-  cp -r ./*/target/*.jar Dockerfile $OBJECT_PATH/
+  mkdir -p ./docker
+  cp -r ./target/*.jar Dockerfile ./docker
 
  echo "=============== 开始部署容器 ==============="
   echo "停止并删除旧的容器"
