@@ -108,5 +108,5 @@ public class CyBlogsUser implements Serializable {
      */
     @TableField(exist = false)
     @ApiModelProperty("角色表")
-    private CyBlogsRole role;
+    private SysRole role;
 }

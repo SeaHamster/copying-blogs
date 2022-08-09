@@ -19,8 +19,8 @@ import java.util.Date;
  */
 @JsonInclude(value = JsonInclude.Include.NON_NULL) //为NULL的字段不返回为（JSON）
 @Data
-@TableName("cy_blogs_role")
-public class CyBlogsRole implements Serializable {
+@TableName("sys_role")
+public class SysRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

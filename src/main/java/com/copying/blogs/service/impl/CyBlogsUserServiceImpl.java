@@ -4,13 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.copying.blogs.mapper.CyBlogsUserMapper;
-import com.copying.blogs.model.dto.CyBlogsUserDto;
 import com.copying.blogs.model.entity.CyBlogsUser;
-import com.copying.blogs.service.CyBlogsRoleService;
+import com.copying.blogs.service.SysRoleService;
 import com.copying.blogs.service.CyBlogsUserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,7 +25,7 @@ public class CyBlogsUserServiceImpl extends ServiceImpl<CyBlogsUserMapper, CyBlo
     private CyBlogsUserMapper cyBlogsUserMapper;
 
     @Resource
-    private CyBlogsRoleService cyBlogsRoleService;
+    private SysRoleService sysRoleService;
 
 
     @Override
@@ -69,7 +67,7 @@ public class CyBlogsUserServiceImpl extends ServiceImpl<CyBlogsUserMapper, CyBlo
     @Override
     public CyBlogsUser getMyUserById(Long userId) {
         final CyBlogsUser user = cyBlogsUserMapper.selectById(userId);
-        user.setRole(cyBlogsRoleService.getById(user.getRoleId()));
+        user.setRole(sysRoleService.getById(user.getRoleId()));
         user.setPermissionList(this.getPermissionList(userId));
         return user;
     }
@@ -78,12 +76,12 @@ public class CyBlogsUserServiceImpl extends ServiceImpl<CyBlogsUserMapper, CyBlo
     public CyBlogsUser generateUserByGithubUsId(Long githubUsId, CyBlogsUser saveUser) {
         final CyBlogsUser one = this.getOne(new LambdaQueryWrapper<CyBlogsUser>().eq(CyBlogsUser::getOauthUsId, githubUsId));
         if (one != null) {
-            one.setRole(cyBlogsRoleService.getById(one.getRoleId()));
+            one.setRole(sysRoleService.getById(one.getRoleId()));
             one.setPermissionList(this.getPermissionList(one.getUserId()));
             return one;
         } else {
             this.saveOrUpdate(saveUser);
-            saveUser.setRole(cyBlogsRoleService.getById(saveUser.getRoleId()));
+            saveUser.setRole(sysRoleService.getById(saveUser.getRoleId()));
             saveUser.setPermissionList(this.getPermissionList(saveUser.getUserId()));
             return saveUser;
         }

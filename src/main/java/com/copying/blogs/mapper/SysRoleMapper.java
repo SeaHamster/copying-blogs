@@ -1,7 +1,7 @@
 package com.copying.blogs.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.copying.blogs.model.entity.CyBlogsRole;
+import com.copying.blogs.model.entity.SysRole;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,7 +14,7 @@ import java.util.List;
  * @date 2022/8/5
  */
 @Mapper
-public interface CyBlogsRoleMapper extends BaseMapper<CyBlogsRole> {
+public interface SysRoleMapper extends BaseMapper<SysRole> {
 
     @Insert("<script>" +
             "INSERT INTO sys_role_menu(role_id,menu_id) VALUES " +
