@@ -12,7 +12,7 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
     cache: false
-    mode: LEGACYHTML5
+    mode: HTML
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -78,3 +78,21 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+oauth2:
+  vueHost: http://fuzhizhong.com:1555/#/login?redirect=%2Findex
+  github:
+    clientId: xxx
+    clientSecret: xxx
+  gitee:
+    clientId: xxx
+    clientSecret: xxx
+    grantType: authorization_code
+    redirectUri: xxx
+
+#控制台打印SQL
+logging:
+  level:
+    com.copying.blogs.mapper: DEBUG
+  file:
+    path: ./logs/blogs.log

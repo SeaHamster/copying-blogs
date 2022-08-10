@@ -10,7 +10,6 @@ import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
 
-@Mapper
 public interface CyBlogMapper extends BaseMapper<CyBlog> {
     /***
      *  //查询首页Blog信息(关联标签，类型)

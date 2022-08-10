@@ -2,7 +2,6 @@ package com.copying.blogs.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.copying.blogs.model.entity.SysMenu;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.List;
 /**
  * 菜单表 数据层
  */
-@Mapper
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
     /**
      * 查询系统菜单列表

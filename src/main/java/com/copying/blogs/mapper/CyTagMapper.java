@@ -3,7 +3,10 @@ package com.copying.blogs.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.copying.blogs.model.entity.CyBlog;
 import com.copying.blogs.model.entity.CyTag;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Many;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
@@ -14,7 +17,6 @@ import java.util.List;
  *
  * @author copying
  */
-@Mapper
 public interface CyTagMapper extends BaseMapper<CyTag> {
     @Results(value = {
             @Result(id = true, property = "tagId", column = "tag_id"),

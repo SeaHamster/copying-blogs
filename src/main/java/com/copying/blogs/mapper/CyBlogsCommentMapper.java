@@ -2,7 +2,6 @@ package com.copying.blogs.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.copying.blogs.model.entity.CyBlogsComment;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * CyBlogsCommentMapper :
@@ -10,6 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
  *
  * @author copying
  */
-@Mapper
 public interface CyBlogsCommentMapper extends BaseMapper<CyBlogsComment> {
 }

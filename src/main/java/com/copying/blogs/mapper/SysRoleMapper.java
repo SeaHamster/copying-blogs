@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.copying.blogs.model.entity.SysRole;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.List;
  * @author fzz
  * @date 2022/8/5
  */
-@Mapper
 public interface SysRoleMapper extends BaseMapper<SysRole> {
 
     @Insert("<script>" +

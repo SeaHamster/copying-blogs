@@ -2,13 +2,11 @@ package com.copying.blogs.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.copying.blogs.model.entity.CyBlogsFile;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @author copying
  * @date 2020-08-17 13:35:25
  */
-@Mapper
 public interface CyBlogsFileMapper extends BaseMapper<CyBlogsFile> {
 
     /**

@@ -2,7 +2,6 @@ package com.copying.blogs.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.copying.blogs.model.entity.CyBlogsUser;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -12,8 +11,6 @@ import java.util.List;
  * @author copying
  * @date 2020-08-12
  */
-@Mapper
-@SuppressWarnings("unused")
 public interface CyBlogsUserMapper extends BaseMapper<CyBlogsUser> {
 
     @Select("SELECT distinct ifNull(mu.perms,'') as perms  FROM sys_menu mu\n" +

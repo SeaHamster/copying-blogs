@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,6 +24,8 @@ import java.util.List;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("cy_blogs_user")
 public class CyBlogsUser implements Serializable {
 

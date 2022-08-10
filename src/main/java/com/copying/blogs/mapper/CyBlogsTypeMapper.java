@@ -2,12 +2,14 @@ package com.copying.blogs.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.copying.blogs.model.entity.CyBlogsType;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Many;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
 
-@Mapper
 public interface CyBlogsTypeMapper extends BaseMapper<CyBlogsType> {
     @Results(value = {
             @Result(id = true, property = "typeId", column = "type_id"),
