@@ -17,7 +17,7 @@ public class CyCacheServiceImpl implements CyCacheService {
     @Resource
     private CyBlogService cyBlogService;
     @Resource
-    private CyBlogsUserService iUserService;
+    private CyBlogsUserService cyBlogsUserService;
     @Resource
     private CyBlogsCommentService cyBlogsCommentService;
     @Resource
@@ -76,13 +76,13 @@ public class CyCacheServiceImpl implements CyCacheService {
     @Override
     @MyCache
     public CyBlogsUser getAdminInfo() {
-        return iUserService.getAdminInfo();
+        return cyBlogsUserService.getAdminInfo();
     }
 
     @Override
     @MyCache
     public List<String> getPermissionList(Long userId) {
-        return iUserService.getPermissionList(userId);
+        return cyBlogsUserService.getPermissionList(userId);
     }
 
     @Override

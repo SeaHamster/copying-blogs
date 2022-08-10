@@ -4,6 +4,7 @@ import com.copying.blogs.aspect.MyLog;
 import com.copying.blogs.model.entity.CyBlog;
 import com.copying.blogs.service.CyBlogService;
 import com.copying.blogs.service.CyCacheService;
+import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import javax.annotation.Resource;
  * @author copying
  */
 
+@Api
 @Controller
 public class IndexController {
 

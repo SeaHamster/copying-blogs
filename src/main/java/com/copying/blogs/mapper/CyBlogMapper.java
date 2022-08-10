@@ -144,13 +144,13 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
 //     */
 //    @ResultMap("commentMap")
 //    @Select("select * from cy_blogs_comment where parent_id=#{commentId} order by create_time desc")
-//    Comment findChildListByComment(Long commentId);
+//    CyBlogsComment findChildListByComment(Long commentId);
 
 //    /***
 //     *  //查询评论的父评论
 //     */
 //    @Select("select * from cy_blogs_comment where comment_id=#{parentId}")
-//    Comment findParentByComment(Long parentId);
+//    CyBlogsComment findParentByComment(Long parentId);
 //    //----------------------------------------------------------------------------------------------------------------------
 
 }

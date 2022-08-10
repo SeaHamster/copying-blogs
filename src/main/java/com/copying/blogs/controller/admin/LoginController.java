@@ -4,12 +4,15 @@ import com.copying.blogs.constants.Constants;
 import com.copying.blogs.exception.CaptchaExpireException;
 import com.copying.blogs.model.dto.CyBlogsUserDto;
 import com.copying.blogs.model.entity.CyBlogsUser;
+import com.copying.blogs.model.entity.SysMenu;
 import com.copying.blogs.model.result.JsonResult;
 import com.copying.blogs.model.result.Result;
 import com.copying.blogs.model.result.ResultCode;
 import com.copying.blogs.service.CyBlogsUserService;
+import com.copying.blogs.service.SysMenuService;
 import com.copying.blogs.util.RedisUtil;
 import com.copying.blogs.util.TokenUtil;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,21 +20,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+@Api
 @RestController
 public class LoginController {
     @Resource
     private CyBlogsUserService cyBlogsUserService;
     @Resource
     private RedisUtil redisUtil;
-//    @Autowired
-//    private ISysMenuService iSysMenuService;
+    @Resource
+    private SysMenuService sysMenuService;
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public JsonResult<?> login(@RequestParam("username") String username, @RequestParam("password") String password,
-                               @RequestParam("code") String code, @RequestParam("uuid") String uuid) {
+                            @RequestParam("code") String code, @RequestParam("uuid") String uuid) {
         String verifyKey = Constants.CAPTCHA_CODE_KEY + uuid;
         String captcha = (String) redisUtil.get(verifyKey);
         redisUtil.del(verifyKey);
@@ -54,12 +59,12 @@ public class LoginController {
     }
 
     @RequestMapping(value = {"/getInfo"}, method = RequestMethod.GET)
-    public JsonResult<?> getInfo(CyBlogsUserDto myUser) {
-        if (myUser != null) {
-            myUser.setPassword(null);
-            myUser.setUserId(null);
+    public JsonResult<?> getInfo(CyBlogsUserDto userDto) {
+        if (userDto != null) {
+            userDto.setPassword(null);
+            userDto.setUserId(null);
             Map<String, Object> map = new HashMap<>();
-            map.put("user", myUser);
+            map.put("user", userDto);
             map.put("roles", new String[]{"admin"});
             map.put("permissions", new String[]{"*:*:*"});
             return Result.success(map, ResultCode.SUCCESS);
@@ -68,13 +73,12 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/getRouters", method = RequestMethod.GET)
-    public JsonResult<?> getRouters(CyBlogsUserDto myUser) {
-        if (myUser == null) {
+    public JsonResult<?> getRouters(CyBlogsUserDto userDto) {
+        if (userDto == null) {
             return Result.fail(ResultCode.Token_AUTH_ERROR);
         }
-//        List<SysMenu> menus = iSysMenuService.selectMenuTreeByUserId(myUser.getUsId());
-//        return Result.success(iSysMenuService.buildMenus(menus), ResultCode.SUCCESS);
-        return Result.successNoData();
+        List<SysMenu> menus = sysMenuService.selectMenuTreeByUserId(userDto.getUserId());
+        return Result.success(sysMenuService.buildMenus(menus), ResultCode.SUCCESS);
     }
 
 

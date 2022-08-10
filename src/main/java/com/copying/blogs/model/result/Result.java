@@ -1,7 +1,7 @@
 package com.copying.blogs.model.result;
 
 /**
- * ResultUtil
+ * Result
  */
 @SuppressWarnings("unused")
 public class Result {
