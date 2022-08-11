@@ -78,8 +78,8 @@ public class OAuth2LoginController {
             final CyBlogsUser saveUser = extractSaveUserByGithub(httpResponse, accessToken);
             //3. 本地是否有对应账号 没有则注册 并返回本系统Token
             final CyBlogsUser realUser = cyBlogsUserService.generateUserByGithubUsId(saveUser.getOauthUsId(), saveUser);
-            final String pengToken = TokenUtil.sign(realUser);
-            return "redirect:" + vueHost + "&pengToken=" + pengToken;
+            final String copyingToken = TokenUtil.sign(realUser);
+            return "redirect:" + vueHost + "&copyingToken=" + copyingToken;
         } catch (Exception e) {
             log.error(e.getMessage());
             return "redirect:" + vueHost + "&error=" + e.getMessage();
@@ -114,8 +114,8 @@ public class OAuth2LoginController {
             final CyBlogsUser saveUser = extractSaveUserByGitee(httpResponse, accessToken);
             //3. 本地是否有对应账号 没有则注册 并返回本系统Token
             final CyBlogsUser realUser = cyBlogsUserService.generateUserByGithubUsId(saveUser.getOauthUsId(), saveUser);
-            final String pengToken = TokenUtil.sign(realUser);
-            return "redirect:" + vueHost + "&pengToken=" + pengToken;
+            final String copyingToken = TokenUtil.sign(realUser);
+            return "redirect:" + vueHost + "&copyingToken=" + copyingToken;
         } catch (Exception e) {
             log.error(e.getMessage());
             return "redirect:" + vueHost + "&error=" + e.getMessage();

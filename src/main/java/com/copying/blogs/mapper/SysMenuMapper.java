@@ -39,8 +39,8 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
             "select distinct m.menu_id, m.parent_id, m.menu_name, m.path, m.component, m.visible, ifnull(m.perms,'') as perms, m.is_frame, m.menu_type, m.icon, m.order_num, m.create_time\n" +
             "from sys_menu m\n" +
             "left join sys_role_menu rm on m.menu_id = rm.menu_id\n" +
-            "left join sys_user us on us.role_id = rm.role_id\n" +
-            "where us.us_id = #{params.userId}\n" +
+            "left join cy_blogs_user us on us.role_id = rm.role_id\n" +
+            "where us.user_id = #{params.userId}\n" +
             "<if test='menuName!=null and menuName!=\"\"'> " +
             "AND menu_name like concat('%', #{menuName}, '%')" +
             "</if>" +
@@ -71,8 +71,8 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
             "from sys_menu m\n" +
             "left join sys_role_menu rm on m.menu_id = rm.menu_id\n" +
             "left join sys_role ro on rm.role_id = ro.role_id\n" +
-            "left join sys_user u on ro.role_id = u.role_id\n" +
-            "where u.us_id = #{userId} and m.menu_type in ('M', 'C') and m.visible = 0  AND ro.status = 0\n" +
+            "left join cy_blogs_user u on ro.role_id = u.role_id\n" +
+            "where u.user_id = #{userId} and m.menu_type in ('M', 'C') and m.visible = 0  AND ro.status = 0\n" +
             "order by m.parent_id, m.order_num")
     List<SysMenu> selectMenuTreeByUserId(Long userId);
 

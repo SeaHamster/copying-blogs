@@ -60,7 +60,7 @@ public class LoginController {
 
     @RequestMapping(value = {"/getInfo"}, method = RequestMethod.GET)
     public JsonResult<?> getInfo(CyBlogsUserDto userDto) {
-        if (userDto != null) {
+        if (userDto != null && userDto.getUserId() != null) {
             userDto.setPassword(null);
             userDto.setUserId(null);
             Map<String, Object> map = new HashMap<>();
@@ -74,7 +74,7 @@ public class LoginController {
 
     @RequestMapping(value = "/getRouters", method = RequestMethod.GET)
     public JsonResult<?> getRouters(CyBlogsUserDto userDto) {
-        if (userDto == null) {
+        if (userDto == null || userDto.getUserId() == null) {
             return Result.fail(ResultCode.Token_AUTH_ERROR);
         }
         List<SysMenu> menus = sysMenuService.selectMenuTreeByUserId(userDto.getUserId());

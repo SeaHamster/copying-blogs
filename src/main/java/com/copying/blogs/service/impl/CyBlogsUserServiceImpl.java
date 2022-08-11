@@ -3,8 +3,10 @@ package com.copying.blogs.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.copying.blogs.exception.CustomizeException;
 import com.copying.blogs.mapper.CyBlogsUserMapper;
 import com.copying.blogs.model.entity.CyBlogsUser;
+import com.copying.blogs.model.result.ResultCode;
 import com.copying.blogs.service.SysRoleService;
 import com.copying.blogs.service.CyBlogsUserService;
 import com.github.pagehelper.PageHelper;
@@ -36,8 +38,11 @@ public class CyBlogsUserServiceImpl extends ServiceImpl<CyBlogsUserMapper, CyBlo
 
     @Override
     public CyBlogsUser verifyLogin(String username, String password) {
-        final CyBlogsUser user = this.getOne(new LambdaQueryWrapper<CyBlogsUser>().eq(CyBlogsUser::getUsername, username)
+        CyBlogsUser user = this.getOne(new LambdaQueryWrapper<CyBlogsUser>().eq(CyBlogsUser::getUsername, username)
                 .eq(CyBlogsUser::getPassword, password));
+        if(user == null){
+            throw new CustomizeException(ResultCode.USER_NOT_EXIST);
+        }
         user.setPermissionList(this.getPermissionList(user.getUserId()));
         return user;
     }
