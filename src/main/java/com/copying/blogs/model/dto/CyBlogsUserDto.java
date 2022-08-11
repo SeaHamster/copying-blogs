@@ -1,8 +1,8 @@
 package com.copying.blogs.model.dto;
 
 import com.copying.blogs.model.entity.CyBlogsUser;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,8 +14,8 @@ import java.util.Set;
  * @author fzz
  * @date 2022/8/5
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
+@Getter
+@Setter
 public class CyBlogsUserDto extends CyBlogsUser implements UserDetails {
 
     private static final long serialVersionUID = 1078739085639076530L;

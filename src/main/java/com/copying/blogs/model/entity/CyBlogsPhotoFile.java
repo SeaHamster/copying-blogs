@@ -1,8 +1,10 @@
 package com.copying.blogs.model.entity;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 
 /**
@@ -12,6 +14,8 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CyBlogsPhotoFile extends CyBlogsFile {
 
     private static final long serialVersionUID = -983584757776619531L;

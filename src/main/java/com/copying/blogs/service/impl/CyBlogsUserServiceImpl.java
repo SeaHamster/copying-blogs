@@ -5,12 +5,14 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.copying.blogs.exception.CustomizeException;
 import com.copying.blogs.mapper.CyBlogsUserMapper;
+import com.copying.blogs.model.dto.CyBlogsUserDto;
 import com.copying.blogs.model.entity.CyBlogsUser;
 import com.copying.blogs.model.result.ResultCode;
 import com.copying.blogs.service.SysRoleService;
 import com.copying.blogs.service.CyBlogsUserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -70,11 +72,16 @@ public class CyBlogsUserServiceImpl extends ServiceImpl<CyBlogsUserMapper, CyBlo
     }
 
     @Override
-    public CyBlogsUser getMyUserById(Long userId) {
-        final CyBlogsUser user = cyBlogsUserMapper.selectById(userId);
-        user.setRole(sysRoleService.getById(user.getRoleId()));
-        user.setPermissionList(this.getPermissionList(userId));
-        return user;
+    public CyBlogsUserDto getMyUserById(Long userId) {
+        CyBlogsUserDto userDto = new CyBlogsUserDto();
+        CyBlogsUser user = cyBlogsUserMapper.selectById(userId);
+        if(user == null){
+            return null;
+        }
+        BeanUtils.copyProperties(user,userDto);
+        userDto.setRole(sysRoleService.getById(user.getRoleId()));
+        userDto.setPermissionList(this.getPermissionList(userId));
+        return userDto;
     }
 
     @Override

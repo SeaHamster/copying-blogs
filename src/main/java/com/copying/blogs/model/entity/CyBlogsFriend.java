@@ -18,6 +18,8 @@ import java.util.Date;
  * */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("cy_blogs_friend")
 public class CyBlogsFriend implements Serializable {
     private static final long serialVersionUID = -6283781496434738647L;

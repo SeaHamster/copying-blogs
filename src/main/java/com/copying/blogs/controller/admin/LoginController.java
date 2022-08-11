@@ -60,7 +60,7 @@ public class LoginController {
 
     @RequestMapping(value = {"/getInfo"}, method = RequestMethod.GET)
     public JsonResult<?> getInfo(CyBlogsUserDto userDto) {
-        if (userDto != null && userDto.getUserId() != null) {
+        if (userDto != null) {
             userDto.setPassword(null);
             userDto.setUserId(null);
             Map<String, Object> map = new HashMap<>();

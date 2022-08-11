@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -19,6 +21,8 @@ import java.util.Date;
  */
 @JsonInclude(value = JsonInclude.Include.NON_NULL) //为NULL的字段不返回为（JSON）
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("sys_role")
 public class SysRole implements Serializable {
 

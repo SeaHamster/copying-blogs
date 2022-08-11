@@ -1,5 +1,6 @@
 package com.copying.blogs.security;
 
+import com.copying.blogs.model.dto.CyBlogsUserDto;
 import com.copying.blogs.model.entity.CyBlogsUser;
 import com.copying.blogs.service.CyBlogsUserService;
 import org.springframework.core.MethodParameter;
@@ -23,7 +24,7 @@ public class PrincipalUserArgumentResolver implements HandlerMethodArgumentResol
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
-        return methodParameter.getParameterType().equals(CyBlogsUser.class);
+        return methodParameter.getParameterType().equals(CyBlogsUserDto.class);
     }
 
     @Override

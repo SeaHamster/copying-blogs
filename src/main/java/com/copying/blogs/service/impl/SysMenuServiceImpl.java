@@ -10,6 +10,7 @@ import com.copying.blogs.model.entity.SysMenu;
 import com.copying.blogs.service.CyBlogsUserService;
 import com.copying.blogs.service.SysMenuService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -102,7 +103,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             router.setComponent(StringUtils.isBlank(menu.getComponent()) ? "Layout" : menu.getComponent());
             router.setMeta(new MetaVo(menu.getMenuName(), menu.getIcon()));
             List<SysMenu> cMenus = menu.getChildren();
-            if (!cMenus.isEmpty() && "M".equals(menu.getMenuType()))
+            if (!CollectionUtils.isEmpty(cMenus) && "M".equals(menu.getMenuType()))
             {
                 router.setAlwaysShow(true);
                 router.setRedirect("noRedirect");

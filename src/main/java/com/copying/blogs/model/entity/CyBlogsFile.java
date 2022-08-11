@@ -3,7 +3,9 @@ package com.copying.blogs.model.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -13,6 +15,8 @@ import java.io.Serializable;
  * @date 2020-08-15 10:59:14
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CyBlogsFile implements Serializable {
     private static final long serialVersionUID = -559132322914896161L;
     private static final long UNIT_SIZE = 1024;
