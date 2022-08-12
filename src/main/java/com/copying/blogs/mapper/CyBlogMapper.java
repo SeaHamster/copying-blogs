@@ -5,6 +5,7 @@ import com.copying.blogs.model.dto.TimeLineBlog;
 import com.copying.blogs.model.entity.CyBlog;
 import com.copying.blogs.model.entity.CyBlogsComment;
 import com.copying.blogs.model.entity.CyBlogsType;
+import com.copying.blogs.model.entity.CyTag;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
@@ -35,7 +36,8 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
      *  //查询首页Blog信息(关联标签，类型)
      *  根据tag查找Blog(发布的)
      */
-    @Select("select blog_id,title,outline,background_image,recommend,commentable,published,views,type_id,create_time,update_time from cy_blog where type_id = #{typeId} and published=true order by create_time desc")
+    @Select("select blog_id,title,outline,background_image,recommend,commentable,published,views,type_id,create_time,update_time" +
+            " from cy_blog where type_id = #{typeId} and published=true order by create_time desc")
     @ResultMap(value = "blogInfo")
     List<CyBlog> getPageByType(Long typeId);
 
@@ -43,7 +45,8 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
      *  //查询首页Blog信息(关联标签，类型)
      *  根据tag查找Blog(发布的)
      */
-    @Select("SELECT b.blog_id,b.title,b.outline,b.background_image,b.recommend,b.commentable,b.published,b.views,b.type_id,b.create_time,b.update_time FROM cy_blog AS b LEFT JOIN cy_blog_tag AS bt ON b.blog_id=bt.blog_id WHERE bt.tag_id=#{tagId} and b.published=true order by b.create_time desc")
+    @Select("SELECT b.blog_id,b.title,b.outline,b.background_image,b.recommend,b.commentable,b.published,b.views,b.type_id,b.create_time,b.update_time " +
+            "FROM cy_blog AS b LEFT JOIN cy_blog_tag AS bt ON b.blog_id=bt.blog_id WHERE bt.tag_id=#{tagId} and b.published=true order by b.create_time desc")
     @ResultMap(value = "blogInfo")
     List<CyBlog> getPageByTag(Long tagId);
 
@@ -80,7 +83,8 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
     })
     @Select("SELECT  DATE_FORMAT(create_time,'%c-%d') AS 'date', " +
             "DATE_FORMAT(create_time,'%Y-%m') AS 'month',blog_id,title " +
-            " FROM cy_blog WHERE published=TRUE GROUP BY blog_id,DATE_FORMAT(create_time,'%Y-%m') ORDER BY create_time desc")
+            " FROM cy_blog WHERE published=TRUE GROUP BY blog_id,DATE_FORMAT(create_time,'%Y-%m')" +
+            " ORDER BY create_time desc")
     List<TimeLineBlog> findTimeLine();
 
     /***
@@ -110,8 +114,9 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
     /***
      *  //根据博客查询对应的tags（内联查询）
      */
-    @Select("SELECT * FROM cy_tag WHERE cy_tag.`tag_id` IN (SELECT bt.`tag_id` FROM cy_blog_tag AS bt WHERE bt.`blog_id`=#{blogId})")
-    List<CyBlogsType> findTagsByBlog(Long blogId);
+    @Select("SELECT * FROM cy_tag WHERE cy_tag.`tag_id` IN " +
+            "(SELECT bt.`tag_id` FROM cy_blog_tag AS bt WHERE bt.`blog_id`=#{blogId})")
+    List<CyTag> findTagsByBlog(Long blogId);
 
 
     /***

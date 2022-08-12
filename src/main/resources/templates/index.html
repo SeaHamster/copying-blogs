@@ -151,7 +151,6 @@
                                         </div>
                                     </div>
                                     <div class="left aligned seven wide column">
-
                                         <a th:href="@{/tags/{id}(id=${tag.tagId})}" th:each="tag : ${blog.tags}" href="#"
                                            class=" m-margin-smalls">
                                             <i class="fas fa-tag"></i>
@@ -160,15 +159,13 @@
                                     </div>
 
                                     <div class="right aligned three wide column">
-                                        <a href="#" th:href="@{/types/{id}(id=${blog.type.typeId})}"
-                                           th:text="${blog.type.name}" target="_blank"
+                                        <a href="#" th:href="@{/types/{id}(id=${blog.type.typeId})}" th:text="${blog.type.name}" target="_blank"
                                            class="ui  red basic label m-text-thin ">type.name</a>
                                     </div>
                                 </div>
                             </div>
                             <!--5份来显示图片-->
                             <div class="five wide column">
-
                                 <!--<a href="#" th:href="@{/blog/{id}(id=${blog.blogId})}" target="_blank" >-->
                                 <!--<img th:src="@{${blog.firstPicture}}" src="https://unsplash.it/800/450?image=1005" alt="" class="ui  rounded image">-->
                                 <!--</a>-->
