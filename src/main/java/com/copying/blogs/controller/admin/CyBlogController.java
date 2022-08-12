@@ -3,6 +3,7 @@ package com.copying.blogs.controller.admin;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.copying.blogs.aspect.MyLog;
+import com.copying.blogs.exception.CustomizeException;
 import com.copying.blogs.model.entity.CyBlog;
 import com.copying.blogs.model.entity.CyBlogsComment;
 import com.copying.blogs.model.result.JsonResult;
@@ -14,6 +15,7 @@ import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.util.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -126,6 +128,9 @@ public class CyBlogController {
     public JsonResult<?> getBlogHasCommentDictionaries() {
         List<Object> blIds = cyBlogsCommentService.listObjs(new LambdaQueryWrapper<CyBlogsComment>()
                 .select(CyBlogsComment::getBlogId)).stream().distinct().collect(Collectors.toList());
+        if(CollectionUtils.isEmpty(blIds)){
+            throw new CustomizeException("获取评论博文失败");
+        }
         List<CyBlog> blogListDic = cyBlogService.list(new LambdaQueryWrapper<CyBlog>().in(CyBlog::getBlogId, blIds)
                 .select(CyBlog::getBlogId, CyBlog::getTitle));
         return Result.success(blogListDic, ResultCode.SUCCESS);

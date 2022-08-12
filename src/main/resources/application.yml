@@ -82,17 +82,17 @@ pagehelper:
 oauth2:
   vueHost: http://fuzhizhong.com:1555/#/login?redirect=%2Findex
   github:
-    clientId: xxx
-    clientSecret: xxx
+    clientId: a6971d398c8bea05b477
+    clientSecret: 17b818cc9a9a1f4880f2c718fd22113639847b2f
   gitee:
-    clientId: xxx
-    clientSecret: xxx
+    clientId: 721d4d3900ece2836195685b711de59dca4409a09d781b25e6fd969f3959c578
+    clientSecret: 48200cd868f13decac25f5c24d77e730aff37b9664269caba16c9e5613b72725
     grantType: authorization_code
-    redirectUri: xxx
+    redirectUri: http://www.fuzhizhong.com:8081/
 
 #控制台打印SQL
 logging:
   level:
     com.copying.blogs.mapper: DEBUG
   file:
-    path: ./logs/blogs.log
+    path: /usr/fzz/logs/blogs.log
