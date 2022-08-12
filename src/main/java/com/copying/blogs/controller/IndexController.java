@@ -1,6 +1,7 @@
 package com.copying.blogs.controller;
 
 import com.copying.blogs.aspect.MyLog;
+import com.copying.blogs.exception.CustomizeException;
 import com.copying.blogs.model.entity.CyBlog;
 import com.copying.blogs.service.CyBlogService;
 import com.copying.blogs.service.CyCacheService;
@@ -55,6 +56,9 @@ public class IndexController {
     @GetMapping("/blog/{blogId}")
     public String blog(@PathVariable Long blogId, Model model) {
         CyBlog blog = cyBlogService.findFullById(blogId);
+        if(blog == null){
+            throw new CustomizeException("资源不存在！");
+        }
         cyBlogService.addViews(blogId);
         if (!blog.getPublished()) {
             throw new RuntimeException("无效资源！");

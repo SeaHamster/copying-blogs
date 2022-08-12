@@ -31,6 +31,9 @@ public class CommentControllers {
     @GetMapping("/comments/{blogId}")
     public String comments(@PathVariable Long blogId, Model model) {
         CyBlog blog = cyBlogService.findFullById(blogId);
+        if(blog == null){
+            throw new RuntimeException("无效资源！");
+        }
         if (!blog.getPublished()) {
             throw new RuntimeException("无效资源！");
         }
