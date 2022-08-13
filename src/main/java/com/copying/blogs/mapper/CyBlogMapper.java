@@ -25,7 +25,7 @@ public interface CyBlogMapper extends BaseMapper<CyBlog> {
     @Select("<script>" +
             "select blog_id,title,outline,background_image,recommend,commentable,published,views,type_id,create_time,update_time from cy_blog where published=true" +
             "<if test='title!=null and title!=\"\"'>" +
-            "AND title like concat('%',#{title},'%')" +
+            "AND (title like concat('%',#{title},'%') or outline like concat('%',#{title},'%') )" +
             "</if>" +
             "order by create_time desc" +
             "</script>"
