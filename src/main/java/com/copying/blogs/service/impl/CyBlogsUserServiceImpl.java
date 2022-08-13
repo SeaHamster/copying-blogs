@@ -43,7 +43,7 @@ public class CyBlogsUserServiceImpl extends ServiceImpl<CyBlogsUserMapper, CyBlo
         CyBlogsUser user = this.getOne(new LambdaQueryWrapper<CyBlogsUser>().eq(CyBlogsUser::getUsername, username)
                 .eq(CyBlogsUser::getPassword, password));
         if(user == null){
-            throw new CustomizeException(ResultCode.USER_NOT_EXIST);
+            throw new CustomizeException(ResultCode.USER_PWD_AUTH_ERROR);
         }
         user.setPermissionList(this.getPermissionList(user.getUserId()));
         return user;

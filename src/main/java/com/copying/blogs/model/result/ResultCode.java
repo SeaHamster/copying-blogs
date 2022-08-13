@@ -23,6 +23,7 @@ public enum ResultCode {
     Token_AUTH_ERROR(20006, "Token认证失败"),
     CODE_AUTH_ERROR(20007, "验证码验证失败"),
     PWD_AUTH_ERROR(20008, "密码认证失败"),
+    USER_PWD_AUTH_ERROR(20009, "账号或密码错误"),
 
     /* 系统错误：40001-49999 */
     SYSTEM_INNER_ERROR(40001, "系统繁忙，请稍后重试"),

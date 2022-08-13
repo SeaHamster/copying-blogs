@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
@@ -29,12 +30,14 @@ public class CyBlog {
     private Long blogId;
 
     @NotBlank(message = "标题不能为空")
+    @Size(max = 255, message = "标题长度不能超过255个字符")
     private String title;
 
     @NotBlank(message = "内容不能为空")
     private String content;
 
     @NotBlank(message = "简介不能为空")
+    @Size(max = 255, message = "简介长度不能超过255个字符")
     private String outline;
 
     private String backgroundImage;
