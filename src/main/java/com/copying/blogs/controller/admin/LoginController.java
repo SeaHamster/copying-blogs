@@ -40,6 +40,7 @@ public class LoginController {
         String verifyKey = Constants.CAPTCHA_CODE_KEY + uuid;
         String captcha = (String) redisUtil.get(verifyKey);
         redisUtil.del(verifyKey);
+
         if (captcha == null) {
             throw new CaptchaExpireException("验证码不存在");
         }
