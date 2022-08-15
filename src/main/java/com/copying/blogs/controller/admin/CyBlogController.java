@@ -129,7 +129,7 @@ public class CyBlogController {
         List<Object> blIds = cyBlogsCommentService.listObjs(new LambdaQueryWrapper<CyBlogsComment>()
                 .select(CyBlogsComment::getBlogId)).stream().distinct().collect(Collectors.toList());
         if(CollectionUtils.isEmpty(blIds)){
-            throw new CustomizeException("获取评论博文失败");
+            throw new CustomizeException("未获取到任何评论");
         }
         List<CyBlog> blogListDic = cyBlogService.list(new LambdaQueryWrapper<CyBlog>().in(CyBlog::getBlogId, blIds)
                 .select(CyBlog::getBlogId, CyBlog::getTitle));

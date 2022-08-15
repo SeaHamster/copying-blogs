@@ -28,34 +28,7 @@
 <!--导航栏-->
 <nav th:replace="_fragments :: menu(0)"
      class="ui   attached segment m-padded-tb-mini m-shadow-small animated fadeInDown">
-    <!--container的好处很多，其中之一使得设备正常显示-->
-    <div class="ui container">
-        <!--使用一个菜单来放我们所有的导航链接-->
-        <div class="ui  secondary stackable menu">
-            <a class="item" href="https://www.fuzhizhong.com:8081/">
-                <img class="ui circular image mestyle image"  th:src="${user.avatar}" src="http://b-ssl.duitang.com/uploads/item/201706/25/20170625143749_mtSZE.jpeg" alt="avatar">
-                &nbsp;&nbsp;&nbsp;<span th:text="${user.name}">Mr_name</span>
-            </a>&nbsp;
-            <a class="item m-item m-mobile-hide"><i class="fas fa-carrot"></i>首页</a>
-            <a class="item m-item m-mobile-hide"><i class="fas fa-ice-cream"></i>分类</a>
-            <a class="item m-item m-mobile-hide"><i class="fas fa-candy-cane"></i>标签</a>
-            <a class="item m-item m-mobile-hide"><i class="fas fa-pizza-slice"></i>归档</a>
-            <a class="item m-item m-mobile-hide"><i class="fas fa-cookie"></i>本站</a>
-            <a class="item m-item m-mobile-hide"><i class="fas fa-fish"></i>友链</a>
-            <div class="right m-item item m-mobile-hide">
-                <div class="ui icon inverted  input">
-                    <label>
-                        <input type="text" placeholder="Search...">
-                    </label>
-                    <i class="search link icon"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--这里来弄一个导航隐藏按钮-->
-    <a href="#" class="ui black icon button m-right-top m-mobile-show menu toggle">
-        <i class="sidebar icon"></i>
-    </a>
+
 </nav>
 
 <!--中部主体-->
@@ -227,22 +200,22 @@
                 </div>
                 <div class="fields">
                     <div class="m-margin-bottom-small m-mobile-wide  field">
-                        <div class="ui m-margin-bottom-small m-mobile-wide left icon input">
-                            <i class="user icon"></i>
-                            <label>
-                                <input type="text" name="name" placeholder="昵称"
-                                       th:value="${session['user']}!=null?${session['user']['name']}:''">
-                            </label>
-                        </div>
+                        <label>
+                            <div class="ui m-margin-bottom-small m-mobile-wide left icon input">
+                                <i class="user icon"></i>
+                                    <input type="text" name="name" placeholder="昵称"
+                                           th:value="${session['user']}!=null?${session['user']['name']}:''"/>
+                            </div>
+                        </label>
                     </div>
                     <div class="m-margin-bottom-small m-mobile-wide  field">
-                        <div class="ui m-margin-bottom-small m-mobile-wide  left icon input">
-                            <i class="envelope square icon"></i>
-                            <label>
-                                <input type="text" name="email" placeholder="邮箱"
-                                       th:value="${session['user']}!=null?${session['user']['name']}:''">
-                            </label>
-                        </div>
+                        <label>
+                            <div class="ui m-margin-bottom-small m-mobile-wide  left icon input">
+                                <i class="envelope square icon"></i>
+                                    <input type="text" name="email" placeholder="  邮箱"
+                                           th:value="${session['user']}!=null?${session['user']['name']}:''">
+                            </div>
+                        </label>
                     </div>
                     <div class=" m-margin-bottom-small m-mobile-wide  filed">
                         <button type="button" id="commentpost-btn"
@@ -274,34 +247,26 @@
 </div>
 <!--微信阅读的插件-->
 <div id="qrcode" class="ui wechat-qr flowing popup transition hidden" style="width: 130px!important;"></div>
+
 <!--板娘-->
 <div class="waifu">
     <div class="waifu-tips"></div>
     <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
 </div>
+
 <th:block th:replace="_fragments :: script">
-    <!--也许用到的jQuery的引用-->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-    <!--这里进行semanticUI的js 的CDN的引用 -->
-    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-    <!--平滑滚动的cdn-->
-    <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
-    <!--引入代码高亮的js-->
-    <script src="../static/lib/prism/prism.js"></script>
-    <!--引入目录的js-->
-    <script src="../static/lib/tocbot/tocbot.js"></script>
-    <!--引用二维码的js-->
-    <script src="../static/lib/qrcode/qrcode.min.js"></script>
-    <!--滑动检测-->
-    <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
+
 </th:block>
+
 <!--板娘-->
 <link rel="stylesheet" type="text/css" href="../static/lib/assets/waifu.css" th:href="@{/lib/assets/waifu.css}"/>
 <script src="../static/lib/assets/waifu-tips.js" th:src="@{/lib/assets/waifu-tips.js}"></script>
 <script src="../static/lib/assets/live2d.js" th:src="@{/lib/assets/live2d.js}"></script>
 <script type="text/javascript">initModel("../blogs/lib/assets/")</script>
+
 <!--粒子特效-->
 <script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>
+
 <!--平滑滚动的cdn-->
 <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
 <!--引入代码高亮的js-->
@@ -311,27 +276,20 @@
 <!--引用二维码的js-->
 <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
 <!--滑动检测-->
-<script src="../static/lib/waypoints/jquery.waypoints.min.js"
-        th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+<script src="../static/lib/waypoints/jquery.waypoints.min.js" th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+
 <script th:inline="javascript">
-
     hide();
-    var name = $("[name='name']");
-    var email = $("[name='email']");
-    var trans = $('.trans');
-    var content = $("[name='content']");
 
-    name.val(localStorage.getItem("name"))
-    email.val(localStorage.getItem("email"))
+    $("[name='name']").val(localStorage.getItem("name"))
+    $("[name='email']").val(localStorage.getItem("email"))
     function hide() {
-        trans.transition('toggle');
-        trans.toggleClass('m-trans-show');
+        $('.trans').transition('toggle');
+        $('.trans').toggleClass('m-trans-show');
     }
 
     $('#trans-btn').click(function () {
-
-        trans.transition('fly right');
-
+        $('.trans').transition('fly right');
     });
 
     $('.translate').click(function () {
@@ -398,8 +356,8 @@
         position: 'left center'
     });
 
-    var serurl = "www.zengzhongjie.com";
-    var url = /*[[@{/blog/{id}(id=${blog.blogId})}]]*/"";
+    var serurl = "www.fuzhizhong.com:8081";
+    var url = /*[[@{/blog/{id}(id=${blog.blogId})}]]*/ "";
     var qrcode = new QRCode("qrcode", {
         text: serurl + url,
         width: 110,
@@ -427,15 +385,15 @@
 
     /*下面这个js实现打开这个网页，显示当前博客所有的评论信息*/
     $(function () {
-        $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.blogId})}]]*/"comments/28");
+        $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.blogId})}]]*/ "comments/28");
     });
 
     /*点击提交评论，进行表单验证，验证通过再提交数据*/
     $('#commentpost-btn').click(function () {
         var boo = $('.ui.form').form('validate form');
         if (boo) {
-            localStorage.setItem("name", name.val());
-            localStorage.setItem("email", email.val());
+            localStorage.setItem("name", $("[name='name']").val());
+            localStorage.setItem("email", $("[name='email']").val());
             postData();
         } else {
 
@@ -448,12 +406,12 @@
 
     /*实现表单提交*/
     function postData() {
-        $("#comment-container").load(/*[[@{/comments}]]*/"", {
+        $("#comment-container").load(/*[[@{/comments}]]*/ "", {
             "parentId": $("[name='parentcomment.commentId']").val(),
             "blogId": $("[name='blog.blogId']").val(),
-            "name": name.val(),
-            "email": email.val(),
-            "content": content.val()
+            "name": $("[name='name']").val(),
+            "email": $("[name='email']").val(),
+            "content": $("[name='content']").val()
         }, function (responseTxt, statusTxt, xhr) {
             $(window).scrollTo($('#comment-container'),500);
             clearContent();//提交了过后，把评论内容删除
@@ -461,17 +419,16 @@
     }
 
     function clearContent() {
-        content.val('');
+        $("[name='content']").val('');
         $("[name='parentcomment.commentId']").val(-1);
         $("[name='atment.commentId']").val(-1);
-        content.attr("placeholder", "请输入评论信息...");
+        $("[name='content']").attr("placeholder", "请输入评论信息...");
     }
-
 
     function reply(obj) {
         var commentId = $(obj).data('commentid');
         var commentNickname = $(obj).data('commentnickname');
-        content.attr("placeholder", "@" + commentNickname).focus();
+        $("[name='content']").attr("placeholder", "@" + commentNickname).focus();
         $("[name='parentcomment.commentId']").val(commentId);
         $(window).scrollTo($('#comment-form'), 500);
     }

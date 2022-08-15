@@ -18,36 +18,6 @@
 <!--导航栏-->
 <nav th:replace="_fragments :: menu(4)" class="ui attached segment m-padded-tb-mini m-shadow-small">
 
-    <!--container的好处很多，其中之一使得设备正常显示-->
-    <div class="ui container">
-        <!--使用一个菜单来放我们所有的导航链接-->
-        <div class="ui  secondary stackable menu">
-            <a class="item" href="https://www.fuzhizhong.com:8081/">
-                <img class="ui circular image" th:src="${user.avatar}" src="https://picsum.photos/50/50?image=1025" alt="avatar">
-                &nbsp;&nbsp;&nbsp;<span th:text="${user.username}">Mr_A</span>
-            </a>&nbsp;
-            <a class="item m-item m-mobile-hide"><i class="fas fa-carrot"></i>首页</a>
-            <a class=" item m-item m-mobile-hide"><i class="fas fa-ice-cream"></i>分类</a>
-            <a class=" item m-item m-mobile-hide"><i class="fas fa-candy-cane"></i>标签</a>
-            <a class="active item m-item m-mobile-hide"><i class="fas fa-pizza-slice"></i>归档</a>
-            <a class="item m-item m-mobile-hide"><i class="fas fa-cookie"></i>本站</a>
-            <a class="item m-item m-mobile-hide"><i class="fas fa-fish"></i>友链</a>
-            <div class="right m-item item m-mobile-hide">
-                <div class="ui icon inverted  input">
-                    <label>
-                        <input type="text" placeholder="Search...">
-                    </label>
-                    <i class="search link icon"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--这里来弄一个导航隐藏按钮-->
-    <a href="#" class="ui black icon button m-right-top m-mobile-show menu toggle">
-        <i class="sidebar icon"></i>
-    </a>
-
 </nav>
 
 <!--中部主体-->
