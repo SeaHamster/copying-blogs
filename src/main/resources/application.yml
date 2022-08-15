@@ -95,4 +95,4 @@ logging:
   level:
     com.copying.blogs.mapper: DEBUG
   file:
-    path: /usr/fzz/logs/blogs.log
+    path: /usr/fzz/blogs-logs
