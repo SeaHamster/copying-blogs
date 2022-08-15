@@ -44,6 +44,7 @@ public class LoginController {
         if (captcha == null) {
             throw new CaptchaExpireException("验证码不存在");
         }
+
         if (!code.equalsIgnoreCase(captcha)) {
             throw new CaptchaExpireException("验证码不匹配");
         }
