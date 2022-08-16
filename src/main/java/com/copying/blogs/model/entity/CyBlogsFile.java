@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 文件基本属性
@@ -21,6 +22,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @TableName("cy_blogs_file")
 public class CyBlogsFile implements Serializable {
+
     private static final long serialVersionUID = -559132322914896161L;
     private static final long UNIT_SIZE = 1024;
 
@@ -68,4 +70,7 @@ public class CyBlogsFile implements Serializable {
 
     @ApiModelProperty("下载文件地址")
     private String fileUrl;
+
+    @ApiModelProperty("创建时间")
+    private Date createTime;
 }

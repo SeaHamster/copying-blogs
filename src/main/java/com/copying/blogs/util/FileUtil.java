@@ -52,10 +52,9 @@ public class FileUtil {
             fileInfo.setSaveName(name);
             String filePath = "/"+suffixName+"/" + name;
             fileInfo.setFilePath(filePath);
-            File dest = new File(new File(Constants.FILE_SAVE_PATH).getAbsolutePath()+filePath);
+            File dest = new File(new File(Constants.FILE_SAVE_PATH).getAbsolutePath().concat(filePath));
             if (!dest.getParentFile().exists()) {
-                boolean isMk=dest.getParentFile().mkdir();
-                if(!isMk){
+                if(!dest.getParentFile().mkdirs()){
                     throw new CustomizeException(ResultCode.ERROR,"创建文件路径失败");
                 }
             }
