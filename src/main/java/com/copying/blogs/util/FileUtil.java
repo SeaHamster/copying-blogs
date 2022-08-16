@@ -60,6 +60,7 @@ public class FileUtil {
             }
             file.transferTo(dest);
             //文件上传成功，返回文件信息
+            log.info("文件上传成功:{}",fileInfo);
             return fileInfo;
         }catch (IllegalStateException | IOException | DataIntegrityViolationException | AssertionError e){
             e.fillInStackTrace();
