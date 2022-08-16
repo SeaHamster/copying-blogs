@@ -1,12 +1,15 @@
 package com.copying.blogs.util;
 
+import com.copying.blogs.constants.Constants;
 import com.copying.blogs.exception.CustomizeException;
 import com.copying.blogs.mapper.CyBlogsFileMapper;
+import com.copying.blogs.model.dto.FileInfo;
 import com.copying.blogs.model.entity.CyBlogsFile;
 import com.copying.blogs.model.result.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -30,17 +33,26 @@ public class FileUtil {
      * 文件上传
      * @return 文件地址
      */
-    public String fileUpLoad(MultipartFile file,String ip, String filePath){
+    public static FileInfo fileUpLoad(MultipartFile file){
+        FileInfo fileInfo = new FileInfo();
         //文件名
         String fileName = file.getOriginalFilename();
-        //文件后缀名
-        assert fileName != null;
+        if(StringUtils.isEmpty(fileName)){
+            throw new CustomizeException("上传文件名为空");
+        }
+        fileInfo.setFileName(fileName);
+
+        //文件后缀名-类型
         String suffixName = fileName.substring(fileName.lastIndexOf(".")+1);
+        fileInfo.setFileType(suffixName);
         log.info("上传文件：" + fileName + " 文件后缀：" + suffixName);
         try {
             //新文件名
             String name = UUID.randomUUID() +"."+ suffixName;
-            File dest = new File(new File(filePath).getAbsolutePath()+"/" + name);
+            fileInfo.setSaveName(name);
+            String filePath = "/"+suffixName+"/" + name;
+            fileInfo.setFilePath(filePath);
+            File dest = new File(new File(Constants.FILE_SAVE_PATH).getAbsolutePath()+filePath);
             if (!dest.getParentFile().exists()) {
                 boolean isMk=dest.getParentFile().mkdir();
                 if(!isMk){
@@ -48,23 +60,13 @@ public class FileUtil {
                 }
             }
             file.transferTo(dest);
-            //文件上传成功，将信息存入数据库
-            CyBlogsFile cyBlogsFile =new CyBlogsFile();
-            cyBlogsFile.setFileName(fileName);
-            cyBlogsFile.setSaveName(name);
-            cyBlogsFile.setFilePath(filePath);
-            cyBlogsFile.setFileSize(dest.length());
-            cyBlogsFile.setFileType(suffixName);
-            cyBlogsFile.setUploadIp(ip);
-
-            if(cyBlogsFileMapper.insertFile(cyBlogsFile)){
-                return cyBlogsFile.getSaveName();
-            }
+            //文件上传成功，返回文件信息
+            return fileInfo;
         }catch (IllegalStateException | IOException | DataIntegrityViolationException | AssertionError e){
+            e.fillInStackTrace();
+            log.error(e.getMessage());
             throw new CustomizeException(ResultCode.ERROR,"创建文件路径失败");
         }
-
-        return null;
     }
 
     /**

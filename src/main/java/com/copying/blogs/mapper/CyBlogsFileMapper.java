@@ -23,5 +23,10 @@ public interface CyBlogsFileMapper extends BaseMapper<CyBlogsFile> {
      */
     CyBlogsFile selectFile(Integer id);
 
+    /**
+     * 根据生成文件名获取信息
+     * @param fileSaveName fileSaveName
+     * @return com.copying.blogs.model.entity.CyBlogsFile
+     */
     CyBlogsFile selectFileSaveName(String fileSaveName);
 }

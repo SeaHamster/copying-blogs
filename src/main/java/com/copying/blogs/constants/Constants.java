@@ -94,7 +94,12 @@ public class Constants
     public static final String JWT_AUTHORITIES = "authorities";
 
     /**
-     * 资源映射路径 前缀
+     * 文件服务地址
      */
-    public static final String RESOURCE_PREFIX = "/profile";
+    public static final String FILE_SERVER_URL = "http://fuzhizhong.com:8081/files";
+
+    /**
+     * 文件存储地址
+     */
+    public static final String FILE_SAVE_PATH = "/usr/fzz/files";
 }

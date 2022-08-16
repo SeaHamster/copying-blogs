@@ -96,3 +96,9 @@ logging:
     com.copying.blogs.mapper: DEBUG
   file:
     path: /usr/fzz/blogs-logs
+
+
+file-type:
+  photo-type:
+    - jpg
+    - png

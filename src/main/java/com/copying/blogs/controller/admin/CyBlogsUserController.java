@@ -9,6 +9,7 @@ import com.copying.blogs.model.entity.SysRole;
 import com.copying.blogs.model.result.JsonResult;
 import com.copying.blogs.model.result.Result;
 import com.copying.blogs.model.result.ResultCode;
+import com.copying.blogs.service.CyBlogsFileService;
 import com.copying.blogs.service.CyBlogsUserService;
 import com.copying.blogs.service.SysRoleService;
 import com.github.pagehelper.PageInfo;
@@ -30,8 +31,8 @@ public class CyBlogsUserController {
     private CyBlogsUserService cyBlogsUserService;
     @Resource
     private SysRoleService iSysRoleService;
-//    @Resource
-//    private FileUploadUtils fileUploadUtils;
+    @Resource
+    private CyBlogsFileService cyBlogsFileService;
 
 
     /**
@@ -198,11 +199,11 @@ public class CyBlogsUserController {
         if (userDto == null) {
             return Result.fail(ResultCode.Token_AUTH_ERROR);
         }
-//        if (!file.isEmpty()) {
-//            String url = fileUploadUtils.upload(file);
-//            cyBlogsUserService.update(new LambdaUpdateWrapper<CyBlogsUser>().set(CyBlogsUser::getAvatar, url).eq(CyBlogsUser::getUserId, userDto.getUserId()));
-//            return Result.success(url, ResultCode.SUCCESS);
-//        }
+        if (!file.isEmpty()) {
+            String url = cyBlogsFileService.uploadFile(file);
+            cyBlogsUserService.update(new LambdaUpdateWrapper<CyBlogsUser>().set(CyBlogsUser::getAvatar, url).eq(CyBlogsUser::getUserId, userDto.getUserId()));
+            return Result.success(url, ResultCode.SUCCESS);
+        }
         return Result.fail(ResultCode.DATA_IS_WRONG);
     }
 

@@ -1,14 +1,11 @@
 package com.copying.blogs.util.photo;
 
 import com.copying.blogs.config.ReadPhotoTypeConfig;
-import com.copying.blogs.exception.CustomizeException;
 import com.copying.blogs.mapper.CyBlogsFileMapper;
 import com.copying.blogs.model.entity.CyBlogsFile;
-import com.copying.blogs.model.result.ResultCode;
 import com.copying.blogs.util.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -34,21 +31,6 @@ public class PhotoUtil {
     private ReadPhotoTypeConfig readPhotoTypeConfig;
     //** 图片类型*/
     //private static final String PHOTO_TYPE="photo-type";
-
-    public String upLoadPhoto(MultipartFile photo,String ip, String filePath){
-        //文件名
-        String fileName = photo.getOriginalFilename();
-        //文件后缀名
-        assert fileName != null;
-        String suffixName = fileName.substring(fileName.lastIndexOf(".")+1);
-        log.info("上传文件：" + fileName + " 文件后缀：" + suffixName);
-        boolean isPhotoFlag =isPhoto(suffixName);
-        if(!isPhotoFlag){
-            throw new CustomizeException(ResultCode.PARAM_IS_INVALID,"请上传正确的图片文件");
-        }
-
-        return fileUtil.fileUpLoad(photo,ip,filePath);
-    }
 
     /**
      * 判断是否为图片格式

@@ -2,11 +2,13 @@ package com.copying.blogs.model.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -17,18 +19,20 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@TableName("cy_blogs_file")
 public class CyBlogsFile implements Serializable {
     private static final long serialVersionUID = -559132322914896161L;
     private static final long UNIT_SIZE = 1024;
 
     @ApiModelProperty("主键")
-    @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "file_id",type = IdType.AUTO)
+    private Integer fileId;
 
     @ApiModelProperty("上传文件名")
+    @Size(max = 255, message = "文件名长度不能超过255个字符")
     private String fileName;
 
-    @ApiModelProperty("文件名")
+    @ApiModelProperty("保存文件名-生成")
     private String saveName;
 
     @ApiModelProperty("文件地址")

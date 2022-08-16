@@ -32,8 +32,6 @@ public class CyBlogController {
     private CyBlogService cyBlogService;
     @Resource
     private CyBlogsCommentService cyBlogsCommentService;
-//    @Resource
-//    private FileUploadUtils fileUploadUtils;
 
     @MyLog
     @PreAuthorize("hasAuthority('content:blog:add')")
@@ -114,15 +112,6 @@ public class CyBlogController {
             return Result.fail(ResultCode.DATA_IS_WRONG);
         }
     }
-
-//    @PostMapping("/upload")
-//    public JsonResult uploadImg(@RequestParam("file") MultipartFile file) throws IOException {
-//        if (!file.isEmpty()) {
-//            String url = fileUploadUtils.upload(file);
-//            return Result.success(url, ResultCode.SUCCESS);
-//        }
-//        return Result.fail(ResultCode.DATA_IS_WRONG);
-//    }
 
     @GetMapping("/hasCommentDic")
     public JsonResult<?> getBlogHasCommentDictionaries() {
