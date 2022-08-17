@@ -11,6 +11,7 @@ import com.copying.blogs.model.result.Result;
 import com.copying.blogs.model.result.ResultCode;
 import com.copying.blogs.service.CyBlogService;
 import com.copying.blogs.service.CyBlogsCommentService;
+import com.copying.blogs.service.CyBlogsFileService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import org.apache.logging.log4j.util.Strings;
@@ -18,6 +19,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -32,6 +34,8 @@ public class CyBlogController {
     private CyBlogService cyBlogService;
     @Resource
     private CyBlogsCommentService cyBlogsCommentService;
+    @Resource
+    private CyBlogsFileService cyBlogsFileService;
 
     @MyLog
     @PreAuthorize("hasAuthority('content:blog:add')")
@@ -113,6 +117,14 @@ public class CyBlogController {
         }
     }
 
+    @PostMapping("/upload")
+    public JsonResult<?> uploadImg(@RequestParam("file") MultipartFile file) {
+        if (!file.isEmpty()) {
+            String url = cyBlogsFileService.uploadFile(file);
+            return Result.success(url, ResultCode.SUCCESS);
+        }
+        return Result.fail(ResultCode.DATA_IS_WRONG);
+    }
     @GetMapping("/hasCommentDic")
     public JsonResult<?> getBlogHasCommentDictionaries() {
         List<Object> blIds = cyBlogsCommentService.listObjs(new LambdaQueryWrapper<CyBlogsComment>()

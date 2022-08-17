@@ -32,11 +32,12 @@ public class CyBlogsFileServiceImpl extends ServiceImpl<CyBlogsFileMapper, CyBlo
         // 保存文件信息
         CyBlogsFile cyBlogsFile = new CyBlogsFile();
         cyBlogsFile.setFileName(fileInfo.getFileName());
+        cyBlogsFile.setSaveName(fileInfo.getSaveName());
         cyBlogsFile.setFilePath(Constants.FILE_SAVE_PATH+fileInfo.getFilePath());
         cyBlogsFile.setFileSize(fileInfo.getFileSize());
         cyBlogsFile.setFileType(fileInfo.getFileType());
         cyBlogsFile.setFileUrl(Constants.FILE_SERVER_URL+fileInfo.getFilePath());
-        if(this.save(cyBlogsFile)){
+        if(!this.save(cyBlogsFile)){
             log.error("保存文件信息失败 储存地址：{}",fileInfo.getFilePath());
             throw new CustomizeException("保存文件信息失败");
         }

@@ -7,13 +7,16 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 文件基本属性
+ *
  * @author copying
  * @date 2020-08-15 10:59:14
  */
@@ -27,7 +30,7 @@ public class CyBlogsFile implements Serializable {
     private static final long UNIT_SIZE = 1024;
 
     @ApiModelProperty("主键")
-    @TableId(value = "file_id",type = IdType.AUTO)
+    @TableId(value = "file_id", type = IdType.AUTO)
     private Integer fileId;
 
     @ApiModelProperty("上传文件名")
@@ -44,20 +47,21 @@ public class CyBlogsFile implements Serializable {
     private String uploadIp;
 
     @ApiModelProperty("文件字节")
+    @NotNull(message = "文件字节不可为空")
     private Long fileSize;
 
-    public void setFileSize(Long fileSize){
-        this.fileSize=fileSize;
-        long fsm=fileSize/ UNIT_SIZE;
-        if(fsm< UNIT_SIZE) {
+    public void setFileSize(Long fileSize) {
+        this.fileSize = fileSize;
+        long fsm = fileSize / UNIT_SIZE;
+        if (fsm < UNIT_SIZE) {
             this.fileSizeM = (fsm + "K");
-        } else{
-            fsm=fsm/ UNIT_SIZE;
-            if(fsm< UNIT_SIZE){
-                this.fileSizeM=(fsm +"M");
-            }else {
-                fsm=fsm/ UNIT_SIZE;
-                this.fileSizeM=(fsm +"G");
+        } else {
+            fsm = fsm / UNIT_SIZE;
+            if (fsm < UNIT_SIZE) {
+                this.fileSizeM = (fsm + "M");
+            } else {
+                fsm = fsm / UNIT_SIZE;
+                this.fileSizeM = (fsm + "G");
             }
         }
     }
