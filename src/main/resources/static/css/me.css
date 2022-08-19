@@ -247,7 +247,18 @@
     left: 8%!important;
 }
 body{
-    background: url("../static/images/upfeathers.png");
+    background: url("../images/skin_blackboard.png") no-repeat center;
+}
+
+canvas {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    z-index: -1;
 }
 
 

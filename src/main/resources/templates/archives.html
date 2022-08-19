@@ -14,7 +14,9 @@
 </head>
 <body>
 <!--粒子特效-->
-<canvas id="theCanvas"></canvas>
+<!--<canvas id="theCanvas"></canvas>-->
+<!-- 数字雨 -->
+<canvas id="canvas" ></canvas>
 <!--导航栏-->
 <nav th:replace="_fragments :: menu(4)" class="ui attached segment m-padded-tb-mini m-shadow-small">
 
@@ -57,7 +59,9 @@
 <script src="../static/lib/assets/live2d.js" th:src="@{/lib/assets/live2d.js}"></script>
 <script type="text/javascript">initModel("../blogs/lib/assets/")</script>
 <!--粒子特效-->
-<script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>
+<!--<script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>-->
+<!-- 数字雨 -->
+<script src="../static/js/digital_rain.js" th:src="@{/js/digital_rain.js}"></script>
 <!--也许用到的jQuery的引用-->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <!--这里进行semanticUI的js 的CDN的引用 -->

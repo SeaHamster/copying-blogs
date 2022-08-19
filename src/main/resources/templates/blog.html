@@ -24,7 +24,9 @@
 <body>
 
 <!--粒子特效-->
-<canvas id="theCanvas"></canvas>
+<!--<canvas id="theCanvas"></canvas>-->
+<!-- 数字雨 -->
+<canvas id="canvas" ></canvas>
 <!--导航栏-->
 <nav th:replace="_fragments :: menu(0)"
      class="ui   attached segment m-padded-tb-mini m-shadow-small animated fadeInDown">
@@ -265,8 +267,9 @@
 <script type="text/javascript">initModel("../blogs/lib/assets/")</script>
 
 <!--粒子特效-->
-<script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>
-
+<!--<script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>-->
+<!-- 数字雨 -->
+<script src="../static/js/digital_rain.js" th:src="@{/js/digital_rain.js}"></script>
 <!--平滑滚动的cdn-->
 <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
 <!--引入代码高亮的js-->

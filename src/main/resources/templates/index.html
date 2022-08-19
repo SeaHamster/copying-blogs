@@ -14,8 +14,10 @@
     <link rel="stylesheet" href="../static/css/animate.css">
 </head>
 <body>
-    <!--粒子特效-->
-    <canvas id="theCanvas"></canvas>
+    <!-- 数字雨 -->
+    <canvas id="canvas" ></canvas>
+<!--    &lt;!&ndash;粒子特效&ndash;&gt;-->
+<!--    <canvas id="theCanvas"></canvas>-->
 
     <!--主体-->
     <div class="pusher">
@@ -265,7 +267,9 @@
     <script type="text/javascript">initModel("../blogs/lib/assets/")</script>
 
     <!--粒子特效-->
-    <script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>
+<!--    <script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>-->
+    <!-- 数字雨 -->
+    <script src="../static/js/digital_rain.js" th:src="@{/js/digital_rain.js}"></script>
 
     <script>
         var audio = document.getElementsByTagName('audio')[0];
