@@ -59,22 +59,25 @@
                     </a>
                 </div>
             </div>
-
-<!--            <div class="ui five wide column">-->
-<!--                <h3 class="ui header m-text"><i class="fas fa-cloud"></i>喜欢的网站:</h3>-->
-<!--                <br>-->
-<!--                <div class="ui cards">-->
-<!--                    <a th:href="@{${friend.website}}"   th:each="friend : ${friends}" class="black card m-card-center">-->
-<!--                        <div class="content">-->
-<!--                            <div   class="header" th:text="${friend.name}">Cute Dog</div>-->
-<!--                            <p th:text="${friend.description}"></p>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-
         </div>
-
+        <div class="ui  section divider m-padded-tb"></div>
+        <div class="ui stackable  grid">
+            <div class="ui eleven wide column">
+                <h3 class="ui header m-text"><i class="fas fa-users"></i>有趣的网站:</h3>
+                <br>
+                <div class="ui link cards">
+                    <a th:href="@{${friend.website}}" th:if="${friend.flag}==3" th:each="friend : ${friends}"
+                       class="teal card m-card-center">
+                        <div class="content">
+                            <div th:text="${friend.name}" class="header">Molly</div>
+                            <div class="description" th:text="${friend.description}">
+                                Molly is a personal assistant living in Paris.
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
