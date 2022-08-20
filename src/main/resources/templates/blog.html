@@ -22,16 +22,10 @@
     <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
 </head>
 <body>
-
-<!--粒子特效-->
-<!--<canvas id="theCanvas"></canvas>-->
 <!-- 数字雨 -->
 <canvas id="canvas" ></canvas>
 <!--导航栏-->
-<nav th:replace="_fragments :: menu(0)"
-     class="ui   attached segment m-padded-tb-mini m-shadow-small animated fadeInDown">
-
-</nav>
+<nav th:replace="_fragments :: menu(0)"></nav>
 
 <!--中部主体-->
 <div id="waypoint" class="m-container-small m-padded-tb-big animated fadeIn ">
@@ -256,20 +250,9 @@
     <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
 </div>
 
-<th:block th:replace="_fragments :: script">
+<!--    公共script 也许用到的jQuery的引用，这里进行semanticUI的js 的CDN的引用，板娘，数字雨 -->
+<th:block th:replace="_fragments :: script"/>
 
-</th:block>
-
-<!--板娘-->
-<link rel="stylesheet" type="text/css" href="../static/lib/assets/waifu.css" th:href="@{/lib/assets/waifu.css}"/>
-<script src="../static/lib/assets/waifu-tips.js" th:src="@{/lib/assets/waifu-tips.js}"></script>
-<script src="../static/lib/assets/live2d.js" th:src="@{/lib/assets/live2d.js}"></script>
-<script type="text/javascript">initModel("../blogs/lib/assets/")</script>
-
-<!--粒子特效-->
-<!--<script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>-->
-<!-- 数字雨 -->
-<script src="../static/js/digital_rain.js" th:src="@{/js/digital_rain.js}"></script>
 <!--平滑滚动的cdn-->
 <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
 <!--引入代码高亮的js-->

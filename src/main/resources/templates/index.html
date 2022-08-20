@@ -16,24 +16,19 @@
 <body>
     <!-- 数字雨 -->
     <canvas id="canvas" ></canvas>
-<!--    &lt;!&ndash;粒子特效&ndash;&gt;-->
-<!--    <canvas id="theCanvas"></canvas>-->
-
     <!--主体-->
     <div class="pusher">
         <!--导航栏-->
-        <nav th:replace="_fragments :: menu(1)" class="ui   attached segment m-padded-tb-mini m-shadow-small animated fadeInDown">
-<!--            引用 _fragments.html _fragments -->
-        </nav>
+        <nav th:replace="_fragments :: menu(1)"> <!-- 引用 _fragments.html _fragments --> </nav>
 
         <!--中部主体-->
-        <div class=" m-padded-tb-large">
+        <div class=" m-padded-tb-large ">
             <div class="ui stackable this   container m-container-nine"></div>
             <div class="ui stackable  grid m-padded-tb-small">
                 <!--左边的明信片和小便签-->
-                <div class="ui  three wide   column m-column">
+                <div class="ui  three wide column m-column">
                     <!--个人明信片-->
-                    <div id="div01" class="ui   link  card m-card-center">
+                    <div id="div01" class="ui link  card m-card-center back-drop">
                         <div class="image">
                             <img src="https://img.zcool.cn/community/015278554295fe0000019ae959d2f0.jpg"
                                  th:src="@{/images/sea_hamster.jpg}" alt="头像">
@@ -86,17 +81,17 @@
                     </div>
 
                     <!--文章列表-->
-                    <div class="ui raised segment m-margin-small" th:each="blog : ${page.list}"
+                    <div class="ui raised segment m-margin-small back-drop" th:each="blog : ${page.list}"
                          th:unless="${blog.published}==false">
-                        <div class="ui stackable mobile reversed grid">
+                        <div class="ui stackable mobile reversed grid ">
                             <!--11份来显示内容-->
-                            <div class="ui eleven wide column">
+                            <div class="ui eleven wide column font-color">
 
                                 <h3 class="ui  header m-padded-tb-up">
                                     <a th:text="${blog.title}"
                                        th:href="@{/blog/{id}(id=${blog.blogId})}" href="#"
                                        target="_blank"
-                                       style="font-family:宋体,serif;color: black !important;">title</a>
+                                       style="font-family:宋体,serif;">title</a>
                                 </h3>
                                 <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.blogId})}" class="ui header">
                                     <p th:text="${blog.outline}" class="  "
@@ -104,7 +99,7 @@
                                         outline
                                     </p><span style="font-size: 14px;!important;"><u><i>点击详情>></i></u></span></a>
                                 <div class="ui divider "></div>
-                                <div class="ui middle aligned grid">
+                                <div class="ui middle aligned grid ">
                                     <div class="six wide column">
                                         <div class="ui mini horizontal link list">
                                             <div class="item">
@@ -164,7 +159,7 @@
                     <!--这里是一根分割线-->
                     <div class="m-text-a ui horizontal divider ">my Voice</div>
                     <!--分类-->
-                    <div class="ui raised segments m-margin">
+                    <div class="ui raised segments m-margin back-drop">
                         <div class="ui segment">
                             <div class="ui two column grid">
                                 <div class="column">
@@ -189,7 +184,7 @@
                     </div>
 
                     <!--标签-->
-                    <div class="ui raised segments m-margin">
+                    <div class="ui raised segments m-margin back-drop">
                         <div class="ui  segment">
                             <div class="ui two column grid">
                                 <div class="column">
@@ -210,7 +205,7 @@
                     </div>
 
                     <!--网站信息-->
-                    <div class="ui raised segments m-margin">
+                    <div class="ui raised segments m-margin back-drop">
                         <div class="ui segment">
                             <div class="ui two column grid">
                                 <div class="column">
@@ -252,24 +247,8 @@
 
     </div>
 
-
-    <th:block th:replace="_fragments :: script">
-        <!--也许用到的jQuery的引用-->
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-        <!--这里进行semanticUI的js 的CDN的引用 -->
-        <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-    </th:block>
-
-    <!--板娘-->
-    <link rel="stylesheet" type="text/css" href="../static/lib/assets/waifu.css" th:href="@{/lib/assets/waifu.css}"/>
-    <script src="../static/lib/assets/waifu-tips.js" th:src="@{/lib/assets/waifu-tips.js}"></script>
-    <script src="../static/lib/assets/live2d.js" th:src="@{/lib/assets/live2d.js}"></script>
-    <script type="text/javascript">initModel("../blogs/lib/assets/")</script>
-
-    <!--粒子特效-->
-<!--    <script src="../static/js/particle_effects.js" th:src="@{/js/particle_effects.js}"></script>-->
-    <!-- 数字雨 -->
-    <script src="../static/js/digital_rain.js" th:src="@{/js/digital_rain.js}"></script>
+    <!--    公共script 板娘，数字雨 -->
+    <th:block th:replace="_fragments :: script"/>
 
     <script>
         var audio = document.getElementsByTagName('audio')[0];

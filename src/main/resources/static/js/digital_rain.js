@@ -20,32 +20,31 @@ window.onload = function(){
     var drops = [];
     //给每一个文字初始化一个起始点的位置
     for(var i=0;i<colunms;i++){
-        drops.push(0);
+        drops.push(Math.random()*H);
     }
-    //下落速度
-    var speed = 16;
     //运动的文字
-    var str ="WELCOMETOWWW.FUZHIZHONG.COM";
+    var str ="WELCOME TO WWW.FUZHIZHONG.COM";
     //4:fillText(str,x,y);原理就是去更改y的坐标位置
     //绘画的函数
     function draw(){
-        context.fillStyle = "rgb(23,12,12)";//遮盖层
+        context.fillStyle = "rgba(0,0,0,0.05)";//遮盖层
         context.fillRect(0,0,W,H);
         //给字体设置样式
         context.font = "600 "+fontSize+"px  Georgia";
         // 绿色逐渐变浅
-        context.fillStyle = "hsl(123,80%,"+(30-i*2)+"%)";
+        // context.fillStyle = "hsl(123,80%,"+(30-i*2)+"%)";
         //给字体添加颜色
         // context.fillStyle = ["#33b5e5", "#0099CC", "#AA66CC", "#9933CC", "#99CC00", "#669900", "#FFBB33", "#FF8800", "#FF4444", "#CC0000"][parseInt(Math.random() * 10)];//randColor();可以rgb,hsl, 标准色，十六进制颜色
+        // 绿色随机
         context.fillStyle = randColor();//randColor();可以rgb,hsl, 标准色，十六进制颜色
+        // context.fillStyle = "rgb(142,246,13)";
         //写入画布中
         for(var i=0;i<colunms;i++){
             var x = i*fontSize;
-            var y = drops[i] * speed;
-            for(j=0;j<str.length;j++){
-                var index = Math.floor(Math.random() * str.length);
-                context.fillText(str[index],x,y+(j*fontSize));
-            }
+            //下落速度
+            var y = drops[i] * fontSize;
+            var index = Math.floor(Math.random() * str.length);
+            context.fillText(str[index],x,y);
             //如果要改变时间，肯定就是改变每次他的起点
             if(y >= canvas.height && Math.random() > 0.99){
                 drops[i] = 0;
@@ -56,7 +55,7 @@ window.onload = function(){
     function randColor(){
         //随机颜色
         var r = Math.floor(Math.random() * 256);
-        var g = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 156)+80;
         var b = Math.floor(Math.random() * 256);
         // return "rgb("+r+","+g+","+b+")";
         //绿色随机

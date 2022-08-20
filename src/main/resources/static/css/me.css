@@ -31,10 +31,6 @@
     padding-left: 3% !important;
     padding-right: 3% !important;
 }
-.m-padded-tb-mini{
-    padding-top: 0.2em !important;
-    padding-bottom: 0.2em !important;
-}
 .m-padded-tb-width{
     height: 38px !important;
 }
@@ -51,6 +47,15 @@
 .m-padded-tb-mini{
     padding-top: 0.2em !important;
     padding-bottom: 0.2em !important;
+}
+/*背景*/
+.back-drop{
+    border-width: 0 !important;
+    background: linear-gradient(to bottom right, #153842 20% , #0d5d6c, #153842 ) !important;
+}
+/*字体颜色*/
+.font-color{
+    color: #b0f9f1 !important;
 }
 .m-padded-tb-mini-two{
     padding-top: 0.4em !important;
