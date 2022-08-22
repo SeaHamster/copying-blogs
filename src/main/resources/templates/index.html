@@ -28,7 +28,7 @@
                 <!--左边的明信片和小便签-->
                 <div class="ui  three wide column m-column">
                     <!--个人明信片-->
-                    <div id="div01" class="ui link  card m-card-center back-drop">
+                    <div id="div01" class="ui link card m-card-center back-drop">
                         <div class="image">
                             <img src="https://img.zcool.cn/community/015278554295fe0000019ae959d2f0.jpg"
                                  th:src="@{/images/sea_hamster.jpg}" alt="头像">
@@ -94,10 +94,10 @@
                                        style="font-family:宋体,serif;">title</a>
                                 </h3>
                                 <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.blogId})}" class="ui header">
-                                    <p th:text="${blog.outline}" class="  "
+                                    <p th:text="${blog.outline}" class="font-color "
                                        style="font-size: 15px; font-weight: 500 !important;letter-spacing: 1px !important;line-height: 2.5;">
                                         outline
-                                    </p><span style="font-size: 14px;!important;"><u><i>点击详情>></i></u></span></a>
+                                    </p><span style="font-size: 14px;!important;color: #00d95a"><u><i>点击详情>></i></u></span></a>
                                 <div class="ui divider "></div>
                                 <div class="ui middle aligned grid ">
                                     <div class="six wide column">
@@ -105,13 +105,13 @@
                                             <div class="item">
                                                 <img th:src="${user.avatar}" src="https://unsplash.it/100/100?image=1005"
                                                      class="ui avatar image" alt="头像">
-                                                <div class="content">
-                                                    <h5 th:text="${user.name}"
-                                                        class="ui header m-opacity-mini">nickname</h5></div>
+                                                <div class="content ">
+                                                    <h5 th:text="${user.name}" class="ui header m-opacity-mini font-color">nickname</h5>
+                                                </div>
                                             </div>
                                             <div class="item">
-                                                <i class="calendar icon"></i><span
-                                                    th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-01-01</span>
+                                                <i class="calendar icon" style="color: red;"></i>
+                                                <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}" class="font-color">2020-01-01</span>
                                             </div>
                                         </div>
                                     </div>
@@ -165,7 +165,7 @@
                                 <div class="column">
                                     <i class="fas fa-cat"></i>  分类
                                 </div>
-                                <div class="right aligned column">
+                                <div class="center aligned column">
                                     <a href="#" th:href="@{/types/-1}" target="_blank">more</a>
                                 </div>
                             </div>
@@ -174,7 +174,7 @@
                             <div class="ui fluid vertical menu">
                                 <a th:each="type : ${types}" th:href="@{/types/{id}(id=${type.typeId})}" class="item type-back-drop"
                                    href="#" target="_blank">
-                                    <span th:text="${type.name}">type.name</span>
+                                    <span class="font-color" th:text="${type.name}">type.name</span>
                                     <div th:text="${type.blogsNum}"
                                          class="ui orange basic left pointing label">13
                                     </div>
@@ -190,7 +190,7 @@
                                 <div class="column">
                                     <i class="fas fa-dove"></i>标签
                                 </div>
-                                <div class="right aligned column">
+                                <div class="center aligned column">
                                     <a href="#" th:href="@{/tags/-1}" target="_blank">more</a>
                                 </div>
                             </div>
@@ -209,12 +209,12 @@
                         <div class="ui segment frame_sort">
                             <div class="ui two column grid">
                                 <div class="column">
-                                    <i class="info icon"></i>  本站信息
+                                    <i class="info icon"></i>本站信息
                                 </div>
                             </div>
                         </div>
                         <div class="ui red segment type-back-drop">
-                            <div class="menu">
+                            <div class="menu font-color">
                                 <div class="item m-padded-tb"><i class="sticky note outline icon"></i>文章总数:<span
                                         th:text="${blogsCount}">56</span>篇
                                 </div>

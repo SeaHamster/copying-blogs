@@ -224,7 +224,7 @@
     }
     .m-card-center{
         left: 50%;
-        transform: translateX(-50%) !important;
+        transform: translateX(-100%) !important;
 
     }
 
@@ -300,9 +300,10 @@ canvas {
     border-width: 0 !important;
     background: url("../images/frame.png") no-repeat center !important;
     background-size: 100% 100% !important;
-    padding: 5% !important;
+    padding: 12% 8% !important;
     color: #cceffa;
     text-align: center;
+    font-size: 20px !important;
 }
 .type-back-drop{
     border-width: 0 !important;
