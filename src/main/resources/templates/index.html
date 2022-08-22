@@ -26,7 +26,7 @@
             <div class="ui stackable this   container m-container-nine"></div>
             <div class="ui stackable  grid m-padded-tb-small">
                 <!--左边的明信片和小便签-->
-                <div class="ui  three wide column m-column">
+                <div class="ui three wide column m-column">
                     <!--个人明信片-->
                     <div id="div01" class="ui link card m-card-center back-drop">
                         <div class="image">
@@ -66,7 +66,7 @@
                         <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
                     </div>
                     <br><br>
-                    <h4 class="ui horizontal divider">微信号</h4>
+                    <h4 class="ui horizontal divider font-color">微信号</h4>
                     <div class="ui centered card" style="width: 180px">
                         <img src="../static/images/weixin.jpg" alt="" class="ui rounded image"
                              th:src="@{/images/weixin.jpg}">
@@ -76,7 +76,7 @@
                 <!--中间的每周目标和文章-->
                 <div class="ui ten wide column m-padded-lr-small">
                     <!--这里是一根分割线-->
-                    <div class="ui horizontal divider m-margin "
+                    <div class="ui horizontal divider m-margin font-color"
                          style="font-family:楷体,serif;font-size: 20px; font-weight: 600;!important;">最新博客
                     </div>
 
@@ -157,16 +157,16 @@
                 <!--右边的分类标签-->
                 <div class="ui three wide column">
                     <!--这里是一根分割线-->
-                    <div class="m-text-a ui horizontal divider ">my Voice</div>
+                    <div class="m-text-a ui horizontal divider font-color">my Voice</div>
                     <!--分类-->
                     <div class="ui raised segments m-margin ">
                         <div class="ui segment frame_sort">
                             <div class="ui two column grid">
                                 <div class="column">
-                                    <i class="fas fa-cat"></i>  分类
+                                    <i class="fas fa-cat"></i>分类
                                 </div>
                                 <div class="center aligned column">
-                                    <a href="#" th:href="@{/types/-1}" target="_blank">more</a>
+                                    <a href="#" th:href="@{/types/-1}" target="_blank">更多>></a>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +191,7 @@
                                     <i class="fas fa-dove"></i>标签
                                 </div>
                                 <div class="center aligned column">
-                                    <a href="#" th:href="@{/tags/-1}" target="_blank">more</a>
+                                    <a href="#" th:href="@{/tags/-1}" target="_blank">更多>></a>
                                 </div>
                             </div>
                         </div>

@@ -224,7 +224,7 @@
     }
     .m-card-center{
         left: 50%;
-        transform: translateX(-100%) !important;
+        transform: translateX(-50%) !important;
 
     }
 
