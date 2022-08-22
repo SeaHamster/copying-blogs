@@ -48,15 +48,6 @@
     padding-top: 0.2em !important;
     padding-bottom: 0.2em !important;
 }
-/*背景*/
-.back-drop{
-    border-width: 0 !important;
-    background: linear-gradient(to bottom right, #153842 20% , #0d5d6c, #153842 ) !important;
-}
-/*字体颜色*/
-.font-color{
-    color: #b0f9f1 !important;
-}
 .m-padded-tb-mini-two{
     padding-top: 0.4em !important;
     padding-bottom: 0.1em !important;
@@ -108,7 +99,9 @@
 }
 /*------text-------*/
 .m-text-thin{
+    font-size: 12px;
     font-weight:300 !important;
+    color: #00c4ff;
 }
 .m-text-spaced{
     letter-spacing: 2px !important;
@@ -266,7 +259,53 @@ canvas {
     z-index: -1;
 }
 
-
 .m-font-size{
     font-size: 3px !important;
 }
+
+/*背景*/
+.back-drop{
+    border-width: 0 !important;
+    background: linear-gradient(to bottom right, #153842 20% , #0d5d6c, #153842 ) !important;
+}
+/*字体颜色*/
+.font-color{
+    color: #b0f9f1 !important;
+}
+@keyframes move {
+    0% {background-position: 0 0;}
+    100% {
+        /*宽度固定，如果为百分比背景不会滚动*/
+        background-position: 200px 0;
+    }
+}
+/*动态背景*/
+.back-drop-move{
+    /*设置背景图片*/
+    background-image: linear-gradient(to right, #b0f9f1, #0d5d6c) !important;
+    /*chrome私有样式，加前缀，文字显示背景图片*/
+    -webkit-background-clip: text;
+    animation: move 4s infinite;
+    /*文字颜色设为透明*/
+    color: transparent;
+    /*宽度固定*/
+    width: 200px;
+}
+.type_style{
+    padding: 23% !important;
+    background: url("../images/type_button.png") no-repeat center !important;
+    background-size: cover !important;
+}
+.frame_sort{
+    border-width: 0 !important;
+    background: url("../images/frame.png") no-repeat center !important;
+    background-size: 100% 100% !important;
+    padding: 5% !important;
+    color: #cceffa;
+    text-align: center;
+}
+.type-back-drop{
+    border-width: 0 !important;
+    background: linear-gradient(to bottom right, #0d6986 20% , #47a9bb, #07cef3) !important;
+}
+

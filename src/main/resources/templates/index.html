@@ -33,12 +33,12 @@
                             <img src="https://img.zcool.cn/community/015278554295fe0000019ae959d2f0.jpg"
                                  th:src="@{/images/sea_hamster.jpg}" alt="头像">
                         </div>
-                        <div class="content">
-                            <a class="header" href="#aboutme" th:text="${user.name}">copying</a>
+                        <div class="content ">
+                            <a class="header font-color" href="#about_me" th:text="${user.name}">copying</a>
                             <div class="meta">
-                                <a style="" th:text="${user.about}">Java程序员、竹笛爱好者</a>
+                                <a style="" class="font-color" th:text="${user.about}">Java程序员、竹笛爱好者</a>
                             </div>
-                            <div class=" description m-padded" style="font-family: 楷体,serif;font-weight: 800 ;!important;">
+                            <div class=" description m-padded font-color" style="font-family: 楷体,serif;font-weight: 800 ;!important;">
                                 积土成山，风雨兴焉；<br>
                                 积水成渊，蛟龙生焉。
                             </div>
@@ -123,9 +123,9 @@
                                         </a>
                                     </div>
 
-                                    <div class="right aligned three wide column">
+                                    <div class="right aligned three wide column ">
                                         <a href="#" th:href="@{/types/{id}(id=${blog.type.typeId})}" th:text="${blog.type.name}" target="_blank"
-                                           class="ui  red basic label m-text-thin ">type.name</a>
+                                           class="ui basic m-text-thin type_style">type.name</a>
                                     </div>
                                 </div>
                             </div>
@@ -159,20 +159,20 @@
                     <!--这里是一根分割线-->
                     <div class="m-text-a ui horizontal divider ">my Voice</div>
                     <!--分类-->
-                    <div class="ui raised segments m-margin back-drop">
-                        <div class="ui segment">
+                    <div class="ui raised segments m-margin ">
+                        <div class="ui segment frame_sort">
                             <div class="ui two column grid">
                                 <div class="column">
-                                    <i class="fas fa-cat"></i>分类
+                                    <i class="fas fa-cat"></i>  分类
                                 </div>
                                 <div class="right aligned column">
                                     <a href="#" th:href="@{/types/-1}" target="_blank">more</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="ui orange segment">
+                        <div class="ui orange segment type-back-drop">
                             <div class="ui fluid vertical menu">
-                                <a th:each="type : ${types}" th:href="@{/types/{id}(id=${type.typeId})}" class="item"
+                                <a th:each="type : ${types}" th:href="@{/types/{id}(id=${type.typeId})}" class="item type-back-drop"
                                    href="#" target="_blank">
                                     <span th:text="${type.name}">type.name</span>
                                     <div th:text="${type.blogsNum}"
@@ -184,8 +184,8 @@
                     </div>
 
                     <!--标签-->
-                    <div class="ui raised segments m-margin back-drop">
-                        <div class="ui  segment">
+                    <div class="ui raised segments m-margin ">
+                        <div class="ui  segment frame_sort">
                             <div class="ui two column grid">
                                 <div class="column">
                                     <i class="fas fa-dove"></i>标签
@@ -195,7 +195,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ui teal segment">
+                        <div class="ui teal segment type-back-drop">
                             <a th:each="tag : ${tags}" th:href="@{/tags/{id}(id=${tag.tagId})}" href="#" target="_blank"
                                class="ui teal basic left pointing label m-margin-tiny">
                                 <span th:text="${tag.name}">tag.name</span>
@@ -205,15 +205,15 @@
                     </div>
 
                     <!--网站信息-->
-                    <div class="ui raised segments m-margin back-drop">
-                        <div class="ui segment">
+                    <div class="ui raised segments m-margin">
+                        <div class="ui segment frame_sort">
                             <div class="ui two column grid">
                                 <div class="column">
-                                    <i class="info icon"></i>本站信息
+                                    <i class="info icon"></i>  本站信息
                                 </div>
                             </div>
                         </div>
-                        <div class="ui red segment">
+                        <div class="ui red segment type-back-drop">
                             <div class="menu">
                                 <div class="item m-padded-tb"><i class="sticky note outline icon"></i>文章总数:<span
                                         th:text="${blogsCount}">56</span>篇
