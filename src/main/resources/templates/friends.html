@@ -22,61 +22,40 @@
 <!--中部主体-->
 <div class="m-padded-tb-large ">
     <div class="ui stackable container m-container-nine">
-        <h3 class="ui header m-text"><i class="fab fa-wolf-pack-battalion"></i>推荐网站:</h3>
-        <br>
+        <h3 class="ui header m-text font-color"><i class="fab fa-wolf-pack-battalion"></i>推荐网站:</h3>
         <div class="ui cards ">
             <a th:href="@{${friend.website}}" th:if="${friend.flag}==1" th:each="friend : ${friends}"
-               class="orange card m-card-center">
-                <div class="content">
-                    <div th:text="${friend.name}" class="header" href="#">Cute Dog</div>
-                    <p th:text="${friend.description}"></p>
+               class="orange card m-card-center friend_card_style" >
+                <div class="content friend_card">
+                    <div th:text="${friend.name}" class="header font-color" href="#">Cute Dog</div>
+                    <p style="font-size: 12px" th:text="${friend.description}"></p>
                 </div>
             </a>
         </div>
-
+        <!-- 分割线-->
         <div class="ui  section divider m-padded-tb"></div>
-        <div class="ui stackable  grid">
-            <div class="ui eleven wide column">
-                <h3 class="ui header m-text"><i class="fas fa-users"></i>友情链接:</h3>
-                <br>
-                <div class="ui link cards">
-                    <a th:href="@{${friend.website}}" th:if="${friend.flag}==2" th:each="friend : ${friends}"
-                       class="teal card m-card-center">
-                        <!--<div  class="image">-->
-                        <!--<img th:src="${friend.avatar}" src="../static/images/molly.png">-->
-                        <!--</div>-->
-                        <div class="content">
-                            <div th:text="${friend.name}" class="header">Molly</div>
-                            <!--<div class="meta">-->
-                            <!--<span class="date" th:text="${friend.occupation}">Coworker</span>-->
-                            <!--</div>-->
-                            <div class="description" th:text="${friend.description}">
-                                Molly is a personal assistant living in Paris.
-                            </div>
-                        </div>
-                    </a>
+        <h3 class="ui header m-text font-color"><i class="fas fa-users"></i>友情链接:</h3>
+        <div class="ui link cards ">
+            <a th:href="@{${friend.website}}" th:if="${friend.flag}==2" th:each="friend : ${friends}"
+               class="teal card m-card-center friend_card_style" >
+                <div class="content friend_card">
+                    <div th:text="${friend.name}" class="header font-color">Molly</div>
+                    <p style="font-size: 12px" th:text="${friend.description}"></p>
                 </div>
-            </div>
+            </a>
         </div>
+        <!-- 分割线-->
         <div class="ui  section divider m-padded-tb"></div>
-        <div class="ui stackable  grid">
-            <div class="ui eleven wide column">
-                <h3 class="ui header m-text"><i class="fas fa-users"></i>工具网站:</h3>
-                <br>
-                <div class="ui link cards">
-                    <a th:href="@{${friend.website}}" th:if="${friend.flag}==3" th:each="friend : ${friends}"
-                       class="teal card m-card-center">
-                        <div class="content">
-                            <div th:text="${friend.name}" class="header">Molly</div>
-                            <div class="description" th:text="${friend.description}">
-                                Molly is a personal assistant living in Paris.
-                            </div>
-                        </div>
-                    </a>
+        <h3 class="ui header m-text font-color"><i class="fas fa-users"></i>工具网站:</h3>
+        <div class="ui link cards ">
+            <a th:href="@{${friend.website}}" th:if="${friend.flag}==3" th:each="friend : ${friends}"
+               class="teal card m-card-center friend_card_style">
+                <div class="content friend_card">
+                    <div th:text="${friend.name}" class="header font-color">Molly</div>
+                    <p style="font-size: 12px" th:text="${friend.description}"></p>
                 </div>
-            </div>
+            </a>
         </div>
-
     </div>
 </div>
 <br><br><br>

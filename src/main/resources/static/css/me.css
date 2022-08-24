@@ -79,6 +79,9 @@
 .m-padded-tb{
     padding-top: 0.7em !important;
     padding-bottom: 0.7em !important;
+    /*color: #00c4ff !important;*/
+    border-top-width: 3px;
+    border-top-color: #00c4ff;
 }
 .m-padded-tb-large{
     padding-top: 2em !important;
@@ -99,7 +102,7 @@
 }
 /*------text-------*/
 .m-text-thin{
-    font-size: 12px;
+    font-size: 15px;
     font-weight:300 !important;
     color: #00c4ff;
 }
@@ -225,7 +228,6 @@
     .m-card-center{
         left: 50%;
         transform: translateX(-50%) !important;
-
     }
 
 
@@ -244,9 +246,9 @@
     top:13%!important;
     left: 8%!important;
 }
-body{
-    background: url("../images/skin_blackboard.png") no-repeat center;
-}
+/*body{*/
+/*    background: url("../images/skin_blackboard.png") no-repeat center;*/
+/*}*/
 
 canvas {
     position: fixed;
@@ -292,9 +294,9 @@ canvas {
     width: 200px;
 }
 .type_style{
-    padding: 23% !important;
-    background: url("../images/type_button.png") no-repeat center !important;
-    background-size: cover !important;
+    padding: 20% !important;
+    background: url("../images/type.png") no-repeat center !important;
+    background-size: 85% !important;
 }
 .frame_sort{
     border-width: 0 !important;
@@ -308,5 +310,29 @@ canvas {
 .type-back-drop{
     border-width: 0 !important;
     background: linear-gradient(to bottom right, #0d6986 20% , #47a9bb, #07cef3) !important;
+}
+.tag_style{
+    background-image: url("../images/tag.png") !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% !important;
+    padding: 10% ;
+}
+.friend_card{
+    background: url("../images/frame.png") no-repeat center !important;
+    padding: 20% !important;
+    background-size: 100% !important;
+    text-align: center;
+}
+.friend_card_style{
+    background-color: transparent !important;
+    box-shadow: none !important;
+    margin: 0.2% 0.5% !important;
+}
+#search_text::-ms-input-placeholder{
+    color: #66449a;
+}
+#search_text::-webkit-input-placeholder{
+    color: #66449a;
 }
 

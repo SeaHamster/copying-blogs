@@ -26,9 +26,9 @@
             <div class="ui stackable this   container m-container-nine"></div>
             <div class="ui stackable  grid m-padded-tb-small">
                 <!--左边的明信片和小便签-->
-                <div class="ui three wide column m-column">
+                <div class="ui three wide column m-column ">
                     <!--个人明信片-->
-                    <div id="div01" class="ui link card m-card-center back-drop">
+                    <div id="div01" class="ui link card m-card-center back-drop sketch-div">
                         <div class="image">
                             <img src="https://img.zcool.cn/community/015278554295fe0000019ae959d2f0.jpg"
                                  th:src="@{/images/sea_hamster.jpg}" alt="头像">
@@ -115,15 +115,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="left aligned seven wide column">
+                                    <div class="left aligned seven wide column ">
                                         <a th:href="@{/tags/{id}(id=${tag.tagId})}" th:each="tag : ${blog.tags}" href="#"
-                                           class=" m-margin-smalls">
+                                           class=" m-margin-smalls tag_style">
                                             <i class="fas fa-tag"></i>
-                                            <span th:text="${tag.name}">tag.name</span>
+                                            <span class="font-color" th:text="${tag.name}">tag.name</span>
                                         </a>
                                     </div>
 
-                                    <div class="right aligned three wide column ">
+                                    <div class="right aligned three wide column " style="text-align: center">
                                         <a href="#" th:href="@{/types/{id}(id=${blog.type.typeId})}" th:text="${blog.type.name}" target="_blank"
                                            class="ui basic m-text-thin type_style">type.name</a>
                                     </div>
@@ -197,7 +197,7 @@
                         </div>
                         <div class="ui teal segment type-back-drop">
                             <a th:each="tag : ${tags}" th:href="@{/tags/{id}(id=${tag.tagId})}" href="#" target="_blank"
-                               class="ui teal basic left pointing label m-margin-tiny">
+                               class="ui teal basic left pointing label m-margin-tiny ">
                                 <span th:text="${tag.name}">tag.name</span>
                                 <div th:text="${tag.blogsNum}" class="detail">23</div>
                             </a>
