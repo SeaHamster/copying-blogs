@@ -82,6 +82,7 @@
     /*color: #00c4ff !important;*/
     border-top-width: 3px;
     border-top-color: #00c4ff;
+    margin: auto !important;
 }
 .m-padded-tb-large{
     padding-top: 2em !important;
@@ -320,14 +321,14 @@ canvas {
 }
 .friend_card{
     background: url("../images/frame.png") no-repeat center !important;
-    padding: 20% !important;
+    padding: 16% !important;
     background-size: 100% !important;
     text-align: center;
 }
 .friend_card_style{
     background-color: transparent !important;
     box-shadow: none !important;
-    margin: 0.2% 0.5% !important;
+    margin: 0.3em !important;
 }
 #search_text::-ms-input-placeholder{
     color: #66449a;

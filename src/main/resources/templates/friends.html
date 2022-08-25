@@ -22,47 +22,42 @@
 <!--中部主体-->
 <div class="m-padded-tb-large ">
     <div class="ui stackable container m-container-nine">
-        <h3 class="ui header m-text font-color"><i class="fab fa-wolf-pack-battalion"></i>推荐网站:</h3>
-        <div class="ui cards ">
+        <h3 class="ui header m-text font-color"><i class="fab fa-users"></i>推荐网站:</h3>
+        <div class="ui cards " style="margin-bottom: 1em">
             <a th:href="@{${friend.website}}" th:if="${friend.flag}==1" th:each="friend : ${friends}"
                class="orange card m-card-center friend_card_style" >
                 <div class="content friend_card">
-                    <div th:text="${friend.name}" class="header font-color" href="#">Cute Dog</div>
-                    <p style="font-size: 12px" th:text="${friend.description}"></p>
+                    <div th:text="${friend.name}" class="header font-color" style="font-size: 1.5em" href="#">Cute Dog</div>
+                    <p style="font-size: 1.2em" th:text="${friend.description}"></p>
                 </div>
             </a>
         </div>
         <!-- 分割线-->
         <div class="ui  section divider m-padded-tb"></div>
         <h3 class="ui header m-text font-color"><i class="fas fa-users"></i>友情链接:</h3>
-        <div class="ui link cards ">
+        <div class="ui cards " style="margin-bottom: 1em">
             <a th:href="@{${friend.website}}" th:if="${friend.flag}==2" th:each="friend : ${friends}"
                class="teal card m-card-center friend_card_style" >
                 <div class="content friend_card">
-                    <div th:text="${friend.name}" class="header font-color">Molly</div>
-                    <p style="font-size: 12px" th:text="${friend.description}"></p>
+                    <div th:text="${friend.name}" class="header font-color" style="font-size: 1.5em">Molly</div>
+                    <p style="font-size: 1.2em" th:text="${friend.description}"></p>
                 </div>
             </a>
         </div>
         <!-- 分割线-->
         <div class="ui  section divider m-padded-tb"></div>
         <h3 class="ui header m-text font-color"><i class="fas fa-users"></i>工具网站:</h3>
-        <div class="ui link cards ">
+        <div class="ui cards " style="margin-bottom: 1em">
             <a th:href="@{${friend.website}}" th:if="${friend.flag}==3" th:each="friend : ${friends}"
                class="teal card m-card-center friend_card_style">
                 <div class="content friend_card">
-                    <div th:text="${friend.name}" class="header font-color">Molly</div>
-                    <p style="font-size: 12px" th:text="${friend.description}"></p>
+                    <div th:text="${friend.name}" class="header font-color " style="font-size: 1.5em">Molly</div>
+                    <p style="font-size: 1.2em" th:text="${friend.description}"></p>
                 </div>
             </a>
         </div>
     </div>
 </div>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br>
 
 <!--    公共script 也许用到的jQuery的引用，这里进行semanticUI的js 的CDN的引用，板娘，数字雨 -->
 <th:block th:replace="_fragments :: script"/>
