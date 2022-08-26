@@ -31,9 +31,30 @@ public class IndexController {
     @Resource
     private CyCacheService cyCacheService;
 
+
+    /**
+     * 首页
+     * @param model model
+     * @return java.lang.String
+     */
     @MyLog
     @GetMapping("/")
-    public String index(@RequestParam(value = "page", defaultValue = "1") Integer pageNum,
+    public String blogs(Model model) {
+
+        model.addAttribute("user", cyCacheService.getAdminInfo());
+        return "index";
+    }
+
+    /**
+     * 文章列表
+     * @param pageNum pageNum
+     * @param title title
+     * @param model model
+     * @return java.lang.String
+     */
+    @MyLog
+    @GetMapping("/blogs")
+    public String blogs(@RequestParam(value = "page", defaultValue = "1") Integer pageNum,
                         @RequestParam(required = false, value = "title") String title, Model model) {
         model.addAttribute("page", cyCacheService.getIndexPage(title, pageNum));
         model.addAttribute("types", cyCacheService.getIndexTypes());
@@ -43,7 +64,7 @@ public class IndexController {
         model.addAttribute("tagsCount", cyCacheService.getTagNum());
         model.addAttribute("commentsCount", cyCacheService.getCommentNum());
         model.addAttribute("user", cyCacheService.getAdminInfo());
-        return "index";
+        return "blogs";
     }
 
 

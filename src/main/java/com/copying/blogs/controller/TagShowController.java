@@ -32,6 +32,12 @@ public class TagShowController {
         }
         if(tagId==-1){
             tagId = tags.get(0).getTagId();
+            for (CyTag tag : tags) {
+                if(tag.getBlogsNum()>0){
+                    tagId = tag.getTagId();
+                    break;
+                }
+            }
         }
         model.addAttribute("tags",tags);
         model.addAttribute("page", cyCacheService.getPageByTag(pageNum,tagId));
