@@ -6,7 +6,7 @@
       <option name="myIgnoreVendorSpecificProperties" value="false" />
       <option name="myCustomPropertiesList">
         <value>
-          <list size="8">
+          <list size="9">
             <item index="0" class="java.lang.String" itemvalue="border-radius" />
             <item index="1" class="java.lang.String" itemvalue="flex-positive" />
             <item index="2" class="java.lang.String" itemvalue="flex-preferred-size" />
@@ -15,6 +15,7 @@
             <item index="5" class="java.lang.String" itemvalue="flex-line-pack" />
             <item index="6" class="java.lang.String" itemvalue="flex-item-align" />
             <item index="7" class="java.lang.String" itemvalue="overflow-anchor" />
+            <item index="8" class="java.lang.String" itemvalue="flex-flow" />
           </list>
         </value>
       </option>
