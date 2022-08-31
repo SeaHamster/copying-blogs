@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
@@ -45,6 +46,18 @@ public class IndexController {
         return "index";
     }
 
+    /**
+     * 联系我
+     * @param
+     * @return java.lang.String
+     */
+    @MyLog
+    @PostMapping("/contactMe")
+    public String contactMe(String name,String email,String subject,String text){
+
+        return "成功，稍后将联系您";
+    }
+    
     /**
      * 文章列表
      * @param pageNum pageNum
