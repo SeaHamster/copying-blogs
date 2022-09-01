@@ -47,6 +47,7 @@ public class SecurityJwtConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/blogs", "/blogs/**").permitAll()
                 .antMatchers("/tags", "/tags/**").permitAll()
                 .antMatchers("/types", "/types/**").permitAll()
+                .antMatchers("/contactMe").permitAll()
                 .anyRequest().authenticated()
                 //授权
                 .and()

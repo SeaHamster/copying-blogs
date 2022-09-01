@@ -3,11 +3,14 @@ package com.copying.blogs.controller;
 import com.copying.blogs.aspect.MyLog;
 import com.copying.blogs.exception.CustomizeException;
 import com.copying.blogs.model.entity.CyBlog;
+import com.copying.blogs.model.result.JsonResult;
+import com.copying.blogs.model.result.Result;
 import com.copying.blogs.service.CyBlogService;
 import com.copying.blogs.service.CyCacheService;
 import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,23 +44,31 @@ public class IndexController {
     @MyLog
     @GetMapping("/")
     public String blogs(Model model) {
-
         model.addAttribute("user", cyCacheService.getAdminInfo());
         return "index";
     }
 
     /**
      * 联系我
-     * @param
      * @return java.lang.String
      */
     @MyLog
     @PostMapping("/contactMe")
-    public String contactMe(String name,String email,String subject,String text){
+    public JsonResult<?> contactMe(String name, String email, String subject, String text){
+        if(StringUtils.isEmpty(subject)){
+            return Result.fail("请输入一个主题");
+        }
+        if(StringUtils.isEmpty(text)){
+            return Result.fail("请输入内容");
+        }
+        System.out.println(name);
+        System.out.println(email);
+        System.out.println(subject);
+        System.out.println(text);
 
-        return "成功，稍后将联系您";
+        return Result.success("成功，稍后将联系您");
     }
-    
+
     /**
      * 文章列表
      * @param pageNum pageNum
