@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <!--首先完成移动端的预览设置问题,设备的宽度初始缩放倍数为1.0倍，这里还可以设置用户禁止缩放等等-->
     <meta name="viewport" content="device-width,initial-scale=1.0">
-    <title th:text="${user.name}+的博客">copying</title>
+    <title>文章列表</title>
     <!--接下来进行semanticUI的css CDN的引用-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
     <!--引入我们自己写的css-->
@@ -142,11 +142,11 @@
 
 
                     <!--footer尾部上一页，下一页-->
-                    <div class="ui segment" th:if="${page.pages}>1">
+                    <div class="ui segment back-drop" th:if="${page.pages}>1">
                         <div class="ui two column grid">
                             <div class="column">
                                 <a href="#" th:href="@{/(page=${page.prePage})}" th:unless="${page.isFirstPage}"
-                                   class="ui teal basic button">上一页</a>
+                                   class="ui teal basic button ">上一页</a>
                             </div>
                             <div class="ui right aligned column">
                                 <a href="#" th:href="@{/(page=${page.nextPage})}" th:unless="${page.isLastPage}"
