@@ -1,7 +1,7 @@
 server:
   port: 1555
-  servlet:
-    context-path: /blogs
+#  servlet:
+#    context-path: /blogs
 # Spring配置
 spring:
   # 环境 dev|test|prod
@@ -88,7 +88,7 @@ oauth2:
     clientId: 721d4d3900ece2836195685b711de59dca4409a09d781b25e6fd969f3959c578
     clientSecret: 48200cd868f13decac25f5c24d77e730aff37b9664269caba16c9e5613b72725
     grantType: authorization_code
-    redirectUri: http://www.fuzhizhong.com:8081/
+    redirectUri: http://copying.tpddns.cn/
 
 #控制台打印SQL
 logging:
