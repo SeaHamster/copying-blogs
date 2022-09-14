@@ -41,12 +41,12 @@ public class IndexController {
      * @param model model
      * @return java.lang.String
      */
-    @MyLog
-    @GetMapping("/")
-    public String blogs(Model model) {
-        model.addAttribute("user", cyCacheService.getAdminInfo());
-        return "index";
-    }
+//    @MyLog
+//    @GetMapping("/")
+//    public String blogs(Model model) {
+//        model.addAttribute("user", cyCacheService.getAdminInfo());
+//        return "index";
+//    }
 
     /**
      * 联系我
@@ -77,7 +77,8 @@ public class IndexController {
      * @return java.lang.String
      */
     @MyLog
-    @GetMapping("/blogs")
+//    @GetMapping("/blogs")
+    @GetMapping("/")
     public String blogs(@RequestParam(value = "page", defaultValue = "1") Integer pageNum,
                         @RequestParam(required = false, value = "title") String title, Model model) {
         model.addAttribute("page", cyCacheService.getIndexPage(title, pageNum));
