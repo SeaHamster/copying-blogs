@@ -17,11 +17,12 @@ rm -rf /mnt/copying.tpddns.cn_jenkins/copying-blogs/*
 EOF
 
 # 进入copying-blogs项目目录
+echo "当前目录"
 cd $JENKINS_RELIABLE_PATH
- pwd
- echo "jar文件拷贝"
-  mkdir -p ./docker
-  cp -r ./target/*.jar Dockerfile ./docker
+pwd
+echo "jar文件拷贝"
+mkdir -p ./docker
+cp -r ./target/*.jar Dockerfile ./docker
 
 # 拷贝新代码到应用服务器
 echo "拷贝代码开始..."
@@ -30,7 +31,6 @@ echo "拷贝代码结束..."
 
 # echo "项目开始构建打包"
 #  mvn clean package -Dmaven.test.skip=true -P dev
-# echo "当前目录"
 
 # 登录到项目服务器执行命令
 ssh -Tq ${host} <<EOF
